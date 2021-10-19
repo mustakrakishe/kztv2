@@ -2,6 +2,8 @@
 /public/css
 /public/hot
 /public/js
+!/public/js/components
+!/public/js/views
 /public/mix-manifest.json
 /public/storage
 !/public/storage/service
