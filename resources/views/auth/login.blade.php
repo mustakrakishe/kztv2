@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('scripts')
+    <script type="module" src="{{ asset('js\views\auth\login.js') }}" defer></script>
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -8,20 +12,14 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form id="login-form" method="POST" action="{{ route('login') }}" validation="{{ route('login.validate') }}">
                         @csrf
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="name" type="name" class="form-control" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
                             </div>
                         </div>
 
@@ -29,13 +27,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <input id="password" type="password" class="form-control" name="password" autocomplete="current-password">
                             </div>
                         </div>
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
@@ -74,25 +75,17 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        $manualAttempt = User::where('name', $request->name)->first()?->password === $request->password;
-        
-        if($manualAttempt){
-            $this->guard()->attempt([
-                $request->only('name'),
-                $request->filled('remember')
-            ]);
+        $status = false;
+
+        $user = User::where('name', $request->name)
+            ->where('password', $request->password)
+            ->first();
+
+        if($user){
+            Auth::login($user, $request->filled('remember'));
+            $status = true;
         }
 
-        return $manualAttempt;
-    }
-
-    /**
-     * Get the user identification field to be used by the controller.
-     *
-     * @return string
-     */
-    public function username()
-    {
-        return 'name';
+        return $status;
     }
 }

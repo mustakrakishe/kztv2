@@ -1,16 +1,15 @@
 import Form from "../../components/form.js";
 
-let FORM_ID = '#register-form';
+let REGISTER_FORM = 'form#register-form';
 
 let isValid = false
-let form = $(FORM_ID);
 
-$(form).on('submit', async (event) => {
+$(REGISTER_FORM).on('submit', async (event) => {
     if(!isValid){
         event.preventDefault();
-        isValid = await Form.xhrValidate(form);
+        isValid = await Form.xhrValidate(REGISTER_FORM);
         if(isValid){
-            $(form).trigger('submit');
+            $(REGISTER_FORM).trigger('submit');
         }
     }
 })

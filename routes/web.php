@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\DeviceController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +17,5 @@ Route::get('/', function () {
     return redirect()->route('devices.index');
 });
 
-Auth::routes();
-
-Route::resource('devices', DeviceController::class)->middleware('auth');
+require __DIR__.'/auth.php';
+require __DIR__.'/devices.php';
