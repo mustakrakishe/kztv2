@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class LoginController extends Controller
 {
@@ -36,5 +39,60 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    // Extending methods
+
+    public function xhrValidate(Request $request)
+    {
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'name' => ['required', 'string', 'max:50'],
+            'password' => ['required', 'string', 'min:8', 'max:255'],
+        ]);
+
+        if ($validator->fails()) {
+            return $validator->errors();
+        }
+
+        if(!$this->attemptLogin($request)){
+            return (object)[
+                'name' => [trans('auth.failed')],
+                'password' => [trans('auth.failed')],
+            ];
+        }
+    }
+
+    // Redefined methods
+
+    /**
+     * Attempt to log the user into the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    protected function attemptLogin(Request $request)
+    {
+        $manualAttempt = User::whereName($request->name)->get()->password == $request->password;
+        
+        if($manualAttempt){
+            $this->guard()->attempt([
+                $request->only('name'),
+                $request->filled('remember')
+            ]);
+        }
+
+        return $manualAttempt;
+    }
+
+    /**
+     * Get the user identification field to be used by the controller.
+     *
+     * @return string
+     */
+    public function username()
+    {
+        return 'name';
     }
 }
