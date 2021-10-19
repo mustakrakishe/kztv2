@@ -74,7 +74,7 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        $manualAttempt = User::whereName($request->name)->get()->password == $request->password;
+        $manualAttempt = User::where('name', $request->name)->first()?->password === $request->password;
         
         if($manualAttempt){
             $this->guard()->attempt([
