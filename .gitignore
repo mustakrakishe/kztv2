@@ -6,8 +6,8 @@
 !/public/js/views
 /public/mix-manifest.json
 /public/storage
-!/public/storage/service
 /storage/*.key
+!/storage/app/public/service
 /vendor
 .env
 .env.backup
