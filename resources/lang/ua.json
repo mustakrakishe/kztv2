@@ -1,10 +1,11 @@
 {
-    "Characteristics": "Характеристики",
+    "Brief Information": "Короткі відомості",
     "Cause": "Причина",
     "Comment": "Коментар",
     "Confirm Password": "Підтвердження паролю",
     "Date": "Дата",
     "Devices": "Пристрої",
+    "Hardware": "Апаратне забезпечення",
     "Ident. №": "Ідент. №",
     "Identification code": "Ідентифікаційний код",
     "Inv. №": "Інв. №",
@@ -22,6 +23,8 @@
     "Repair history": "Історія ремонту",
     "Result": "Результат",
     "Search by keywords": "Пошук за ключовими словами",
+    "Software": "Програмне забезпечення",
+    "Status": "Статус",
     "Type": "Тип",
     "Whoops! Something went wrong.": "Запит відхилено."
 }

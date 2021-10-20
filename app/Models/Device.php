@@ -50,11 +50,27 @@ class Device extends Model
     }
 
     /**
+     * Get the device last movement entry.
+     */
+    public function last_movement()
+    {
+        return $this->hasOne(Movement::class);
+    }
+
+    /**
      * Get the device repairs.
      */
     public function repairs()
     {
         return $this->hasMany(Repair::class);
+    }
+
+    /**
+     * Get the device last hardware entry.
+     */
+    public function last_hardware()
+    {
+        return $this->hasOne(Hardware::class);
     }
 
     /**
@@ -71,5 +87,13 @@ class Device extends Model
     public function software()
     {
         return $this->hasMany(Software::class);
+    }
+
+    /**
+     * Get the device last software entry.
+     */
+    public function last_software()
+    {
+        return $this->hasOne(Software::class);
     }
 }

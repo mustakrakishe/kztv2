@@ -14,7 +14,15 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        return view('devices');
+        $devices = Device::with('type')
+            ->with('status')
+            ->with('last_movement')
+            ->with('last_hardware')
+            ->with('last_software')
+            ->limit(10)
+            ->get();
+            
+        return view('devices', compact('devices'));
     }
 
     /**
