@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Repair extends Model
 {
     use HasFactory;
+
+    public $fillable = [
+        'date',
+        'cause',
+        'result',
+        'device_id',
+    ];
+
+    public $searchable = [
+        'date',
+        'cause',
+        'result',
+    ];
 }

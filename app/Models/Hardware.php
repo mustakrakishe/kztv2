@@ -9,6 +9,19 @@ class Hardware extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'date',
+        'description',
+        'comment',
+        'device_id',
+    ];
+
+    public $searchable = [
+        'date',
+        'description',
+        'comment',
+    ];
+
     /**
      * Check if the the motherboard replacement was.
      */

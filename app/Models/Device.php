@@ -9,6 +9,22 @@ class Device extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'inventory_code',
+        'identification_code',
+        'model',
+        'comment',
+        'type_id',
+        'status_id',
+    ];
+
+    public $searchable = [
+        'inventory_code',
+        'identification_code',
+        'model',
+        'comment',
+    ];
+
     /**
      * Get the device status.
      */

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class MotherboardReplacementLog extends Model
 {
     use HasFactory;
+
+    public $fillable = [
+        'hardware_id',
+    ];
+
+    public $searchable = [
+        // 
+    ];
 }

@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Software extends Model
 {
     use HasFactory;
+
+    public $fillable = [
+        'date',
+        'description',
+        'comment',
+        'device_id',
+    ];
+
+    public $searchable = [
+        'date',
+        'description',
+        'comment',
+    ];
 }
