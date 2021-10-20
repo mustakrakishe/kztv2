@@ -1,3 +1,3 @@
-<div {{ $attributes->class(['d-flex w-100']) }}'>
+<tr {{ $attributes }}>
     {{ $slot }}
-</div>
+</tr>

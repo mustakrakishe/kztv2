@@ -1,3 +1,5 @@
-<div {{ $attributes->merge(['name' => 'cell', 'class' => 'p-2 border']) }}>
-    {{ $slot }}
-</div>
+<td {{ $attributes }}>
+    <button class="p-0 border-0 bg-transparent">
+        {{ $slot }}
+    </button>
+</td>

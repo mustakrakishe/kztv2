@@ -1,8 +1,6 @@
-@props(['statusName' => ''])
-
-<x-table.row {{ $attributes->merge(['style' => 'min-width: 690px;']) }}>
-    <x-table.cell title="{{$statusName}}" style="width: 5%;">
-        @switch($status)
+<tr {{ $attributes }}>
+    <td title="{{ $device->status->name }}">
+        @switch($device->status_id)
             @case("1")
                 <!-- В эксплуатации -->
                 <i class="fas fa-check"></i>
@@ -21,12 +19,12 @@
             @default
                 {{ $status }}
         @endswitch
-    </x-table.cell>
-    <x-table.cell style="width: 10%;">{{ $codes }}</x-table.cell>
-    <x-table.cell style="width: 15%;">{{ $type }}</x-table.cell>
-    <x-table.cell style="width: 15%;">{{ $model }}</x-table.cell>
-    <x-table.cell style="width: 25%;">{{ $hardware }}</x-table.cell>
-    <x-table.cell style="width: 25%;">{{ $software }}</x-table.cell>
-    <x-table.cell style="width: 25%;">{{ $location }}</x-table.cell>
-    <x-table.cell style="width: 10%;">{{ $comment }}</x-table.cell>
-</x-table.row>
+    </td>
+    <x-table.cell>{{ $device->inventory_code }}</x-table.cell>
+    <x-table.cell>{{ $device->type->name }}</x-table.cell>
+    <x-table.cell>{{ $device->model }}</x-table.cell>
+    <x-table.cell>{{ $device->last_hardware?->description }}</x-table.cell>
+    <x-table.cell>{{ $device->last_software?->description }}</x-table.cell>
+    <x-table.cell>{{ $device->last_movement?->location }}</x-table.cell>
+    <x-table.cell>{{ $device->comment }}</x-table.cell>
+</tr>
