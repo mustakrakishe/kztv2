@@ -19,8 +19,7 @@ class DeviceController extends Controller
             ->with('last_movement')
             ->with('last_hardware')
             ->with('last_software')
-            ->limit(10)
-            ->get();
+            ->paginate();
             
         return view('devices', compact('devices'));
     }

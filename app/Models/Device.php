@@ -25,6 +25,8 @@ class Device extends Model
         'comment',
     ];
 
+    protected $perPage = 10;
+
     /**
      * Get the device status.
      */

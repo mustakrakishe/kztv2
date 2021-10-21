@@ -26,5 +26,5 @@
         </tbody>
 
     </table>
-
+    {{ $devices->links() }}
 @endsection
