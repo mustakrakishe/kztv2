@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Type;
+use App\Models\Status;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Device extends Model
 {
@@ -23,6 +25,14 @@ class Device extends Model
         'identification_code',
         'model',
         'comment',
+    ];
+
+    public static $searchableRelationships = [
+        'type',
+        'status',
+        'last_movement',
+        'last_hardware',
+        'last_software',
     ];
 
     protected $perPage = 10;
@@ -100,6 +110,8 @@ class Device extends Model
     }
 
     public static function scopeSearch($query, Array $keywords){
+
+
         foreach($keywords as $keyword){
 
             $query->where(function ($query) use ($keyword) {
@@ -107,6 +119,13 @@ class Device extends Model
                 foreach(static::$searchable as $column){
                     $query->orWhereRaw($column . '::text ilike ' . "'%$keyword%'");
                 }
+
+                foreach(static::$searchableRelationships as $relationship){
+                    $query->orWhereHas($relationship, function ($query) use ($keyword){
+                        $query->search([$keyword]);
+                    });
+                }
+                
             });
         }
         

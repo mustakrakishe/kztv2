@@ -17,7 +17,7 @@ class Hardware extends Model
         'device_id',
     ];
 
-    public $searchable = [
+    public static $searchable = [
         'date',
         'description',
         'comment',
@@ -41,5 +41,19 @@ class Hardware extends Model
     public function motherboard_replacement_flag()
     {
         return $this->hasOne(MotherboardReplacementLog::class, 'hardware_id');
+    }
+
+    public static function scopeSearch($query, Array $keywords){
+        foreach($keywords as $keyword){
+
+            $query->where(function ($query) use ($keyword) {
+
+                foreach(static::$searchable as $column){
+                    $query->orWhereRaw($column . '::text ilike ' . "'%$keyword%'");
+                }
+            });
+        }
+        
+        return $query;
     }
 }

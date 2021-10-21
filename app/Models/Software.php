@@ -17,7 +17,7 @@ class Software extends Model
         'device_id',
     ];
 
-    public $searchable = [
+    public static $searchable = [
         'date',
         'description',
         'comment',
@@ -33,5 +33,19 @@ class Software extends Model
         static::addGlobalScope('software', function (Builder $builder) {
             $builder->latest('date')->orderByDesc('id');
         });
+    }
+
+    public static function scopeSearch($query, Array $keywords){
+        foreach($keywords as $keyword){
+
+            $query->where(function ($query) use ($keyword) {
+
+                foreach(static::$searchable as $column){
+                    $query->orWhereRaw($column . '::text ilike ' . "'%$keyword%'");
+                }
+            });
+        }
+        
+        return $query;
     }
 }

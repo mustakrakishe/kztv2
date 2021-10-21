@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Type;
 use App\Models\Device;
 use Illuminate\Http\Request;
 
@@ -105,12 +106,12 @@ class DeviceController extends Controller
 
         $keywords = preg_split('/\s+/', trim($request->keywords));
 
-        $devicesQueryBuilder = Device::with('type')
+        $devicesQueryBuilder = Device::search($keywords)
+            ->with('type')
             ->with('status')
             ->with('last_movement')
             ->with('last_hardware')
-            ->with('last_software')
-            ->search($keywords);
+            ->with('last_software');
 
         $devices = $devicesQueryBuilder->paginate();
         

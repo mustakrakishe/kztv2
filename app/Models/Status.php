@@ -13,7 +13,21 @@ class Status extends Model
         'name',
     ];
 
-    public $searchable = [
+    public static $searchable = [
         'name',
     ];
+
+    public static function scopeSearch($query, Array $keywords){
+        foreach($keywords as $keyword){
+
+            $query->where(function ($query) use ($keyword) {
+
+                foreach(static::$searchable as $column){
+                    $query->orWhereRaw($column . '::text ilike ' . "'%$keyword%'");
+                }
+            });
+        }
+        
+        return $query;
+    }
 }

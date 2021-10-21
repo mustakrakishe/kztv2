@@ -17,7 +17,7 @@ class Movement extends Model
         'device_id',
     ];
 
-    public $searchable = [
+    public static $searchable = [
         'date',
         'location',
         'comment',
@@ -33,5 +33,19 @@ class Movement extends Model
         static::addGlobalScope('movement', function (Builder $builder) {
             $builder->latest('date')->orderByDesc('id');
         });
+    }
+
+    public static function scopeSearch($query, Array $keywords){
+        foreach($keywords as $keyword){
+
+            $query->where(function ($query) use ($keyword) {
+
+                foreach(static::$searchable as $column){
+                    $query->orWhereRaw($column . '::text ilike ' . "'%$keyword%'");
+                }
+            });
+        }
+        
+        return $query;
     }
 }
