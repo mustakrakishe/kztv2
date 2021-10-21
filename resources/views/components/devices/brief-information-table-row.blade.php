@@ -1,4 +1,4 @@
-<tr {{ $attributes }}>
+<tr {{ $attributes->merge(['style' => 'cursor: pointer;']) }}>
     <td title="{{ $device->status->name }}">
         @switch($device->status_id)
             @case("1")
@@ -20,11 +20,11 @@
                 {{ $status }}
         @endswitch
     </td>
-    <x-table.cell>{{ $device->inventory_code }}</x-table.cell>
-    <x-table.cell>{{ $device->type->name }}</x-table.cell>
-    <x-table.cell>{{ $device->model }}</x-table.cell>
-    <x-table.cell>{{ $device->last_hardware?->description }}</x-table.cell>
-    <x-table.cell>{{ $device->last_software?->description }}</x-table.cell>
-    <x-table.cell>{{ $device->last_movement?->location }}</x-table.cell>
-    <x-table.cell>{{ $device->comment }}</x-table.cell>
+    <td>{{ $device->inventory_code }}</td>
+    <td>{{ $device->type->name }}</td>
+    <td>{{ $device->model }}</td>
+    <td>{{ $device->last_hardware?->description }}</td>
+    <td>{{ $device->last_software?->description }}</td>
+    <td>{{ $device->last_movement?->location }}</td>
+    <td>{{ $device->comment }}</td>
 </tr>

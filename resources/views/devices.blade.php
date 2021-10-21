@@ -4,9 +4,9 @@
     <h1>{{ __('Devices') }}</h1>
     <h2>{{ __('Brief Information') }}</h2>
 
-    <table class="table">
+    <table class="table table-striped table-hover">
 
-        <thead class="thead-dark">
+        <thead class="thead-dark text-center">
             <tr>
                 <th scope="col"></th>
                 <th scope="col">{{ __('Inv. №') }}</th>
