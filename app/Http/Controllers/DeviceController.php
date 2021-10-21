@@ -89,4 +89,39 @@ class DeviceController extends Controller
     {
         //
     }
+
+    // Additional methods
+
+    
+
+    /**
+     * Display a listing of the keywords mutched resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request)
+    {
+
+        $keywords = preg_split('/\s+/', trim($request->keywords));
+
+        $devicesQueryBuilder = Device::with('type')
+            ->with('status')
+            ->with('last_movement')
+            ->with('last_hardware')
+            ->with('last_software');
+
+        foreach($keywords as $keyword){
+
+            $devicesQueryBuilder->where(function ($query) use ($keyword) {
+                foreach(Device::$searchable as $column){
+                    $query->orWhereRaw($column . '::text like ' . "'%$keyword%'");
+                }
+            });
+        }
+
+        $devices = $devicesQueryBuilder->paginate();
+        
+        return view('components.devices.brief-info-table', compact('devices'))->render();
+    }
 }

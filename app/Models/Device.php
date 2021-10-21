@@ -18,7 +18,7 @@ class Device extends Model
         'status_id',
     ];
 
-    public $searchable = [
+    public static $searchable = [
         'inventory_code',
         'identification_code',
         'model',
