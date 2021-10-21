@@ -109,16 +109,8 @@ class DeviceController extends Controller
             ->with('status')
             ->with('last_movement')
             ->with('last_hardware')
-            ->with('last_software');
-
-        foreach($keywords as $keyword){
-
-            $devicesQueryBuilder->where(function ($query) use ($keyword) {
-                foreach(Device::$searchable as $column){
-                    $query->orWhereRaw($column . '::text like ' . "'%$keyword%'");
-                }
-            });
-        }
+            ->with('last_software')
+            ->search($keywords);
 
         $devices = $devicesQueryBuilder->paginate();
         
