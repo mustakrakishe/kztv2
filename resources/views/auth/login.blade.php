@@ -12,14 +12,14 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form id="login-form" method="POST" action="{{ route('login') }}" validation="{{ route('login.validate') }}">
+                    <form id="login-form" action="{{ route('login') }}" method="post">
                         @csrf
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="name" class="form-control" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
+                                <input type="text" name="name" id="name" class="form-control" autocomplete="name" autofocus>
                             </div>
                         </div>
 
@@ -27,7 +27,7 @@
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" autocomplete="current-password">
+                                <input type="password" name="password" id="password" class="form-control" autocomplete="current-password">
                             </div>
                         </div>
 

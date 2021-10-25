@@ -2,18 +2,11 @@ $(document).on('input', 'textarea.autoresizable', function(){
     resize(this);
 })
 
-export function resize(textareas){
-    $(textareas).each(function(){
-        $(this).css({
-            'height': $(this).prop('scrollHeight'),
-        });
-    })
+export function resize(textarea){
+    $(textarea).css('height', 'auto');
+    $(textarea).css('height', $(textarea).prop('scrollHeight') + 'px');
 }
 
-export function initSize(textareas){
-    $(textareas).each(function(){
-        $(this).css({
-            'height': $(this).css('min-height'),
-        });
-    })
+export function initSize(textarea){
+    $(textarea).css('height', $(textarea).css('min-height'));
 }
