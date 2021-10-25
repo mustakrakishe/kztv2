@@ -103,18 +103,19 @@ class DeviceController extends Controller
      */
     public function search(Request $request)
     {
-
         $keywords = preg_split('/\s+/', trim($request->keywords));
 
-        $devicesQueryBuilder = Device::search($keywords)
+        $devices = Device::search($keywords)
             ->with('type')
             ->with('status')
             ->with('last_movement')
             ->with('last_hardware')
-            ->with('last_software');
-
-        $devices = $devicesQueryBuilder->paginate();
+            ->with('last_software')
+            ->paginate();
         
-        return view('components.devices.brief-info-table', compact('devices'))->render();
+        return [
+            'status' => 1,
+            'view' => view('components.devices.brief-info-table', compact('devices'))->render()
+        ];
     }
 }
