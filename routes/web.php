@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +18,6 @@ Route::get('/', function () {
     return redirect()->route('devices.index');
 });
 
-require __DIR__.'/auth.php';
+Auth::routes();
+
 require __DIR__.'/devices.php';
