@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -33,6 +34,16 @@ class LoginController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
+     * Which field shoud be attemped.
+     *
+     * @var array
+     */
+    protected $identifiable = [
+        'name',
+        'email',
+    ];
+
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -44,7 +55,48 @@ class LoginController extends Controller
 
     // Extending methods
 
-    public function xhrValidate(Request $request)
+    /**
+     * Handle a login request to the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function login(Request $request)
+    {
+        $errors = $this->validateLogin($request);
+        if($errors){
+            return [
+                'status' => 0,
+                'errors' => $errors,
+            ];
+        }
+        
+        if(!$this->attemptLogin($request)){
+            return [
+                'status' => 0,
+                'errors' => [
+                    'name' => [trans('auth.failed')],
+                    'password' => [trans('auth.failed')],
+                ],
+            ];
+        }
+
+        $request->session()->regenerate();
+
+        return ['status' => 1];
+    }
+
+    /**
+     * Validate the user login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function validateLogin(Request $request)
     {
         $input = $request->all();
 
@@ -56,16 +108,7 @@ class LoginController extends Controller
         if ($validator->fails()) {
             return $validator->errors();
         }
-
-        if(!$this->attemptLogin($request)){
-            return (object)[
-                'name' => [trans('auth.failed')],
-                'password' => [trans('auth.failed')],
-            ];
-        }
     }
-
-    // Redefined methods
 
     /**
      * Attempt to log the user into the application.
@@ -75,17 +118,17 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        $status = false;
+        $user = User::where([
+            'name' => $request->name,
+            'password' => $request->password,
+        ])->first();
 
-        $user = User::where('name', $request->name)
-            ->where('password', $request->password)
-            ->first();
-
-        if($user){
-            Auth::login($user, $request->filled('remember'));
-            $status = true;
+        if($user->doesntExist()){
+            return false;
         }
 
-        return $status;
+        Auth::login($user, $request->remember);
+
+        return true;
     }
 }
