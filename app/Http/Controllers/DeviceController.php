@@ -96,7 +96,22 @@ class DeviceController extends Controller
 
     // Additional methods
 
-    
+    /**
+     * Get device pagination page
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function fetch_data(Request $request){
+        $devices = $request->search_string
+            ? $this->search($request)
+            : Device::paginate()->withPath(route('devices.fetch_data'));
+
+        return [
+            'status' => 1,
+            'view' => view('components.devices.brief-info-table', compact('devices'))->render(),
+        ];
+    }
 
     /**
      * Display a listing of the keywords mutched resource.
@@ -104,28 +119,12 @@ class DeviceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function search(Request $request)
+    protected function search(Request $request)
     {
-        $keywords = preg_split('/\s+/', trim($request->keywords));
+        $keywords = preg_split('/\s+/', trim($request->search_string));
 
-        $devices = Device::search($keywords)
+        return Device::search($keywords)
             ->paginate()
-            ->withPath(route('devices.fetch_data', ['keywords' => $keywords]));
-        
-        return [
-            'status' => 1,
-            'view' => view('components.devices.brief-info-table', compact('devices'))->render(),
-        ];
-    }
-
-    public function fetch_data(Request $request){
-        $devices = $request->keywords
-            ? Device::search($request->keywords)->paginate()->withPath(route('devices.fetch_data', ['keywords' => $request->keywords]))
-            : Device::paginate()->withPath(route('devices.fetch_data'));
-
-        return [
-            'status' => 1,
-            'view' => view('components.devices.brief-info-table', compact('devices'))->render(),
-        ];
+            ->withPath(route('devices.fetch_data', ['search_string' => $request->search_string]));
     }
 }
