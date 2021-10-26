@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Type;
 use App\Models\Device;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DeviceController extends Controller
 {
@@ -103,9 +104,26 @@ class DeviceController extends Controller
      * @return array
      */
     public function fetch_data(Request $request){
-        $devices = $request->search_string
-            ? $this->search($request)
-            : Device::paginate()->withPath(route('devices.fetch_data'));
+        $devices = null;
+        $paginationPathParameters = [];
+
+        if(isset($request->search_string)){
+            $keywords = preg_split('/\s+/', trim($request->search_string));
+            $devices = Device::search($keywords)
+                ->paginate()
+                ->withPath(route('devices.fetch_data', ['search_string' => $request->search_string]));
+        }
+        else{
+            $devices = Device::paginate()->withPath(route('devices.fetch_data'));
+        }
+
+        $devices->load([
+            'type',
+            'status',
+            'last_movement',
+            'last_hardware',
+            'last_software'
+        ]);
 
         return [
             'status' => 1,
