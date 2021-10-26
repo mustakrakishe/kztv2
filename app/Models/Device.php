@@ -108,9 +108,24 @@ class Device extends Model
     {
         return $this->hasOne(Software::class);
     }
-
+    
+    /**
+     * Scope a query to only include devices that matched keywords.
+     * 
+     * Each keyword must be matched at least once
+     * with any model field specified in class $serachable property.
+     * 
+     * Additional it is able to specified relationsip names array as
+     * model $searchableRelationships property.
+     * Then Each keyword must be matched with any model searchable field
+     * or with any relationship searchable field. The relationship
+     * searchable field list must be specified as its own $searchable property.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  array  $keywords
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public static function scopeSearch($query, Array $keywords){
-
 
         foreach($keywords as $keyword){
 

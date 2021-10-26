@@ -24,10 +24,12 @@ async function switchPaginationPage(event){
     event.preventDefault();
 
     let link = event.target;
-    let page = $(link).attr('href').split('page=')[1];
-    $(PAGE_INPUT).val(page);
+    let url = $(link).attr('href');
 
-    let resultDeviceTable = await Form.xhrAction(SEARCH_FORM);
+    let response = await $.get(url);
 
-    $(DEVICE_TABLE_CONTAINER).html(resultDeviceTable);
+    if(response.status === 1){
+        let resultDeviceTable = response.view;
+        $(DEVICE_TABLE_CONTAINER).html(resultDeviceTable);
+    }
 }

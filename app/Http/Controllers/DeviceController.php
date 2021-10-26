@@ -15,12 +15,15 @@ class DeviceController extends Controller
      */
     public function index()
     {
-        $devices = Device::with('type')
-            ->with('status')
-            ->with('last_movement')
-            ->with('last_hardware')
-            ->with('last_software')
-            ->paginate();
+        $devices = Device::paginate()->withPath(route('devices.fetch_data'));
+
+        $devices->load([
+            'type',
+            'status',
+            'last_movement',
+            'last_hardware',
+            'last_software'
+        ]);
             
         return view('devices', compact('devices'));
     }
@@ -106,16 +109,23 @@ class DeviceController extends Controller
         $keywords = preg_split('/\s+/', trim($request->keywords));
 
         $devices = Device::search($keywords)
-            ->with('type')
-            ->with('status')
-            ->with('last_movement')
-            ->with('last_hardware')
-            ->with('last_software')
-            ->paginate();
+            ->paginate()
+            ->withPath(route('devices.fetch_data', ['keywords' => $keywords]));
         
         return [
             'status' => 1,
-            'view' => view('components.devices.brief-info-table', compact('devices'))->render()
+            'view' => view('components.devices.brief-info-table', compact('devices'))->render(),
+        ];
+    }
+
+    public function fetch_data(Request $request){
+        $devices = $request->keywords
+            ? Device::search($request->keywords)->paginate()->withPath(route('devices.fetch_data', ['keywords' => $request->keywords]))
+            : Device::paginate()->withPath(route('devices.fetch_data'));
+
+        return [
+            'status' => 1,
+            'view' => view('components.devices.brief-info-table', compact('devices'))->render(),
         ];
     }
 }

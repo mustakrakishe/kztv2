@@ -27,10 +27,10 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
         
-        DB::listen(function ($query) {
-            // dump($query->sql);
-            // $query->bindings;
-            // $query->time;
-        });
+        // DB::listen(function ($query) {
+        //     dump($query->sql);
+        //     // $query->bindings;
+        //     // $query->time;
+        // });
     }
 }
