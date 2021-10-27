@@ -104,18 +104,17 @@ class DeviceController extends Controller
      * @return array
      */
     public function fetch_data(Request $request){
-        $devices = null;
-        $paginationPathParameters = [];
+        $urlQueryWithoutPage = http_build_query($request->collect()->except('page')->toArray());
 
         if(isset($request->search_string)){
             $keywords = preg_split('/\s+/', trim($request->search_string));
-            $devices = Device::search($keywords)
-                ->paginate()
-                ->withPath(route('devices.fetch_data', ['search_string' => $request->search_string]));
+            $devices = Device::search($keywords);
         }
         else{
-            $devices = Device::paginate()->withPath(route('devices.fetch_data'));
+            $devices = Device::getModel();
         }
+
+        $devices = $devices->paginate()->withPath(route('devices.fetch_data', $urlQueryWithoutPage));
 
         $devices->load([
             'type',
@@ -129,20 +128,5 @@ class DeviceController extends Controller
             'status' => 1,
             'view' => view('components.devices.brief-info-table', compact('devices'))->render(),
         ];
-    }
-
-    /**
-     * Display a listing of the keywords mutched resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    protected function search(Request $request)
-    {
-        $keywords = preg_split('/\s+/', trim($request->search_string));
-
-        return Device::search($keywords)
-            ->paginate()
-            ->withPath(route('devices.fetch_data', ['search_string' => $request->search_string]));
     }
 }
