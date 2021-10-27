@@ -73,13 +73,14 @@ async function updateDevice(event){
     $(submitter).html(response.message);
 
     if(response.status === 1){
-        let url = $(DEVICE_TABLE_PAGINATOR).attr('current-page-url');
+        let url = $(DEVICE_TABLE_PAGINATOR).attr('first-page-url');
         
         let response = await $.get(url);
 
         if(response.status === 1){
             let deviceTablePage = response.view;
             $(DEVICE_TABLE_CONTAINER).html(deviceTablePage);
+            window.scrollTo(0, 0);
         }
     }
 
