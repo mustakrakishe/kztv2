@@ -11,6 +11,9 @@
   <li class="nav-item" role="presentation">
     <a class="nav-link" data-toggle="tab" href="#software" role="tab" aria-controls="software">{{ __('Software') }}</a>
   </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" data-toggle="tab" href="#repairs" role="tab" aria-controls="repairs">{{ __('Repairs') }}</a>
+  </li>
 </ul>
 
 <div class="tab-content">
@@ -19,4 +22,5 @@
   </div>
   <div class="tab-pane fade" id="movements" role="tabpanel">...</div>
   <div class="tab-pane fade" id="hardware" role="tabpanel">...</div>
+  <div class="tab-pane fade" id="repairs" role="tabpanel">...</div>
 </div>
