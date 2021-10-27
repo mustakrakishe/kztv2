@@ -8,6 +8,7 @@ const PAGINATION_LINK = 'a.page-link';
 const DEVICE_ROW = 'tr[name=device]';
 const DEVICE_PROPERTIES_MODAL = '#device-properties-modal';
 const DEVICE_UPDATE_FORM = '#device-update-form';
+const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
 
 $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 $(document).on('click', PAGINATION_LINK, switchPaginationPage);
@@ -71,13 +72,20 @@ async function updateDevice(event){
 
     $(submitter).html(response.message);
 
+    if(response.status === 1){
+        let url = $(DEVICE_TABLE_PAGINATOR).attr('current-page-url');
+        
+        let response = await $.get(url);
+
+        if(response.status === 1){
+            let deviceTablePage = response.view;
+            $(DEVICE_TABLE_CONTAINER).html(deviceTablePage);
+        }
+    }
+
     setTimeout(() => {
         $(submitter).children().hide('slow', function(self){
             $(this).parent().html(submitterText);
-
-            if(response.status === 1){
-                
-            }
         });
     }, 2000);
 }
