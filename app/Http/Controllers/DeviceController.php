@@ -60,6 +60,26 @@ class DeviceController extends Controller
     public function show(Device $device)
     {
         //
+        $lastChangesDates = collect();
+
+            $searchableRelationships = [
+                'last_movement',
+                'last_repair',
+                'last_hardware',
+                'last_software',
+            ];
+
+            foreach(Device::all() as $device){
+                foreach($searchableRelationships as $relationship){
+                    if(method_exists(Device::class, $relationship)){
+                        $timestamp = strtotime($device->$relationship?->date);
+                        $lastChangesDates->push($timestamp);
+                    }
+                }
+                
+            return $lastChangesDates;
+            }
+
     }
 
     /**

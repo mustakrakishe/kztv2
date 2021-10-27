@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Type;
 use App\Models\Status;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -18,6 +19,7 @@ class Device extends Model
         'comment',
         'type_id',
         'status_id',
+        'updated_at',
     ];
 
     public static $searchable = [
@@ -36,6 +38,21 @@ class Device extends Model
     ];
 
     protected $perPage = 10;
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::addGlobalScope('orderDevices', function (Builder $builder) {
+            $builder->latest('updated_at')
+                ->orderBy('inventory_code')
+                ->orderBy('identification_code')
+                ->orderBy('id');
+        });
+    }
 
     /**
      * Get the device status.
