@@ -20,6 +20,7 @@
     "Name": "Ім'я",
     "Password": "Пароль",
     "Register": "Реєстрація",
+    "Rejected": "Відхилено",
     "Remember me": "Запам'ятати мене",
     "Repair history": "Історія ремонту",
     "Result": "Результат",
@@ -27,5 +28,6 @@
     "Software": "Програмне забезпечення",
     "Status": "Статус",
     "Type": "Тип",
+    "Updated": "Оновлено",
     "Whoops! Something went wrong.": "Запит відхилено."
 }

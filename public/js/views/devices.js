@@ -58,12 +58,22 @@ async function showProperties(event){
 async function updateDevice(event){
     event.preventDefault();
 
+    const spinner = '<span name="spinner" class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>';
+
     let form = event.target;
+    let submitter = $(form).find(':submit');
+    let submitterText = $(submitter).html();
     let hasValidation = true;
 
+    $(submitter).prepend(spinner);
+
     let response = await Form.xhrAction(form, hasValidation);
-    console.log(response);
-    if(response.status === 1){
-        
-    }
+
+    $(submitter).html(response.message);
+
+    setTimeout(() => {
+        $(submitter).children().hide('slow', function(self){
+            $(this).parent().html(submitterText);
+        });
+    }, 2000);
 }
