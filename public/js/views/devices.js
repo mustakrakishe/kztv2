@@ -1,13 +1,12 @@
 import Form from "../components/form.js";
 
-const SEARCH_INOUT = 'input#search-input';
-const PAGE_INPUT = 'input#page-input';
+const SEARCH_INPUT = 'input#search-input';
 const SEARCH_FORM = 'form#search-form';
 const DEVICE_TABLE_CONTAINER = '#device-table-container';
-const PAGE_LINKS = 'a.page-link';
+const PAGINATION_LINKS = 'a.page-link';
 
-$(document).on('input', SEARCH_INOUT, searchDeviceHandler);
-$(document).on('click', PAGE_LINKS, switchPaginationPage);
+$(document).on('input', SEARCH_INPUT, searchDeviceHandler);
+$(document).on('click', PAGINATION_LINKS, switchPaginationPage);
 
 async function searchDeviceHandler(event){
     event.preventDefault();
