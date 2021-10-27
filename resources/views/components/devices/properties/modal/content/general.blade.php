@@ -17,8 +17,8 @@
 
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="type">{{ __('Type') }}</label>
-            <select name="type" class="form-control" id="type">
+            <label for="type_id">{{ __('Type') }}</label>
+            <select name="type_id" class="form-control" id="type_id">
                 @foreach($types as $type)
                 <option value="{{ $type->id }}" @if($type->id === $device->type_id) selected @endif >
                     {{ $type->name }}
@@ -42,8 +42,8 @@
     <div class="form-row">
         <div class="col col-md-6">
             <div class="form-group row mb-0 mr-0">
-                <label for="status" class="col-auto col-form-label">{{ __('Status') }}:</label>
-                <select name="status" class="form-control col" id="status">
+                <label for="status_id" class="col-auto col-form-label">{{ __('Status') }}:</label>
+                <select name="status_id" class="form-control col" id="status_id">
                     @foreach($statuses as $status)
                     <option value="{{ $status->id }}" @if($status->id === $device->status_id) selected @endif >
                         {{ $status->name }}
