@@ -38,19 +38,22 @@
     </div>
     
     <div class="form-row">
-        <div class="col">
-            <label for="status">{{ __('Status') }}</label>
-            <select name="status" class="form-control" id="status">
-                @foreach($statuses as $status)
-                <option value="{{ $status->id }}" @if($status->id === $device->status_id) selected @endif >
-                    {{ $status->name }}
-                </option>
-                @endforeach
-            </select>
+        <div class="col col-md-6">
+            <div class="form-group row">
+                <label for="status" class="col-auto col-form-label">{{ __('Status') }}:</label>
+                <select name="status" class="form-control col" id="status">
+                    @foreach($statuses as $status)
+                    <option value="{{ $status->id }}" @if($status->id === $device->status_id) selected @endif >
+                        {{ $status->name }}
+                    </option>
+                    @endforeach
+                </select>
+            </div>
         </div>
-        <div class="col">
-            <x-button type="reset">{{ __('Reset') }}</x-button>
-            <x-button>{{ __('Update') }}</x-button>
+
+        <div class="col col-md-6 text-right">
+            <x-button type="reset" class="btn-secondary">{{ __('actions.reset') }}</x-button>
+            <x-button>{{ __('actions.update') }}</x-button>
         </div>
     </div>
     
