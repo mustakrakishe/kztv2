@@ -1,3 +1,5 @@
+@props(['device'])
+
 <tr {{ $attributes->merge(['style' => 'cursor: pointer;']) }}>
     <td title="{{ $device->status->name }}">
         @switch($device->status_id)
@@ -20,7 +22,12 @@
                 {{ $status }}
         @endswitch
     </td>
-    <td>{{ $device->inventory_code }}</td>
+    <td>
+        {{ $device->inventory_code }}
+        @isset($device->identification_code)
+        ({{ $device->identification_code }})
+        @endisset
+    </td>
     <td>{{ $device->type->name }}</td>
     <td>{{ $device->model }}</td>
     <td>{{ $device->last_hardware?->description }}</td>
