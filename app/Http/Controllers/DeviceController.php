@@ -6,6 +6,7 @@ use App\Models\Type;
 use App\Models\Device;
 use App\Models\Status;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DeviceController extends Controller
 {
@@ -86,7 +87,13 @@ class DeviceController extends Controller
      */
     public function update(Request $request, Device $device)
     {
-        //
+        $errors = $this->validateDevice($request);
+        if($errors){
+            return [
+                'status' => 0,
+                'errors' => $errors,
+            ];
+        }
     }
 
     /**
@@ -133,5 +140,29 @@ class DeviceController extends Controller
             'status' => 1,
             'view' => view('components.devices.brief-info-table', compact('devices'))->render(),
         ];
+    }
+
+    /**
+     * Validate the device store/update request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     *
+     */
+    public function validateDevice(Request $request)
+    {
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'inventory_code' => ['nullable', 'numeric'],
+            'identification_code' => ['nullable', 'numeric'],
+            'model' => ['nullable', 'string', 'max:50'],
+        ]);
+
+        if ($validator->fails()) {
+            return $validator->errors();
+        }
+
+        return [];
     }
 }

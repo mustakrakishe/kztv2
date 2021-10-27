@@ -7,10 +7,12 @@ const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const PAGINATION_LINK = 'a.page-link';
 const DEVICE_ROW = 'tr[name=device]';
 const DEVICE_PROPERTIES_MODAL = '#device-properties-modal';
+const DEVICE_UPDATE_FORM = '#device-update-form';
 
 $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 $(document).on('click', PAGINATION_LINK, switchPaginationPage);
 $(document).on('click', DEVICE_ROW, showProperties);
+$(document).on('submit', DEVICE_UPDATE_FORM, updateDevice);
 
 async function searchDeviceHandler(event){
     event.preventDefault();
@@ -50,5 +52,18 @@ async function showProperties(event){
         
         $(DEVICE_PROPERTIES_MODAL).find('.modal-body').html(properties);
         $(DEVICE_PROPERTIES_MODAL).modal('show');
+    }
+}
+
+async function updateDevice(event){
+    event.preventDefault();
+
+    let form = event.target;
+    let hasValidation = true;
+
+    let response = await Form.xhrAction(form, hasValidation);
+    console.log(response);
+    if(response.status === 1){
+        
     }
 }

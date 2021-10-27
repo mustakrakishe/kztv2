@@ -1,6 +1,8 @@
 @props(['device', 'types', 'statuses'])
 
-<form class="mt-3">
+<form id="device-update-form" class="mt-3" action="{{ route('devices.update', ['device' => $device->id]) }}" method="post">
+    @csrf
+    @method('put')
 
     <div class="form-row">
         <div class="form-group col-md-6">
@@ -32,8 +34,8 @@
     
     <div class="form-row">
         <div class="form-group col">
-            <label for="model">{{ __('Comment') }}</label>
-            <x-textarea name="model" style="min-height: 81px; resize: none;">{{ $device->comment }}</x-textarea>
+            <label for="comment">{{ __('Comment') }}</label>
+            <x-textarea name="comment" style="min-height: 81px; resize: none;">{{ $device->comment }}</x-textarea>
         </div>
     </div>
     
