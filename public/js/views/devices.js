@@ -74,6 +74,10 @@ async function updateDevice(event){
     setTimeout(() => {
         $(submitter).children().hide('slow', function(self){
             $(this).parent().html(submitterText);
+
+            if(response.status === 1){
+                
+            }
         });
     }, 2000);
 }

@@ -21,4 +21,4 @@
 
 </table>
 
-{{ $devices->links() }}
+<x-paginator id="device-table-paginator" :paginator="$devices"/>
