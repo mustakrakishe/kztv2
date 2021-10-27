@@ -37,5 +37,21 @@
         </div>
     </div>
     
-    <button type="submit" class="btn btn-primary">Sign in</button>
+    <div class="form-row">
+        <div class="col">
+            <label for="status">{{ __('Status') }}</label>
+            <select name="status" class="form-control" id="status">
+                @foreach($statuses as $status)
+                <option value="{{ $status->id }}" @if($status->id === $device->status_id) selected @endif >
+                    {{ $status->name }}
+                </option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col">
+            <x-button type="reset">{{ __('Reset') }}</x-button>
+            <x-button>{{ __('Update') }}</x-button>
+        </div>
+    </div>
+    
 </form>
