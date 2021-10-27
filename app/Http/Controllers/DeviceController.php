@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Type;
 use App\Models\Device;
+use App\Models\Status;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class DeviceController extends Controller
 {
@@ -65,11 +65,16 @@ class DeviceController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Device  $device
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function edit(Device $device)
     {
-        //
+        $types = Type::all();
+        $statuses = Status::all();
+        return [
+            'status' => 1,
+            'view' => view('components.devices.properties.modal.content', compact('device', 'types', 'statuses'))->render(),
+        ];
     }
 
     /**

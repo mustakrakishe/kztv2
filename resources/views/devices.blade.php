@@ -18,4 +18,8 @@
 <div id="device-table-container">
     <x-devices.brief-info-table :devices="$devices"/>
 </div>
+
+@auth
+<x-devices.properties.modal />
+@endauth
 @endsection

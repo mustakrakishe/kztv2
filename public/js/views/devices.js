@@ -1,3 +1,4 @@
+import * as Textarea from "../components/textarea.js";
 import Form from "../components/form.js";
 
 const SEARCH_INPUT = 'input#search-input';
@@ -5,6 +6,7 @@ const SEARCH_FORM = 'form#search-form';
 const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const PAGINATION_LINK = 'a.page-link';
 const DEVICE_ROW = 'tr[name=device]';
+const DEVICE_PROPERTIES_MODAL = '#device-properties-modal';
 
 $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 $(document).on('click', PAGINATION_LINK, switchPaginationPage);
@@ -38,6 +40,15 @@ async function switchPaginationPage(event){
 async function showProperties(event){
     event.preventDefault();
 
-    let deviecRow = event.currentTarget;
-    console.log(deviecRow);
+    let deviceRow = event.currentTarget;
+    let url = $(deviceRow).attr('href');
+    
+    let response = await $.get(url);
+
+    if(response.status === 1){
+        let properties = response.view;
+        
+        $(DEVICE_PROPERTIES_MODAL).find('.modal-body').html(properties);
+        $(DEVICE_PROPERTIES_MODAL).modal('show');
+    }
 }
