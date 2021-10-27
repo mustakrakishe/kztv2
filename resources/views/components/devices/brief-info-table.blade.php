@@ -15,7 +15,7 @@
 
     <tbody>
         @foreach($devices as $device)
-        <x-devices.brief-info-table.row :device="$device" />
+        <x-devices.brief-info-table.row name="device" :device="$device" />
         @endforeach
     </tbody>
 
