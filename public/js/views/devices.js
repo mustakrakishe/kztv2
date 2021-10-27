@@ -44,6 +44,7 @@ async function showProperties(event){
     let url = $(deviceRow).attr('href');
     
     let response = await $.get(url);
+    console.log(response);
 
     if(response.status === 1){
         let properties = response.view;

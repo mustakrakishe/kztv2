@@ -9,7 +9,7 @@
         </div>
         <div class="form-group col-md-6">
             <label for="identification_code">{{ __('Identification code') }}</label>
-            <input type="text" name="identification_code" class="form-control" id="identification_code" value="{{ $device->dentification_code }}">
+            <input type="text" name="identification_code" class="form-control" id="identification_code" value="{{ $device->identification_code }}">
         </div>
     </div>
 
