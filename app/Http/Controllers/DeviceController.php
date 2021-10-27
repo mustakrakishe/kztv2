@@ -70,7 +70,10 @@ class DeviceController extends Controller
      */
     public function edit(Device $device)
     {
-        $device->load('status');
+        $device->load(
+            'status',
+            'movements'
+        );
         $types = Type::all();
         
         return [
