@@ -39,7 +39,7 @@
     
     <div class="form-row">
         <div class="col col-md-6">
-            <div class="form-group row">
+            <div class="form-group row mb-0 mr-0">
                 <label for="status" class="col-auto col-form-label">{{ __('Status') }}:</label>
                 <select name="status" class="form-control col" id="status">
                     @foreach($statuses as $status)
