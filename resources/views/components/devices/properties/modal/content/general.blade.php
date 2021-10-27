@@ -1,6 +1,6 @@
 @props(['device', 'types', 'statuses'])
 
-<form>
+<form class="mt-3">
 
     <div class="form-row">
         <div class="form-group col-md-6">
