@@ -1,4 +1,4 @@
-@props(['device', 'types', 'statuses'])
+@props(['device', 'types'])
 
 <form id="device-update-form" class="mt-3" action="{{ route('devices.update', ['device' => $device->id]) }}" method="post">
     @csrf
@@ -43,13 +43,8 @@
         <div class="col col-md-6">
             <div class="form-group row mb-0 mr-0">
                 <label for="status_id" class="col-auto col-form-label">{{ __('Status') }}:</label>
-                <select name="status_id" class="form-control col" id="status_id">
-                    @foreach($statuses as $status)
-                    <option value="{{ $status->id }}" @if($status->id === $device->status_id) selected @endif >
-                        {{ $status->name }}
-                    </option>
-                    @endforeach
-                </select>
+                <input type="text" name="status_id" class="form-control col" id="status_id" value="{{ $device->status->name }}" disabled>
+                <i class="far fa-question-circle col-form-label ml-2" title="{{ __('The status is autoupdated as a feedback on you actions (change workplace, sent to repair, etc.).') }}"></i>
             </div>
         </div>
 

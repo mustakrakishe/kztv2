@@ -15,7 +15,7 @@
 
 <div class="tab-content">
   <div class="tab-pane fade show active" id="general" role="tabpanel">
-      <x-devices.properties.modal.content.general :device="$device" :types="$types" :statuses="$statuses"/>
+      <x-devices.properties.modal.content.general :device="$device" :types="$types"/>
   </div>
   <div class="tab-pane fade" id="movements" role="tabpanel">...</div>
   <div class="tab-pane fade" id="hardware" role="tabpanel">...</div>
