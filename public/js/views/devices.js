@@ -69,14 +69,7 @@ async function updateDevice(event){
     let response = await Form.xhrAction(form, hasValidation);
 
     if(response.status === 1){
-        let url = $(DEVICE_TABLE_PAGINATOR).attr('first-page-url');
-        
-        let response = await $.get(url);
-
-        if(response.status === 1){
-            let deviceTablePage = response.view;
-            $(DEVICE_TABLE_CONTAINER).html(deviceTablePage);
-        }
+        switchDeviceTablePage(1);
     }
 }
 
@@ -96,10 +89,10 @@ async function deleteDevice(event){
     }
 }
 
-async function refreshDeviceTable(){
-    let url = $(DEVICE_TABLE_PAGINATOR).attr('first-page-url');
+async function switchDeviceTablePage(page){
+    let url = $(DEVICE_TABLE_PAGINATOR).attr('path');
         
-    let response = await $.get(url);
+    let response = await $.get(url, {page});
 
     if(response.status === 1){
         let deviceTablePage = response.view;
