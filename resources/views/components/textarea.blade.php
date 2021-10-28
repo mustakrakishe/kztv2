@@ -1,0 +1,1 @@
+<textarea {{ $attributes->merge(["class" => "form-control overflow-hidden autoresizable"]) }}>{{ $slot }}</textarea>

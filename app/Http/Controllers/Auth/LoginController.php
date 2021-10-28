@@ -123,9 +123,7 @@ class LoginController extends Controller
             'password' => $request->password,
         ])->first();
 
-        if($user->doesntExist()){
-            return false;
-        }
+        if (!$user) return false;
 
         Auth::login($user, $request->remember);
 
