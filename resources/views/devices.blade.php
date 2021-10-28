@@ -21,5 +21,6 @@
 
 @auth
 <x-devices.properties.modal />
+<x-devices.delete.modal />
 @endauth
 @endsection

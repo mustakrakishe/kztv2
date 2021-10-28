@@ -48,9 +48,13 @@
             </div>
         </div>
 
-        <div class="col col-md-6 text-right">
-            <x-button type="reset" class="btn-secondary">{{ __('actions.reset') }}</x-button>
-            <x-button>{{ __('actions.update') }}</x-button>
+        <div class="col col-md-6 d-flex">
+            <x-button id="device-delete-button" type="button" class="btn-danger toggle-modal" data-toggle="modal" data-target="#device-delete-modal" data-dismiss="modal">{{ __('actions.delete') }}</x-button>
+
+            <div class="ml-auto">
+                <x-button type="reset" class="btn-secondary">{{ __('actions.reset') }}</x-button>
+                <x-button>{{ __('actions.update') }}</x-button>
+            </div>
         </div>
     </div>
     

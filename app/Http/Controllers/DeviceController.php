@@ -70,12 +70,17 @@ class DeviceController extends Controller
      */
     public function edit(Device $device)
     {
-        $device->load('status');
+        $device->load([
+            'status',
+            'type'
+        ]);
+
         $types = Type::all();
         
         return [
             'status' => 1,
-            'view' => view('components.devices.properties.modal.content', compact('device', 'types'))->render(),
+            'view_properties' => view('components.devices.properties.modal.content', compact('device', 'types'))->render(),
+            'view_delete' => view('components.devices.delete.modal.content', compact('device'))->render(),
         ];
     }
 
