@@ -98,20 +98,17 @@ class DeviceController extends Controller
             return [
                 'status' => 0,
                 'errors' => $errors,
-                'message' =>  '<i class="fas fa-times mr-2"></i>' . trans('Rejected'),
             ];
         }
 
         if($device->update($request->input())){
             return [
                 'status' => 1,
-                'message' => '<i class="fas fa-check mr-2"></i>' . trans('Updated'),
             ];
         }
 
         return [
             'status' => 0,
-            'message' => '<i class="fas fa-times mr-2"></i>' . trans('Rejected'),
         ];
     }
 

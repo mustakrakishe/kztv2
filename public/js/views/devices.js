@@ -63,18 +63,13 @@ async function editDevice(event){
 async function updateDevice(event){
     event.preventDefault();
 
-    const spinner = '<span name="spinner" class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>';
+    
 
     let form = event.target;
-    let submitter = $(form).find(':submit');
-    let submitterText = $(submitter).html();
     let hasValidation = true;
 
-    $(submitter).prepend(spinner);
 
     let response = await Form.xhrAction(form, hasValidation);
-
-    $(submitter).html(response.message);
 
     if(response.status === 1){
         let url = $(DEVICE_TABLE_PAGINATOR).attr('first-page-url');
@@ -86,12 +81,6 @@ async function updateDevice(event){
             $(DEVICE_TABLE_CONTAINER).html(deviceTablePage);
         }
     }
-
-    setTimeout(() => {
-        $(submitter).children().hide('slow', function(self){
-            $(this).parent().html(submitterText);
-        });
-    }, 2000);
 }
 
 function protectBodyScrolling(){

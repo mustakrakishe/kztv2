@@ -1,7 +1,13 @@
 class Form{
 
     static xhrAction(form, hasValidation = false){
-        let submit = $(form).find(':submit').first();
+        const spinner = '<span name="spinner" class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>';
+        const success = '<i class="fas fa-check mr-2"></i>';
+        const fail = '<i class="fas fa-times mr-2"></i>';
+
+        let submitter = $(form).find(':submit').first();
+        let submitterText = $(submitter).html();
+        $(submitter).html(spinner);
 
         if(hasValidation){
             this.#formatWithErrors(form);
@@ -12,9 +18,22 @@ class Form{
             method: $(form).attr('method'),
             data: $(form).serialize(),
             success: (response) => {
-                if(hasValidation && response.status === 0){
-                    this.#formatWithErrors(form, response.errors);
+                if(response.status === 1){
+                    $(submitter).html(success);
                 }
+                else{
+                    $(submitter).html(fail);
+
+                    if(hasValidation){
+                        this.#formatWithErrors(form, response.errors);
+                    }
+                }
+    
+                setTimeout(() => {
+                    $(submitter).children().hide('slow', function(self){
+                        $(submitter).html(submitterText);
+                    });
+                }, 2000);
             },
         })
     }
