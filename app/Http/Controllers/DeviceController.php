@@ -102,14 +102,10 @@ class DeviceController extends Controller
         }
 
         if($device->update($request->input())){
-            return [
-                'status' => 1,
-            ];
+            return ['status' => 1];
         }
 
-        return [
-            'status' => 0,
-        ];
+        return ['status' => 0];
     }
 
     /**
@@ -120,7 +116,8 @@ class DeviceController extends Controller
      */
     public function destroy(Device $device)
     {
-        //
+        $device->delete();
+        return ['status' => 1];
     }
 
     // Additional methods

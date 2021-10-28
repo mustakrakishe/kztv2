@@ -19,7 +19,7 @@
 </table>
 
 
-<form action="{{ route('devices.destroy', ['device' => $device->id]) }}" method="post">
+<form id="device-delete-form" action="{{ route('devices.destroy', ['device' => $device->id]) }}" method="post">
     @csrf
     @method('delete')
 </form>

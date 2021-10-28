@@ -63,11 +63,8 @@ async function editDevice(event){
 async function updateDevice(event){
     event.preventDefault();
 
-    
-
     let form = event.target;
     let hasValidation = true;
-
 
     let response = await Form.xhrAction(form, hasValidation);
 
@@ -95,7 +92,7 @@ async function deleteDevice(event){
     let response = await Form.xhrAction(form);
 
     if(response.status === 1){
-
+        $(DEVICE_DELETE_MODAL).modal('hide');
     }
 }
 

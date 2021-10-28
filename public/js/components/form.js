@@ -2,8 +2,8 @@ class Form{
 
     static xhrAction(form, hasValidation = false){
         const spinner = '<span name="spinner" class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>';
-        const success = '<i class="fas fa-check mr-2"></i>';
-        const fail = '<i class="fas fa-times mr-2"></i>';
+        const success = '<i class="fas fa-check"></i>';
+        const fail = '<i class="fas fa-times"></i>';
 
         let submitter = $(form).find(':submit').first();
         let submitterText = $(submitter).html();
