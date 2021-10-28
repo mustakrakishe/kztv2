@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <div class="col col-md-6 d-flex">
+        <div class="col-12 col-lg-6 d-flex mt-3 mt-lg-0">
             <x-button id="device-delete-button" type="button" class="btn-danger toggle-modal" data-toggle="modal" data-target="#device-delete-modal" data-dismiss="modal">{{ __('actions.delete') }}</x-button>
 
             <div class="ml-auto">
