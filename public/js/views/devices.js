@@ -86,6 +86,9 @@ async function deleteDevice(event){
 
     if(response.status === 1){
         $(DEVICE_DELETE_MODAL).modal('hide');
+
+        let currentPage = $(DEVICE_TABLE_PAGINATOR).attr('current-page');
+        switchDeviceTablePage(currentPage);
     }
 }
 
