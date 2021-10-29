@@ -2,6 +2,7 @@
 
 @section('scripts')
     <script defer type="module" src="{{ asset('js\views\devices.js') }}"></script>
+    <script defer type="module" src="{{ asset('js\views\devices\properties\movements.js') }}"></script>
 @endsection
 
 @section('content')

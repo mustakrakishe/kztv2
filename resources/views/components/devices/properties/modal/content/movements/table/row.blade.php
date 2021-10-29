@@ -21,3 +21,9 @@
         </x-button>
     </td>
 </tr>
+
+<form action="{{ route('movements.destroy', ['movement' => $movements->id]) }}" method="post">
+    @csrf
+    @method('delete')
+    <x-button type="button" class="delete-movement btn-danger">{{ __('actions.delete') }}</x-button>
+</form>
