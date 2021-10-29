@@ -66,12 +66,12 @@ async function confirmDelete(event){
     event.preventDefault();
 
     let form = event.target;
+    let tableRow = $(form).closest('tr');
 
     let response = await Form.xhrAction(form);
-
+    console.log(response);
     if(response.status === 1){
-        let currentTableRow = $(form).closest('tr');
-        $(currentTableRow).remove();
+        $(tableRow).remove();
     }
 }
 
