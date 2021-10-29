@@ -11,10 +11,24 @@ const MOVEMENT_ACTIONS_EDIT = 'div[name=edit]';
 const MOVEMENT_ACTIONS_CONFIRM_DELETE = 'div[name=confirm-delete]';
 
 $(document).on('click', MOVEMENT_BUTTON_DELETE, requireDeleteConfirmation);
+$(document).on('submit', MOVEMENT_FORM_UPDATE, updateMovement);
 $(document).on('reset', MOVEMENT_FORM_UPDATE, cancelEditMovement);
 $(document).on('submit', MOVEMENT_FORM_DELETE, confirmDelete);
 $(document).on('reset', MOVEMENT_FORM_DELETE, cancelDeleteConfirmation);
 $(document).on('input', MOVEMENT_ROW_INPUT, showEditModeActions);
+
+async function updateMovement(event){
+    event.preventDefault();
+
+    let form = event.target;
+
+    let response = await Form.xhrAction(form);
+
+    if(response.status === 1){
+        let tableRow = $(event.target).closest('tr');
+        $(tableRow).replaceWith(response.view);
+    }
+}
 
 function cancelEditMovement(event){
     let tableRow = $(event.target).closest('tr');

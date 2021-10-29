@@ -1,6 +1,4 @@
-@props(['movement'])
-
-<tr {{ $attributes->merge(['style' => 'cursor: pointer;']) }}>
+<tr name="movement">
     <td class="align-bottom">
         <input type="datetime-local" name="date" class="form-control" form="update-movement-{{ $movement->id }}" value="{{ str_replace(' ', 'T', $movement->date) }}">
     </td>
@@ -41,9 +39,9 @@
         </div>
         
         <div name="edit" hidden="hidden">
-            <form id="update-movement-{{ $movement->id }}" name="update-movement" name="delete-movement" action="{{ route('devices.movements.destroy', ['device' => $movement->device_id, 'movement' => $movement->id]) }}" method="post">
+            <form id="update-movement-{{ $movement->id }}" name="update-movement" action="{{ route('devices.movements.update', ['device' => $movement->device_id, 'movement' => $movement->id]) }}" method="post">
                 @csrf
-                @method('delete')
+                @method('put')
                 <div class="row mx-0">
                     <x-button class="col" style="width: 50px;">
                         <i class="fas fa-check"></i>

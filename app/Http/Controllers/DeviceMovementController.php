@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Device;
 use App\Models\Movement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DeviceMovementController extends Controller
 {
@@ -72,11 +73,26 @@ class DeviceMovementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Device  $device
      * @param  \App\Models\Movement  $movement
-     * @return \Illuminate\Http\Response
+     * @return array
      */
     public function update(Request $request, Device $device, Movement $movement)
     {
-        //
+        $errors = $this->validateMovement($request);
+        if($errors){
+            return [
+                'status' => 0,
+                'errors' => $errors,
+            ];
+        }
+
+        if($movement->update($request->input())){
+            return [
+                'status' => 1,
+                'view' => view('components.devices.properties.modal.content.movements.table.row', compact('movement'))->render(),
+            ];
+        }
+
+        return ['status' => 0];
     }
 
     /**
@@ -94,5 +110,28 @@ class DeviceMovementController extends Controller
         }
 
         return ['status' => 0];
+    }
+
+
+    /**
+     * Validate the specified resource request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    protected function validateMovement(Request $request)
+    {
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'date' => ['required', 'date'],
+            'location' => ['required', 'string'],
+        ]);
+
+        if ($validator->fails()) {
+            return $validator->errors();
+        }
+
+        return [];
     }
 }

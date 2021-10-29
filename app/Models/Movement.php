@@ -10,6 +10,8 @@ class Movement extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public $fillable = [
         'date',
         'location',
