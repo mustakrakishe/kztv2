@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Type;
 use App\Models\Device;
-use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -72,13 +71,15 @@ class DeviceController extends Controller
     {
         $device->load(
             'status',
+            'type',
             'movements'
         );
         $types = Type::all();
         
         return [
             'status' => 1,
-            'view' => view('components.devices.properties.modal.content', compact('device', 'types'))->render(),
+            'view_properties' => view('components.devices.properties.modal.content', compact('device', 'types'))->render(),
+            'view_delete' => view('components.devices.delete.modal.content', compact('device'))->render(),
         ];
     }
 
@@ -96,21 +97,14 @@ class DeviceController extends Controller
             return [
                 'status' => 0,
                 'errors' => $errors,
-                'message' =>  '<i class="fas fa-times mr-2"></i>' . trans('Rejected'),
             ];
         }
 
         if($device->update($request->input())){
-            return [
-                'status' => 1,
-                'message' => '<i class="fas fa-check mr-2"></i>' . trans('Updated'),
-            ];
+            return ['status' => 1];
         }
 
-        return [
-            'status' => 0,
-            'message' => '<i class="fas fa-times mr-2"></i>' . trans('Rejected'),
-        ];
+        return ['status' => 0];
     }
 
     /**
@@ -121,7 +115,8 @@ class DeviceController extends Controller
      */
     public function destroy(Device $device)
     {
-        //
+        $device->delete();
+        return ['status' => 1];
     }
 
     // Additional methods

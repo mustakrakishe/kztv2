@@ -1,7 +1,8 @@
 @props(['paginator'])
 
 <div {{ $attributes->merge([
-    'first-page-url' => $paginator->url(1),
+    'current-page' => $paginator->currentPage(),
+    'path' => $paginator->path(),
     'per-page' => $paginator->perPage()
 ]) }}>
     {{ $paginator->links() }}
