@@ -1,7 +1,7 @@
 class Form{
 
     static xhrAction(form, hasValidation = false){
-        const spinner = '<span name="spinner" class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>';
+        const spinner = '<span name="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
         const success = '<i name="result" class="fas fa-check"></i>';
         const fail = '<i name="result" class="fas fa-times"></i>';
 
