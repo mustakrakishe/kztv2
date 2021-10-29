@@ -21,34 +21,45 @@ async function updateMovement(event){
     event.preventDefault();
 
     let form = event.target;
+    let tableRow = $(event.target).closest('tr');
+    
+    Form.formatWithErrors(tableRow);
 
     let response = await Form.xhrAction(form);
 
     if(response.status === 1){
-        let tableRow = $(event.target).closest('tr');
         $(tableRow).replaceWith(response.view);
+    }
+    else{
+        Form.formatWithErrors(tableRow, response.errors);
     }
 }
 
 function cancelEditMovement(event){
     let tableRow = $(event.target).closest('tr');
+    
+    Form.formatWithErrors(tableRow);
 
     $(tableRow).find(MOVEMENT_ACTIONS_EDIT).attr('hidden', 'hidden');
     $(tableRow).find(MOVEMENT_ACTIONS_INIT).removeAttr('hidden');
 }
 
 function requireDeleteConfirmation(){
-    let actionCell = $(this).closest('td');
+    let tableRow = $(this).closest('tr');
 
-    $(actionCell).find(MOVEMENT_ACTIONS_INIT).attr('hidden', 'hidden');
-    $(actionCell).find(MOVEMENT_ACTIONS_CONFIRM_DELETE).removeAttr('hidden');
+    $(tableRow).children('td').addClass('align-bottom');
+
+    $(tableRow).find(MOVEMENT_ACTIONS_INIT).attr('hidden', 'hidden');
+    $(tableRow).find(MOVEMENT_ACTIONS_CONFIRM_DELETE).removeAttr('hidden');
 }
 
 function cancelDeleteConfirmation(){
-    let actionCell = $(this).closest('td');
+    let tableRow = $(this).closest('tr');
 
-    $(actionCell).find(MOVEMENT_ACTIONS_CONFIRM_DELETE).attr('hidden', 'hidden');
-    $(actionCell).find(MOVEMENT_ACTIONS_INIT).removeAttr('hidden');
+    $(tableRow).children('td').removeClass('align-bottom');
+
+    $(tableRow).find(MOVEMENT_ACTIONS_CONFIRM_DELETE).attr('hidden', 'hidden');
+    $(tableRow).find(MOVEMENT_ACTIONS_INIT).removeAttr('hidden');
 }
 
 async function confirmDelete(event){

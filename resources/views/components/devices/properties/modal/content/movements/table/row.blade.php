@@ -1,11 +1,11 @@
 <tr name="movement">
-    <td class="align-bottom">
+    <td>
         <input type="datetime-local" name="date" class="form-control" form="update-movement-{{ $movement->id }}" value="{{ str_replace(' ', 'T', $movement->date) }}">
     </td>
-    <td class="align-bottom">
+    <td>
         <input type="text" name="location" class="form-control" form="update-movement-{{ $movement->id }}" value="{{ $movement->location }}">
     </td>
-    <td class="align-bottom">
+    <td>
         <input type="text" name="comment" class="form-control" form="update-movement-{{ $movement->id }}" value="{{ $movement->comment }}">
     </td>
 

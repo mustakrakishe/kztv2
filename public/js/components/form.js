@@ -11,7 +11,7 @@ class Form{
         $(submitter).append(spinner);
 
         if(hasValidation){
-            this.#formatWithErrors(form);
+            this.formatWithErrors(form);
         }
 
         return $.ajax({
@@ -27,7 +27,7 @@ class Form{
                     $(submitter).prop('disabled', true);
 
                     if(hasValidation){
-                        this.#formatWithErrors(form, response.errors);
+                        this.formatWithErrors(form, response.errors);
                     }
                 }
     
@@ -42,7 +42,7 @@ class Form{
         })
     }
     
-    static #formatWithErrors(form, errors = []){
+    static formatWithErrors(form, errors = []){
         $(form).find('.invalid-feedback').remove();
         $(form).find('.is-invalid').removeClass('is-invalid');
 
