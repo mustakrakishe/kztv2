@@ -2,12 +2,13 @@ class Form{
 
     static xhrAction(form, hasValidation = false){
         const spinner = '<span name="spinner" class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>';
-        const success = '<i class="fas fa-check"></i>';
-        const fail = '<i class="fas fa-times"></i>';
+        const success = '<i name="result" class="fas fa-check"></i>';
+        const fail = '<i name="result" class="fas fa-times"></i>';
 
         let submitter = $(form).find(':submit').first();
-        let submitterText = $(submitter).html();
-        $(submitter).html(spinner);
+        $(submitter).find('[name=result]').remove();
+        $(submitter).find('[name=init-content]').hide();
+        $(submitter).append(spinner);
 
         if(hasValidation){
             this.#formatWithErrors(form);
@@ -19,10 +20,11 @@ class Form{
             data: $(form).serialize(),
             success: (response) => {
                 if(response.status === 1){
-                    $(submitter).html(success);
+                    $(submitter).find('[name="spinner"]').replaceWith(success);
                 }
                 else{
-                    $(submitter).html(fail);
+                    $(submitter).find('[name="spinner"]').replaceWith(fail);
+                    $(submitter).prop('disabled', true);
 
                     if(hasValidation){
                         this.#formatWithErrors(form, response.errors);
@@ -30,8 +32,10 @@ class Form{
                 }
     
                 setTimeout(() => {
-                    $(submitter).children().hide('slow', function(self){
-                        $(submitter).html(submitterText);
+                    $(submitter).find('[name=result]').fadeOut('slow', function(self){
+                        $(submitter).prop('disabled', false);
+                        $(this).remove();
+                        $(submitter).find('[name=init-content]').fadeIn('slow');
                     });
                 }, 2000);
             },
