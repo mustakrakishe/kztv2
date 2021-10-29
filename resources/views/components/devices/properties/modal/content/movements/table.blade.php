@@ -1,4 +1,4 @@
-<table id="device-movements-table" class="table table-striped table-hover">
+<table id="device-movements-table" class="table table-striped">
 
     <thead class="text-center">
         <tr>
