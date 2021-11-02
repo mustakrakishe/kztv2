@@ -15,7 +15,7 @@
                 <i class="fas fa-pen"></i>
             </x-button>
             
-            <x-button name="delete-movement" class="btn-danger col ml-2" style="width: 50px;">
+            <x-button name="delete-movement" class="btn-danger col ms-2" style="width: 50px;">
                 <i class="fas fa-trash-alt"></i>
             </x-button>
         </div>
@@ -31,7 +31,7 @@
                         <i class="fas fa-trash-alt"></i>
                     </x-button>
 
-                    <x-button type="reset" class="btn-secondary col ml-2" style="width: 50px;">
+                    <x-button type="reset" class="btn-secondary col ms-2" style="width: 50px;">
                         <i class="fas fa-ban"></i>
                     </x-button>
                 </div>
