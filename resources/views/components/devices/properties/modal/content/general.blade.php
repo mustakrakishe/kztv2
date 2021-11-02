@@ -49,7 +49,7 @@
         </div>
 
         <div class="col-12 col-lg-6 d-flex mt-3 mt-lg-0">
-            <x-button id="device-delete-button" type="button" class="btn-danger toggle-modal" data-toggle="modal" data-target="#device-delete-modal" data-dismiss="modal">{{ __('actions.delete') }}</x-button>
+            <x-button id="device-delete-button" type="button" class="btn-danger toggle-modal" data-bs-toggle="modal" data-bs-target="#device-delete-modal" data-bs-dismiss="modal">{{ __('actions.delete') }}</x-button>
 
             <div class="ms-auto">
                 <x-button type="reset" class="btn-secondary">{{ __('actions.reset') }}</x-button>
