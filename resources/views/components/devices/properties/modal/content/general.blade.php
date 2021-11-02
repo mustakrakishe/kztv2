@@ -40,7 +40,7 @@
     </div>
     
     <div class="row">
-        <div class="col col-md-6">
+        <div class="col">
             <div class="row mb-0 mr-0">
                 <label for="status_id" class="col-auto col-form-label">{{ __('Status') }}:</label>
                 <input type="text" name="status_id" class="form-control col" id="status_id" value="{{ $device->status->name }}" disabled>
@@ -48,8 +48,8 @@
             </div>
         </div>
 
-        <div class="col-12 col-lg-6 d-flex mt-3 mt-lg-0">
-            <x-button id="device-delete-button" type="button" class="btn-danger toggle-modal" data-bs-toggle="modal" data-bs-target="#device-delete-modal" data-bs-dismiss="modal">{{ __('actions.delete') }}</x-button>
+        <div class="col d-flex">
+            <x-button type="button" id="device-delete-button" class="btn-danger toggle-modal" data-bs-toggle="modal" data-bs-target="#device-delete-modal" data-bs-dismiss="modal">{{ __('actions.delete') }}</x-button>
 
             <div class="ms-auto">
                 <x-button type="reset" class="btn-secondary">{{ __('actions.reset') }}</x-button>
