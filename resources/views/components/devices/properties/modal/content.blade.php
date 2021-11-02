@@ -1,20 +1,12 @@
-<ul class="nav nav-tabs" role="tablist">
-    <li class="nav-item" role="presentation">
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
         <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#general" role="tab" aria-controls="general" aria-selected="true">{{ __('General') }}</button>
-    </li>
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#movements" role="tab" aria-controls="movements" aria-selected="false">{{ __('Movements') }}</button>
-    </li>
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#hardware" role="tab" aria-controls="hardware" aria-selected="false">{{ __('Hardware') }}</button>
-    </li>
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#software" role="tab" aria-controls="software" aria-selected="false">{{ __('Software') }}</button>
-    </li>
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#repairs" role="tab" aria-controls="repairs" aria-selected="false">{{ __('Repairs') }}</button>
-    </li>
-</ul>
+        <button class="nav-link disabled" data-bs-toggle="tab" data-bs-target="#movements" role="tab" aria-controls="movements" aria-selected="false" aria-disabled="true" disabled>{{ __('Movements') }}</button>
+        <button class="nav-link disabled" data-bs-toggle="tab" data-bs-target="#hardware" role="tab" aria-controls="hardware" aria-selected="false" aria-disabled="true" disabled>{{ __('Hardware') }}</button>
+        <button class="nav-link disabled" data-bs-toggle="tab" data-bs-target="#software" role="tab" aria-controls="software" aria-selected="false" aria-disabled="true" disabled>{{ __('Software') }}</button>
+        <button class="nav-link disabled" data-bs-toggle="tab" data-bs-target="#repairs" role="tab" aria-controls="repairs" aria-selected="false" aria-disabled="true" disabled>{{ __('Repairs') }}</button>
+    </div>
+</nav>
 
 <div class="tab-content">
     <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
