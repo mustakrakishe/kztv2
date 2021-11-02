@@ -41,7 +41,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <x-button>
+                                <x-button style="width: auto;">
                                     {{ __('Register') }}
                                 </x-button>
                             </div>
