@@ -1,9 +1,9 @@
 @props(['movements'])
 
-<div class="d-flex mt-3">
+<div class="d-flex flex-row-reverse mt-3">
     <x-button class="w-auto">
-        <i class="fas fa-dolly me-2"></i>
-        {{ _('Replace') }}
+        <i class="fas fa-plus me-2"></i>
+        {{ __('New record') }}
     </x-button>
 </div>
 
