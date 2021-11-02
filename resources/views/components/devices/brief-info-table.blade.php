@@ -1,6 +1,6 @@
 <table id="device-brief-info-table" class="table table-striped table-hover">
 
-    <thead class="thead-dark text-center">
+    <thead class="table-dark text-center">
         <tr>
             <th scope="col"></th>
             <th scope="col">{{ __('Inv. №') }}</th>
