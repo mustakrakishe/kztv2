@@ -1,4 +1,4 @@
-<nav id="sidebarMenu" class="col-lg-2 d-lg-block bg-light sidebar collapse">
+<nav id="sidebarMenu" class="col-lg-2 d-lg-block bg-light sidebar collapse border">
     <div class="pt-3">
         <ul class="nav flex-column">
             <x-nav-item>
