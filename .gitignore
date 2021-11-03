@@ -1,8 +1,11 @@
 /node_modules
-/public/css
-/public/hot
-/public/js/*
 
+/public/css/*
+!public/css/sidebar.css
+
+/public/hot
+
+/public/js/*
 !/public/js/components
 !/public/js/views
 
