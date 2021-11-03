@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,13 +21,19 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-    <div id="app">
-        @include('layouts.navigation')
 
-        <main class="container my-4 text-dark">
-            @yield('content')
-        </main>
+<body>
+    @include('layouts.navigation')
+
+    <div class="container-fluid">
+        <div class="row">
+            @include('layouts.sidebar')
+
+            <main class="col-12 ms-sm-auto col-lg-10 px-md-4 text-dark">
+                @yield('content')
+            </main>
+        </div>
     </div>
 </body>
+
 </html>
