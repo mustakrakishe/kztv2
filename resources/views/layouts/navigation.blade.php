@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top px-3 shadow">
+<nav class="navbar navbar-expand navbar-dark bg-dark sticky-top px-3 shadow">
     <div class="container-fluid justify-content-between">
 
         @auth
-        <button class="navbar-toggler d-lg-none collapsed shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <x-button class="btn-dark d-lg-none w-auto" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
+        </x-button>
         @endauth
 
         <a class="navbar-brand" href="#">
