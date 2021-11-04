@@ -26,7 +26,7 @@ class DeviceController extends Controller
             'last_software'
         ]);
             
-        return view('devices', compact('devices'));
+        return view('devices.brief-info', compact('devices'));
     }
 
     /**
