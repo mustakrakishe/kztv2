@@ -11,11 +11,11 @@
     </thead>
 
     <tbody>
-        @foreach($devices as $device)
-        <x-devices.brief-info-table.row name="device" href="{{ route('devices.edit', ['device' => $device->id]) }}" :device="$device" />
+        @foreach($movements as $movement)
+        <x-devices.movements.table.row :movement="$movement" />
         @endforeach
     </tbody>
 
 </table>
 
-<x-paginator id="device-table-paginator" :paginator="$devices"/>
+<x-paginator id="movements-table-paginator" :paginator="$movements"/>

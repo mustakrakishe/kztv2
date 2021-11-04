@@ -14,8 +14,6 @@
     </div>
 </form>
 
-<pre>
-{{ print_r($movements) }}
-</pre>
+<x-devices.movements.table :movements="$movements"/>
 
 @endsection
