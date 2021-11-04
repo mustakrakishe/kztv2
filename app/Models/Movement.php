@@ -37,6 +37,14 @@ class Movement extends Model
         });
     }
 
+
+    /**
+     * Get the movement device.
+     */
+    public function device(){
+        return $this->belongsTo(Device::class);
+    }
+
     public static function scopeSearch($query, Array $keywords){
         foreach($keywords as $keyword){
 

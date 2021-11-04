@@ -14,7 +14,10 @@ class MovementController extends Controller
      */
     public function index()
     {
-        //
+        $movements = Movement::paginate();
+        $movements->load('device');
+        
+        return view('devices.movements', compact('movements'));
     }
 
     /**
