@@ -5,7 +5,7 @@
             <x-slot name="title">{{ __('Devices') }}</x-slot>
             <x-slot name="submenu">
                     <li><a href="{{ route('devices.index') }}" class="link-dark rounded">{{ __('Brief info') }}</a></li>
-                    <li><a href="#" class="link-dark rounded">{{ __('Movements') }}</a></li>
+                    <li><a href="{{ route('movements.index') }}" class="link-dark rounded">{{ __('Movements') }}</a></li>
                     <li><a href="#" class="link-dark rounded">{{ __('Hardware') }}</a></li>
                     <li><a href="#" class="link-dark rounded">{{ __('Software') }}</a></li>
                     <li><a href="#" class="link-dark rounded">{{ __('Repairs') }}</a></li>

@@ -21,3 +21,4 @@ Route::get('/', function () {
 Auth::routes();
 
 require __DIR__.'/devices.php';
+require __DIR__.'/movements.php';
