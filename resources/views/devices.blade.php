@@ -7,7 +7,7 @@
 
 @section('content')
 <h1 class="text-center">{{ __('Devices') }}</h1>
-<h2 class="text-center mb-4">{{ __('Brief Information') }}</h2>
+<h2 class="text-center mb-4">{{ __('Brief info') }}</h2>
 
 <form id="search-form" action="{{ route('devices.fetch_data') }}" method="get">
     <input type="hidden" id="page-input" name="page">
