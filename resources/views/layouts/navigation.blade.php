@@ -2,7 +2,7 @@
     <div class="container-fluid justify-content-between">
 
         @auth
-        <x-button class="btn-dark d-lg-none w-auto" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <x-button class="btn-dark d-lg-none w-auto" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </x-button>
         @endauth
