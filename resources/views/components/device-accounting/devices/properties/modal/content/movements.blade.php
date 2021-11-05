@@ -7,4 +7,4 @@
     </x-button>
 </div>
 
-<x-devices.properties.modal.content.movements.table :movements="$movements"/>
+<x-device-accounting.devices.properties.modal.content.movements.table :movements="$movements"/>

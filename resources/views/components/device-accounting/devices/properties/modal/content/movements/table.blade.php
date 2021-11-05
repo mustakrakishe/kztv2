@@ -10,7 +10,7 @@
 
     <tbody>
         @foreach($movements as $movement)
-        <x-devices.properties.modal.content.movements.table.row name="movement" :movement="$movement" />
+        <x-device-accounting.devices.properties.modal.content.movements.table.row name="movement" :movement="$movement" />
         @endforeach
     </tbody>
 

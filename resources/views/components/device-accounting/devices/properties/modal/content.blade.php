@@ -10,10 +10,10 @@
 
 <div class="tab-content">
     <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
-        <x-devices.properties.modal.content.general :device="$device" :types="$types" />
+        <x-device-accounting.devices.properties.modal.content.general :device="$device" :types="$types" />
     </div>
     <div class="tab-pane fade" id="movements" role="tabpanel" aria-labelledby="movements-tab">
-        <x-devices.properties.modal.content.movements :movements="$device->movements" />
+        <x-device-accounting.devices.properties.modal.content.movements :movements="$device->movements" />
     </div>
     <div class="tab-pane fade" id="hardware" role="tabpanel" aria-labelledby="hardware-tab">...</div>
     <div class="tab-pane fade" id="software" role="tabpanel" aria-labelledby="software-tab">...</div>
