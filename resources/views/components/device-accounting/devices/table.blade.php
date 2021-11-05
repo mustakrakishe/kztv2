@@ -15,7 +15,7 @@
 
     <tbody>
         @foreach($devices as $device)
-        <x-device-accounting.devices.table.row name="device" href="{{ route('devices.edit', ['device' => $device->id]) }}" :device="$device" />
+        <x-device-accounting.devices.table.row :device="$device" />
         @endforeach
     </tbody>
 

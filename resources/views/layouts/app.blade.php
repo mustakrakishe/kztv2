@@ -32,7 +32,7 @@
             @include('layouts.sidebar')
             @endauth
 
-            <main class="col-12 ms-sm-auto col-lg-10 px-md-4 py-4 text-dark">
+            <main class="col-12 ms-sm-auto col-lg-10 px-md-4 py-4 text-dark" style="position: relative;">
                 @yield('content')
             </main>
         </div>

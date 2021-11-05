@@ -15,6 +15,8 @@ const DEVICE_DELETE_FORM = '#device-delete-form';
 $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 $(document).on('click', PAGINATION_LINK, switchPaginationPage);
 $(document).on('click', DEVICE_ROW, editDevice);
+$(document).on('contextmenu', DEVICE_ROW, showContextMenu);
+$(document).on('click', hideContextMenu);
 $(document).on('submit', DEVICE_UPDATE_FORM, updateDevice);
 $(document).on('show.bs.modal shown.bs.modal', '.modal', protectBodyScrolling);
 $(document).on('submit', DEVICE_DELETE_FORM, deleteDevice);
@@ -58,6 +60,41 @@ async function editDevice(event){
 
         $(DEVICE_DELETE_MODAL).find('.modal-body').html(response.view_delete);
     }
+}
+
+async function showContextMenu(event){
+    event.preventDefault();
+    let coordinates = {
+        x: event.clientX,
+        y: event.clientY,
+    };
+
+    hideContextMenu();
+    let tr = this;
+    
+    let response =  await $.get({
+        url: $(tr).attr('href'),
+        data: $(tr).attr('id'),
+    });
+
+    if(response.status === 1){
+        let contextMenu = $('body').prepend(response.view);
+
+        $("#contextmenu").parent().css({position: 'relative'});
+        $("#contextmenu").css({
+            top: coordinates.y,
+            left: coordinates.x,
+            position:'absolute'
+        });
+        $("#contextmenu").css('z-index', 3000);
+        
+
+
+    }
+}
+
+function hideContextMenu(){
+    $('#contextmenu').remove();
 }
 
 async function updateDevice(event){

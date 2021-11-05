@@ -1,6 +1,9 @@
 @props(['device'])
 
-<tr {{ $attributes->merge(['style' => 'cursor: pointer;']) }}>
+<tr {{ $attributes->merge([
+    'name' => 'device',
+    'href' => route('devices.contextmenu', ['device' => $device->id])
+]) }}>
     <td title="{{ $device->status->name }}">
         @switch($device->status_id)
             @case("1")

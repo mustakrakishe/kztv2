@@ -14,4 +14,8 @@ Route::get('/devices/fetch_data', [DeviceController::class, 'fetch_data'])
     
 Route::resource('devices', DeviceController::class)->middleware('auth');
 
+Route::get('/devices/{device}/contextmenu', [DeviceController::class, 'contextmenu'])
+    ->middleware('auth')
+    ->name('devices.contextmenu');
+
 Route::resource('devices.movements', DeviceMovementController::class)->middleware('auth');
