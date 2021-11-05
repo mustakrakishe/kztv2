@@ -12,9 +12,11 @@ const DEVICE_UPDATE_FORM = '#device-update-form';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
 const DEVICE_DELETE_FORM = '#device-delete-form';
 
+const CONTEXT_MENU_PROPERIES = '#contextmenu [name=properties]'
+
 $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 $(document).on('click', PAGINATION_LINK, switchPaginationPage);
-$(document).on('click', DEVICE_ROW, editDevice);
+$(document).on('click', CONTEXT_MENU_PROPERIES, showProperties);
 $(document).on('contextmenu', DEVICE_ROW, showContextMenu);
 $(document).on('click', hideContextMenu);
 $(document).on('submit', DEVICE_UPDATE_FORM, updateDevice);
@@ -46,7 +48,7 @@ async function switchPaginationPage(event){
     }
 }
 
-async function editDevice(event){
+async function showProperties(event){
     event.preventDefault();
 
     let deviceRow = event.currentTarget;
@@ -64,33 +66,28 @@ async function editDevice(event){
 
 async function showContextMenu(event){
     event.preventDefault();
+
     let coordinates = {
         x: event.clientX,
         y: event.clientY,
     };
 
     hideContextMenu();
+
     let tr = this;
     
-    let response =  await $.get({
-        url: $(tr).attr('href'),
-        data: $(tr).attr('id'),
-    });
+    let contextMenu = $.parseHTML(contextMenuHtml);
+    console.log(contextMenu);
 
-    if(response.status === 1){
-        let contextMenu = $('body').prepend(response.view);
+    // $(contextMenu).parent().css({position: 'relative'});
+    // $(contextMenu).css({
+    //     top: coordinates.y,
+    //     left: coordinates.x,
+    //     position:'absolute'
+    // })
+    // .css('z-index', 3000)
+    // .removeAttr('hidden');
 
-        $("#contextmenu").parent().css({position: 'relative'});
-        $("#contextmenu").css({
-            top: coordinates.y,
-            left: coordinates.x,
-            position:'absolute'
-        });
-        $("#contextmenu").css('z-index', 3000);
-        
-
-
-    }
 }
 
 function hideContextMenu(){

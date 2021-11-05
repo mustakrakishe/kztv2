@@ -1,8 +1,8 @@
 @props(['device'])
 
 <tr {{ $attributes->merge([
-    'name' => 'device',
-    'href' => route('devices.contextmenu', ['device' => $device->id])
+    'id' => $device->id,
+    'name' => 'device'
 ]) }}>
     <td title="{{ $device->status->name }}">
         @switch($device->status_id)

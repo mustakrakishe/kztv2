@@ -20,8 +20,11 @@
     <x-device-accounting.devices.table :devices="$devices"/>
 </div>
 
-@auth
 <x-device-accounting.devices.properties.modal />
 <x-device-accounting.devices.delete.modal />
-@endauth
+
+<script>
+    let contextMenuHtml = `<x-device-accounting.devices.context-menu hidden/>`;
+</script>
+
 @endsection

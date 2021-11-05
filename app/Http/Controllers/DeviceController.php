@@ -122,20 +122,6 @@ class DeviceController extends Controller
     // Additional methods
 
     /**
-     * Get device context menu
-     * 
-     * @param  string  $deviceId
-     * @return array
-     */
-    public function contextmenu(string $deviceId){
-
-        return [
-            'status' => 1,
-            'view' => view('components.device-accounting.devices.context-menu', compact('deviceId'))->render(),
-        ];
-    }
-
-    /**
      * Get device pagination page
      * 
      * @param  \Illuminate\Http\Request  $request
