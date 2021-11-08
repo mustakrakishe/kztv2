@@ -36,7 +36,10 @@ class DeviceController extends Controller
      */
     public function create()
     {
-        //
+        return [
+            'status' => 1,
+            'view' => view('components.device-accounting.devices.create')->render(),
+        ];
     }
 
     /**
