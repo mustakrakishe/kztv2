@@ -11,6 +11,7 @@ const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
 const FORM_DELETE = 'form#delete';
 
 const CONTEXT_MENU_DELETE = '#contextmenu [name=delete]';
+const CONTEXT_MENU_EDIT = '#contextmenu [name=edit]';
 
 $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 $(document).on('click', PAGINATION_LINK, switchPaginationPage);
@@ -18,6 +19,7 @@ $(document).on('contextmenu', DEVICE_ROW, showContextMenu);
 $(document).on('click', hideContextMenu);
 $(document).on('submit', DEVICE_UPDATE_FORM, updateDevice);
 $(document).on('click', CONTEXT_MENU_DELETE, contextMenuDeleteHandler);
+$(document).on('click', CONTEXT_MENU_EDIT, contextMenuEditHandler);
 $(document).on('submit', FORM_DELETE, deleteFormSubmitHandler);
 
 // Handlers
@@ -30,6 +32,19 @@ async function searchDeviceHandler(event){
     if(response.status === 1){
         let resultDeviceTable = response.view;
         $(DEVICE_TABLE_CONTAINER).html(resultDeviceTable);
+    }
+}
+
+async function contextMenuEditHandler(event){
+    event.preventDefault();
+
+    let link = event.target;
+
+    let response = await $.get($(link).attr('href'));
+
+    if(response.status === 1){
+        let editView = response.view;
+        console.log(editView)
     }
 }
 

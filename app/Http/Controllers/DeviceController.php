@@ -78,8 +78,7 @@ class DeviceController extends Controller
         
         return [
             'status' => 1,
-            'view_properties' => view('components.device-accounting.devices.properties.modal.content', compact('device', 'types'))->render(),
-            'view_delete' => view('components.device-accounting.devices.delete.modal.content', compact('device'))->render(),
+            'view' => '',
         ];
     }
 
