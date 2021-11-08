@@ -15,11 +15,12 @@ const CONTEXT_MENU_DELETE = '#contextmenu [name=delete]';
 
 $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 $(document).on('click', PAGINATION_LINK, switchPaginationPage);
-$(document).on('click', CONTEXT_MENU_PROPERIES, showProperties);
 $(document).on('contextmenu', DEVICE_ROW, showContextMenu);
 $(document).on('click', hideContextMenu);
 $(document).on('submit', DEVICE_UPDATE_FORM, updateDevice);
-$(document).on('submit', CONTEXT_MENU_DELETE, showDeleteConfirmation);
+$(document).on('submit', CONTEXT_MENU_DELETE, contextMenuDeleteHandler);
+
+// Handlers
 
 async function searchDeviceHandler(event){
     event.preventDefault();
@@ -30,6 +31,13 @@ async function searchDeviceHandler(event){
         let resultDeviceTable = response.view;
         $(DEVICE_TABLE_CONTAINER).html(resultDeviceTable);
     }
+}
+
+async function contextMenuDeleteHandler(event){
+    event.preventDefault();
+
+    let link = event.target;
+    console.log(link);
 }
 
 async function switchPaginationPage(event){
