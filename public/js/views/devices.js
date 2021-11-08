@@ -56,22 +56,6 @@ async function switchPaginationPage(event){
     }
 }
 
-async function showProperties(event){
-    event.preventDefault();
-
-    let deviceRow = event.currentTarget;
-    let url = $(deviceRow).attr('href');
-    
-    let response = await $.get(url);
-
-    if(response.status === 1){
-        $(DEVICE_PROPERTIES_MODAL).find('.modal-body').html(response.view_properties);
-        $(DEVICE_PROPERTIES_MODAL).modal('show');
-
-        $(DEVICE_DELETE_MODAL).find('.modal-body').html(response.view_delete);
-    }
-}
-
 async function showContextMenu(event){
     event.preventDefault();
 
