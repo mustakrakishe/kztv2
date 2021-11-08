@@ -1,6 +1,9 @@
 import * as Textarea from "../components/textarea.js";
 import Form from "../components/form.js";
 
+const CONTEXT_MENU_DELETE = '#contextmenu [name=delete]';
+const CONTEXT_MENU_EDIT = '#contextmenu [name=edit]';
+const CREATE_LINK = 'a#create'
 const DEVICE_ROW = 'tr[name=device]';
 const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
@@ -10,17 +13,15 @@ const PAGINATION_LINK = 'a.page-link';
 const SEARCH_FORM = 'form#search-form';
 const SEARCH_INPUT = 'input#search-input';
 
-const CONTEXT_MENU_DELETE = '#contextmenu [name=delete]';
-const CONTEXT_MENU_EDIT = '#contextmenu [name=edit]';
-
-$(document).on('input', SEARCH_INPUT, searchDeviceHandler);
-$(document).on('click', PAGINATION_LINK, switchPaginationPage);
-$(document).on('contextmenu', DEVICE_ROW, showContextMenu);
 $(document).on('click', hideContextMenu);
-$(document).on('submit', FORM_UPDATE, updateFormSubmitHandler);
 $(document).on('click', CONTEXT_MENU_DELETE, contextMenuDeleteHandler);
 $(document).on('click', CONTEXT_MENU_EDIT, contextMenuEditHandler);
+$(document).on('click', CREATE_LINK, createLinkClickHandler);
+$(document).on('contextmenu', DEVICE_ROW, showContextMenu);
 $(document).on('submit', FORM_DELETE, deleteFormSubmitHandler);
+$(document).on('submit', FORM_UPDATE, updateFormSubmitHandler);
+$(document).on('click', PAGINATION_LINK, switchPaginationPage);
+$(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 
 // Handlers
 
@@ -58,6 +59,20 @@ async function contextMenuDeleteHandler(event){
     $(dialog).find('form').attr('action', url);
 
     showDialog(dialog);
+}
+
+async function createLinkClickHandler(event){
+    event.preventDefault();
+
+    let link = event.target;
+    let url = $(link).attr('href');
+
+    let response = await $.get(url);
+
+    if(response.status === 1){
+        let dialog = response.view;
+        showDialog(dialog);
+    }
 }
 
 async function updateFormSubmitHandler(event){

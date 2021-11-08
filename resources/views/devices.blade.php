@@ -2,7 +2,6 @@
 
 @section('scripts')
     <script defer type="module" src="{{ asset('js\views\devices.js') }}"></script>
-    <script defer type="module" src="{{ asset('js\views\devices\properties\movements.js') }}"></script>
 @endsection
 
 @section('content')
@@ -18,7 +17,7 @@
     </div>
 
     <div class="col-auto text-right">
-        <a class="btn btn-primary" href="{{ route('devices.create') }}">
+        <a id="create" class="btn btn-primary" href="{{ route('devices.create') }}">
             <i class="fas fa-plus me-1"></i>
             {{ __('New device') }}
         </a>
