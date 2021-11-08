@@ -1,5 +1,5 @@
 <x-modal id="device-properties-modal" class="modal-lg modal-fullscreen-lg-down">
-    <x-slot name="title">{{ __('dialog.edit.header', ['entity' => trans('device')]) }}</x-slot>
+    <x-slot name="title">{{ __('dialog.edit.header', ['entity' => trans('dialog.entities.device')]) }}</x-slot>
 
     <form id="device-update-form" class="mt-3" action="{{ route('devices.update', ['device' => $device->id]) }}" method="post">
         @csrf

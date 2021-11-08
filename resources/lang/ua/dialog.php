@@ -19,7 +19,7 @@ return [
         'header' => 'Редагувати :entity',
     ],
 
-    'entites' => [
+    'entities' => [
         'device' => 'пристрій',
     ]
 ];
