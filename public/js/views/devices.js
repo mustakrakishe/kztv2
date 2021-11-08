@@ -10,9 +10,8 @@ const DEVICE_PROPERTIES_MODAL = '#device-properties-modal';
 const DEVICE_DELETE_MODAL = '#device-delete-modal';
 const DEVICE_UPDATE_FORM = '#device-update-form';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
-const DEVICE_DELETE_FORM = '#device-delete-form';
 
-const CONTEXT_MENU_PROPERIES = '#contextmenu [name=properties]'
+const CONTEXT_MENU_DELETE = '#contextmenu [name=delete]';
 
 $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 $(document).on('click', PAGINATION_LINK, switchPaginationPage);
@@ -75,8 +74,15 @@ async function showContextMenu(event){
     hideContextMenu();
 
     let tr = this;
+    let deviceId = $(tr).attr('id');
     
     let contextMenu = $.parseHTML(contextMenuHtml);
+
+    $(contextMenu).children().each((index, link) => {
+        let actualUrl = $(link).attr('href').replace('#', deviceId);
+        $(link).attr('href', actualUrl);
+    });
+    
     
     $('body').prepend(contextMenu);
 
