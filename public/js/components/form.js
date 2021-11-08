@@ -9,6 +9,7 @@ class Form{
         $(submitter).find('[name=result]').remove();
         $(submitter).find('[name=init-content]').hide();
         $(submitter).append(spinner);
+        $(submitter).prop('disabled', true);
 
         if(hasValidation){
             this.formatWithErrors(form);
@@ -24,7 +25,6 @@ class Form{
                 }
                 else{
                     $(submitter).find('[name="spinner"]').replaceWith(fail);
-                    $(submitter).prop('disabled', true);
 
                     if(hasValidation){
                         this.formatWithErrors(form, response.errors);
