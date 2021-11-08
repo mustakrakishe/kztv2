@@ -1,4 +1,4 @@
-<button {{ $attributes->merge(['type' => 'submit', 'class' => 'btn btn-primary shadow-none', 'style' => 'width: 100px;']) }}>
+<button {{ $attributes->merge(['type' => 'submit', 'class' => 'btn btn-primary shadow-none']) }}>
     <div name="init-content">
         {{ $slot }}
     </div>

@@ -6,6 +6,7 @@ class Form{
         const fail = '<i name="result" class="fas fa-times"></i>';
 
         let submitter = $(form).find(':submit').first();
+        $(submitter).width($(submitter).width());
         $(submitter).find('[name=result]').remove();
         $(submitter).find('[name=init-content]').hide();
         $(submitter).append(spinner);

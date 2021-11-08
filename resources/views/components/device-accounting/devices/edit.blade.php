@@ -51,7 +51,7 @@
 
             <div class="col d-flex">
                 <div class="ms-auto">
-                    <x-button>{{ __('actions.apply') }}</x-button>
+                    <x-button>{{ __('dialog.actions.apply') }}</x-button>
                 </div>
             </div>
         </div>
