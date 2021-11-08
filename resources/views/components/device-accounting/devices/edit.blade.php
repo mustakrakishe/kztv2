@@ -51,8 +51,7 @@
 
             <div class="col d-flex">
                 <div class="ms-auto">
-                    <x-button type="reset" class="btn-secondary">{{ __('actions.reset') }}</x-button>
-                    <x-button>{{ __('actions.update') }}</x-button>
+                    <x-button>{{ __('actions.apply') }}</x-button>
                 </div>
             </div>
         </div>

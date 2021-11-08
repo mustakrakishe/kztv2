@@ -6,7 +6,7 @@ const SEARCH_FORM = 'form#search-form';
 const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const PAGINATION_LINK = 'a.page-link';
 const DEVICE_ROW = 'tr[name=device]';
-const DEVICE_UPDATE_FORM = '#device-update-form';
+const FORM_UPDATE = '#device-update-form';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
 const FORM_DELETE = 'form#delete';
 
@@ -17,7 +17,7 @@ $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 $(document).on('click', PAGINATION_LINK, switchPaginationPage);
 $(document).on('contextmenu', DEVICE_ROW, showContextMenu);
 $(document).on('click', hideContextMenu);
-$(document).on('submit', DEVICE_UPDATE_FORM, updateDevice);
+$(document).on('submit', FORM_UPDATE, updateFormSubmitHandler);
 $(document).on('click', CONTEXT_MENU_DELETE, contextMenuDeleteHandler);
 $(document).on('click', CONTEXT_MENU_EDIT, contextMenuEditHandler);
 $(document).on('submit', FORM_DELETE, deleteFormSubmitHandler);
@@ -60,6 +60,19 @@ async function contextMenuDeleteHandler(event){
     showDialog(dialog);
 }
 
+async function updateFormSubmitHandler(event){
+    event.preventDefault();
+
+    let form = event.target;
+    let hasValidation = true;
+
+    let response = await Form.xhrAction(form, hasValidation);
+
+    if(response.status === 1){
+        switchDeviceTablePage(1);
+    }
+}
+
 async function deleteFormSubmitHandler(event){
     event.preventDefault();
 
@@ -94,8 +107,8 @@ async function showContextMenu(event){
     event.preventDefault();
 
     let coordinates = {
-        x: event.clientX,
-        y: event.clientY,
+        x: event.pageX,
+        y: event.pageY,
     };
 
     hideContextMenu();
@@ -124,19 +137,6 @@ async function showContextMenu(event){
 
 function hideContextMenu(){
     $('#contextmenu').remove();
-}
-
-async function updateDevice(event){
-    event.preventDefault();
-
-    let form = event.target;
-    let hasValidation = true;
-
-    let response = await Form.xhrAction(form, hasValidation);
-
-    if(response.status === 1){
-        switchDeviceTablePage(1);
-    }
 }
 
 function showDialog(dialog){
