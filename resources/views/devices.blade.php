@@ -20,11 +20,9 @@
     <x-device-accounting.devices.table :devices="$devices"/>
 </div>
 
-<x-device-accounting.devices.properties.modal />
-<x-device-accounting.devices.delete.modal />
-
 <script>
     let contextMenuHtml = `<x-device-accounting.devices.context-menu/>`;
+    let deleteConfirmationModalHtml = `<x-device-accounting.devices.deleteConfirmationModal />`
 </script>
 
 @endsection
