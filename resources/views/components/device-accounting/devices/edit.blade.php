@@ -19,7 +19,7 @@
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="type_id" class="form-label">{{ __('Type') }}</label>
-                <select name="type_id" class="form-control" id="type_id">
+                <select name="type_id" class="form-select" id="type_id">
                     @foreach($types as $type)
                     <option value="{{ $type->id }}" @if($type->id === $device->type_id) selected @endif >
                         {{ $type->name }}
