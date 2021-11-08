@@ -1,5 +1,5 @@
-import * as Textarea from "../components/textarea.js";
-import Form from "../components/form.js";
+import * as Textarea from "../../components/textarea.js";
+import Form from "../../components/form.js";
 
 const CONTEXT_MENU_DELETE = '#contextmenu [name=delete]';
 const CONTEXT_MENU_EDIT = '#contextmenu [name=edit]';

@@ -29,7 +29,7 @@ class MovementController extends Controller
     {
         return [
             'status' => 1,
-            'view' => view('')
+            'view' => view('components.device-accounting.movements.create')->render(),
         ];
     }
 
