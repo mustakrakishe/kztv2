@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('scripts')
+    <script defer type="module" src="{{ asset('js\views\device-accounting\movements.js') }}"></script>
 @endsection
 
 @section('content')

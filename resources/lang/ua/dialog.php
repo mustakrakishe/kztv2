@@ -3,6 +3,8 @@
 return [
     'actions' => [
         'apply' => 'Застосувати',
+        'cancel' => 'Скасувати',
+        'store' => 'Зберегти',
     ],
 
     'create' => [
