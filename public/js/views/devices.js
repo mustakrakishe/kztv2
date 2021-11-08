@@ -1,14 +1,14 @@
 import * as Textarea from "../components/textarea.js";
 import Form from "../components/form.js";
 
-const SEARCH_INPUT = 'input#search-input';
-const SEARCH_FORM = 'form#search-form';
-const DEVICE_TABLE_CONTAINER = '#device-table-container';
-const PAGINATION_LINK = 'a.page-link';
 const DEVICE_ROW = 'tr[name=device]';
-const FORM_UPDATE = '#device-update-form';
+const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
 const FORM_DELETE = 'form#delete';
+const FORM_UPDATE = '#device-update-form';
+const PAGINATION_LINK = 'a.page-link';
+const SEARCH_FORM = 'form#search-form';
+const SEARCH_INPUT = 'input#search-input';
 
 const CONTEXT_MENU_DELETE = '#contextmenu [name=delete]';
 const CONTEXT_MENU_EDIT = '#contextmenu [name=edit]';
