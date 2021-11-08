@@ -1,8 +1,8 @@
 <x-modal id="device-delete-modal">
-    <x-slot name="title">{{ __('dialog.delete.header', ['entity' => trans('device')]) }}</x-slot>
+    <x-slot name="title">{{ __('dialog.delete.header', ['entity' => trans('dialog.entities.device')]) }}</x-slot>
 
     <p class="card-text">
-        {{ __('dialog.delete.message', ['entity' => trans('device')]) }}
+        {{ __('dialog.delete.message', ['entity' => trans('dialog.entities.device')]) }}
     </p>
 
     <x-slot name="footer">
