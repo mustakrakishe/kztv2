@@ -19,8 +19,7 @@ $(document).on('click', CONTEXT_MENU_PROPERIES, showProperties);
 $(document).on('contextmenu', DEVICE_ROW, showContextMenu);
 $(document).on('click', hideContextMenu);
 $(document).on('submit', DEVICE_UPDATE_FORM, updateDevice);
-$(document).on('show.bs.modal shown.bs.modal', '.modal', protectBodyScrolling);
-$(document).on('submit', DEVICE_DELETE_FORM, deleteDevice);
+$(document).on('submit', CONTEXT_MENU_DELETE, showDeleteConfirmation);
 
 async function searchDeviceHandler(event){
     event.preventDefault();
@@ -110,10 +109,6 @@ async function updateDevice(event){
     if(response.status === 1){
         switchDeviceTablePage(1);
     }
-}
-
-function protectBodyScrolling(){
-    $("body").addClass("modal-open");
 }
 
 async function deleteDevice(event){
