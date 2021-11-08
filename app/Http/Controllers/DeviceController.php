@@ -74,12 +74,12 @@ class DeviceController extends Controller
             'type',
             'movements'
         );
+
         $types = Type::all();
         
         return [
             'status' => 1,
-            'view_properties' => view('components.devices.properties.modal.content', compact('device', 'types'))->render(),
-            'view_delete' => view('components.devices.delete.modal.content', compact('device'))->render(),
+            'view' => view('components.device-accounting.devices.edit', compact('device', 'types'))->render(),
         ];
     }
 
@@ -150,7 +150,7 @@ class DeviceController extends Controller
 
         return [
             'status' => 1,
-            'view' => view('components.devices.brief-info-table', compact('devices'))->render(),
+            'view' => view('components.device-accounting.devices.table', compact('devices'))->render(),
         ];
     }
 

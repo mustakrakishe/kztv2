@@ -88,7 +88,7 @@ class DeviceMovementController extends Controller
         if($movement->update($request->input())){
             return [
                 'status' => 1,
-                'view' => view('components.devices.properties.modal.content.movements.table.row', compact('movement'))->render(),
+                'view' => view('components.device-accounting.devices.properties.modal.content.movements.table.row', compact('movement'))->render(),
             ];
         }
 

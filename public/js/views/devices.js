@@ -6,18 +6,23 @@ const SEARCH_FORM = 'form#search-form';
 const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const PAGINATION_LINK = 'a.page-link';
 const DEVICE_ROW = 'tr[name=device]';
-const DEVICE_PROPERTIES_MODAL = '#device-properties-modal';
-const DEVICE_DELETE_MODAL = '#device-delete-modal';
-const DEVICE_UPDATE_FORM = '#device-update-form';
+const FORM_UPDATE = '#device-update-form';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
-const DEVICE_DELETE_FORM = '#device-delete-form';
+const FORM_DELETE = 'form#delete';
+
+const CONTEXT_MENU_DELETE = '#contextmenu [name=delete]';
+const CONTEXT_MENU_EDIT = '#contextmenu [name=edit]';
 
 $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 $(document).on('click', PAGINATION_LINK, switchPaginationPage);
-$(document).on('click', DEVICE_ROW, editDevice);
-$(document).on('submit', DEVICE_UPDATE_FORM, updateDevice);
-$(document).on('show.bs.modal shown.bs.modal', '.modal', protectBodyScrolling);
-$(document).on('submit', DEVICE_DELETE_FORM, deleteDevice);
+$(document).on('contextmenu', DEVICE_ROW, showContextMenu);
+$(document).on('click', hideContextMenu);
+$(document).on('submit', FORM_UPDATE, updateFormSubmitHandler);
+$(document).on('click', CONTEXT_MENU_DELETE, contextMenuDeleteHandler);
+$(document).on('click', CONTEXT_MENU_EDIT, contextMenuEditHandler);
+$(document).on('submit', FORM_DELETE, deleteFormSubmitHandler);
+
+// Handlers
 
 async function searchDeviceHandler(event){
     event.preventDefault();
@@ -27,6 +32,60 @@ async function searchDeviceHandler(event){
     if(response.status === 1){
         let resultDeviceTable = response.view;
         $(DEVICE_TABLE_CONTAINER).html(resultDeviceTable);
+    }
+}
+
+async function contextMenuEditHandler(event){
+    event.preventDefault();
+
+    let link = event.target;
+
+    let response = await $.get($(link).attr('href'));
+
+    if(response.status === 1){
+        let editDialog = $.parseHTML(response.view);
+        showDialog(editDialog);
+    }
+}
+
+async function contextMenuDeleteHandler(event){
+    event.preventDefault();
+
+    let link = event.target;
+    let url = $(link).attr('href');
+    
+    let dialog = $.parseHTML(deleteConfirmationModalHtml);
+    $(dialog).find('form').attr('action', url);
+
+    showDialog(dialog);
+}
+
+async function updateFormSubmitHandler(event){
+    event.preventDefault();
+
+    let form = event.target;
+    let hasValidation = true;
+
+    let response = await Form.xhrAction(form, hasValidation);
+
+    if(response.status === 1){
+        switchDeviceTablePage(1);
+    }
+}
+
+async function deleteFormSubmitHandler(event){
+    event.preventDefault();
+
+    let form = event.target;
+    
+    let response = await $.post({
+        url: $(form).attr('action'),
+        data: $(form).serialize(),
+    });
+
+    if(response.status === 1){
+        let currentPage = $(DEVICE_TABLE_PAGINATOR).attr('current-page');
+        switchDeviceTablePage(currentPage);
     }
 }
 
@@ -44,52 +103,49 @@ async function switchPaginationPage(event){
     }
 }
 
-async function editDevice(event){
+async function showContextMenu(event){
     event.preventDefault();
 
-    let deviceRow = event.currentTarget;
-    let url = $(deviceRow).attr('href');
+    let coordinates = {
+        x: event.pageX,
+        y: event.pageY,
+    };
+
+    hideContextMenu();
+
+    let tr = this;
+    let deviceId = $(tr).attr('id');
     
-    let response = await $.get(url);
+    let contextMenu = $.parseHTML(contextMenuHtml);
 
-    if(response.status === 1){
-        $(DEVICE_PROPERTIES_MODAL).find('.modal-body').html(response.view_properties);
-        $(DEVICE_PROPERTIES_MODAL).modal('show');
+    $(contextMenu).children().each((index, link) => {
+        let actualUrl = $(link).attr('href').replace('#', deviceId);
+        $(link).attr('href', actualUrl);
+    });
+    
+    
+    $('body').prepend(contextMenu);
 
-        $(DEVICE_DELETE_MODAL).find('.modal-body').html(response.view_delete);
-    }
+    $(contextMenu).parent().css({position: 'relative'});
+    $(contextMenu).css({
+        top: coordinates.y,
+        left: coordinates.x,
+        position:'absolute'
+    });
+    $(contextMenu).css('z-index', 3000);
 }
 
-async function updateDevice(event){
-    event.preventDefault();
-
-    let form = event.target;
-    let hasValidation = true;
-
-    let response = await Form.xhrAction(form, hasValidation);
-
-    if(response.status === 1){
-        switchDeviceTablePage(1);
-    }
+function hideContextMenu(){
+    $('#contextmenu').remove();
 }
 
-function protectBodyScrolling(){
-    $("body").addClass("modal-open");
-}
+function showDialog(dialog){
+    $('body').append(dialog);
+    $(dialog).modal('show');
 
-async function deleteDevice(event){
-    event.preventDefault();
-
-    let form = event.target;
-
-    let response = await Form.xhrAction(form);
-
-    if(response.status === 1){
-        $(DEVICE_DELETE_MODAL).modal('hide');
-
-        let currentPage = $(DEVICE_TABLE_PAGINATOR).attr('current-page');
-        switchDeviceTablePage(currentPage);
-    }
+    $(dialog).on('hidden.bs.modal', function(){
+        $(this).remove();
+    });
 }
 
 async function switchDeviceTablePage(page){

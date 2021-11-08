@@ -17,11 +17,12 @@
 </form>
 
 <div id="device-table-container">
-    <x-devices.brief-info-table :devices="$devices"/>
+    <x-device-accounting.devices.table :devices="$devices"/>
 </div>
 
-@auth
-<x-devices.properties.modal />
-<x-devices.delete.modal />
-@endauth
+<script>
+    let contextMenuHtml = `<x-device-accounting.devices.context-menu/>`;
+    let deleteConfirmationModalHtml = `<x-device-accounting.devices.deleteConfirmationModal />`
+</script>
+
 @endsection

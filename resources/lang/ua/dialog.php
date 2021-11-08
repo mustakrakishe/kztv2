@@ -1,8 +1,17 @@
 <?php
 
 return [
+    'actions' => [
+        'apply' => 'Застосувати',
+    ],
+
     'delete' => [
-        'message' => 'Ви дійсно хочете видалити :entity?'
+        'header' => 'Видалити :entity',
+        'message' => 'Ви дійсно хочете видалити :entity?',
+    ],
+
+    'edit' => [
+        'header' => 'Редагувати :entity',
     ],
 
     'entites' => [
