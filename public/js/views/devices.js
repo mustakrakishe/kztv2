@@ -43,8 +43,8 @@ async function contextMenuEditHandler(event){
     let response = await $.get($(link).attr('href'));
 
     if(response.status === 1){
-        let editView = response.view;
-        console.log(editView)
+        let editDialog = $.parseHTML(response.view);
+        showDialog(editDialog);
     }
 }
 
@@ -53,8 +53,11 @@ async function contextMenuDeleteHandler(event){
 
     let link = event.target;
     let url = $(link).attr('href');
+    
+    let dialog = $.parseHTML(deleteConfirmationModalHtml);
+    $(dialog).find('form').attr('action', url);
 
-    showDeleteConfirmation(url);
+    showDialog(dialog);
 }
 
 async function deleteFormSubmitHandler(event){
@@ -136,14 +139,11 @@ async function updateDevice(event){
     }
 }
 
-async function showDeleteConfirmation(url){
-    let deleteConfirmationModal = $.parseHTML(deleteConfirmationModalHtml);
-    $(deleteConfirmationModal).find('form').attr('action', url);
+function showDialog(dialog){
+    $('body').append(dialog);
+    $(dialog).modal('show');
 
-    $('body').append(deleteConfirmationModal);
-    $(deleteConfirmationModal).modal('show');
-
-    $(deleteConfirmationModal).on('hidden.bs.modal', function(){
+    $(dialog).on('hidden.bs.modal', function(){
         $(this).remove();
     });
 }
