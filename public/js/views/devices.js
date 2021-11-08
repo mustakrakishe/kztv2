@@ -77,17 +77,16 @@ async function showContextMenu(event){
     let tr = this;
     
     let contextMenu = $.parseHTML(contextMenuHtml);
-    console.log(contextMenu);
+    
+    $('body').prepend(contextMenu);
 
-    // $(contextMenu).parent().css({position: 'relative'});
-    // $(contextMenu).css({
-    //     top: coordinates.y,
-    //     left: coordinates.x,
-    //     position:'absolute'
-    // })
-    // .css('z-index', 3000)
-    // .removeAttr('hidden');
-
+    $(contextMenu).parent().css({position: 'relative'});
+    $(contextMenu).css({
+        top: coordinates.y,
+        left: coordinates.x,
+        position:'absolute'
+    });
+    $(contextMenu).css('z-index', 3000);
 }
 
 function hideContextMenu(){

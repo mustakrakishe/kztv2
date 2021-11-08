@@ -24,7 +24,7 @@
 <x-device-accounting.devices.delete.modal />
 
 <script>
-    let contextMenuHtml = `<x-device-accounting.devices.context-menu hidden/>`;
+    let contextMenuHtml = `<x-device-accounting.devices.context-menu/>`;
 </script>
 
 @endsection
