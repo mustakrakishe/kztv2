@@ -6,6 +6,10 @@ return [
         'message' => 'Ви дійсно хочете видалити :entity?',
     ],
 
+    'edit' => [
+        'header' => 'Редагувати :entity',
+    ],
+
     'entites' => [
         'device' => 'пристрій',
     ]

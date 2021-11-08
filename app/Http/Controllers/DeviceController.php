@@ -74,11 +74,12 @@ class DeviceController extends Controller
             'type',
             'movements'
         );
+
         $types = Type::all();
         
         return [
             'status' => 1,
-            'view' => '',
+            'view' => view('components.device-accounting.devices.edit', compact('device', 'types'))->render(),
         ];
     }
 

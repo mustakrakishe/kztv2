@@ -142,6 +142,10 @@ async function showDeleteConfirmation(url){
 
     $('body').append(deleteConfirmationModal);
     $(deleteConfirmationModal).modal('show');
+
+    $(deleteConfirmationModal).on('hidden.bs.modal', function(){
+        $(this).remove();
+    });
 }
 
 async function switchDeviceTablePage(page){
