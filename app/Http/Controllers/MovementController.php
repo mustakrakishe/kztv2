@@ -27,7 +27,10 @@ class MovementController extends Controller
      */
     public function create()
     {
-        //
+        return [
+            'status' => 1,
+            'view' => view('')
+        ];
     }
 
     /**

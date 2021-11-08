@@ -7,7 +7,6 @@ return [
 
     'create' => [
         'header' => 'Створити :entity',
-        'message' => 'Ви дійсно хочете видалити :entity?',
     ],
 
     'delete' => [
@@ -21,5 +20,6 @@ return [
 
     'entities' => [
         'device' => 'пристрій',
+        'movement' => 'переміщення'
     ]
 ];
