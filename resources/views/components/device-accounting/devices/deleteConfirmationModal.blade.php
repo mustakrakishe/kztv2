@@ -1,5 +1,5 @@
 <x-modal id="device-delete-modal">
-    <x-slot name="title">{{ __('Delete') }}</x-slot>
+    <x-slot name="title">{{ __('dialog.delete.header', ['entity' => trans('device')]) }}</x-slot>
 
     <p class="card-text">
         {{ __('dialog.delete.message', ['entity' => trans('device')]) }}
