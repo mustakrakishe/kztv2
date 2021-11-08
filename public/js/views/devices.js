@@ -8,6 +8,7 @@ const PAGINATION_LINK = 'a.page-link';
 const DEVICE_ROW = 'tr[name=device]';
 const DEVICE_UPDATE_FORM = '#device-update-form';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
+const FORM_DELETE = 'form#delete';
 
 const CONTEXT_MENU_DELETE = '#contextmenu [name=delete]';
 
@@ -17,6 +18,7 @@ $(document).on('contextmenu', DEVICE_ROW, showContextMenu);
 $(document).on('click', hideContextMenu);
 $(document).on('submit', DEVICE_UPDATE_FORM, updateDevice);
 $(document).on('click', CONTEXT_MENU_DELETE, contextMenuDeleteHandler);
+$(document).on('submit', FORM_DELETE, deleteFormSubmitHandler);
 
 // Handlers
 
@@ -38,6 +40,22 @@ async function contextMenuDeleteHandler(event){
     let url = $(link).attr('href');
 
     showDeleteConfirmation(url);
+}
+
+async function deleteFormSubmitHandler(event){
+    event.preventDefault();
+
+    let form = event.target;
+    
+    let response = await $.post({
+        url: $(form).attr('action'),
+        data: $(form).serialize(),
+    });
+
+    if(response.status === 1){
+        let currentPage = $(DEVICE_TABLE_PAGINATOR).attr('current-page');
+        switchDeviceTablePage(currentPage);
+    }
 }
 
 async function switchPaginationPage(event){
@@ -109,13 +127,6 @@ async function showDeleteConfirmation(url){
 
     $('body').append(deleteConfirmationModal);
     $(deleteConfirmationModal).modal('show');
-
-
-        // $(DEVICE_DELETE_MODAL).modal('hide');
-
-        // let currentPage = $(DEVICE_TABLE_PAGINATOR).attr('current-page');
-        // switchDeviceTablePage(currentPage);
-    // }
 }
 
 async function switchDeviceTablePage(page){
