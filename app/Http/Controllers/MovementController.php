@@ -17,7 +17,7 @@ class MovementController extends Controller
         $movements = Movement::paginate();
         $movements->load('device');
         
-        return view('devices.movements', compact('movements'));
+        return view('device-accounting.movements', compact('movements'));
     }
 
     /**
