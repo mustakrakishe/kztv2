@@ -6,8 +6,6 @@ const SEARCH_FORM = 'form#search-form';
 const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const PAGINATION_LINK = 'a.page-link';
 const DEVICE_ROW = 'tr[name=device]';
-const DEVICE_PROPERTIES_MODAL = '#device-properties-modal';
-const DEVICE_DELETE_MODAL = '#device-delete-modal';
 const DEVICE_UPDATE_FORM = '#device-update-form';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
 
