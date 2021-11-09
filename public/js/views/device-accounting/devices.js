@@ -64,15 +64,8 @@ async function contextMenuDeleteHandler(event){
 async function createLinkClickHandler(event){
     event.preventDefault();
 
-    let link = event.target;
-    let url = $(link).attr('href');
-
-    let response = await $.get(url);
-
-    if(response.status === 1){
-        let dialog = response.view;
-        showDialog(dialog);
-    }
+    let dialog = $.parseHTML(createModalHtml);
+    showDialog(dialog);
 }
 
 async function updateFormSubmitHandler(event){
