@@ -1,7 +1,6 @@
 @props(['types'])
 
-<form id="create-device-form" class="mt-3" action="{{ route('devices.store') }}" method="post">
-    @csrf
+<form id="create-device-form" class="mt-3" action="{{ route('devices.validate') }}" method="get">
 
     <div class="row mb-3">
         <div class="col-md-6">

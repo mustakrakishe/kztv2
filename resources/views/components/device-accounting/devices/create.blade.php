@@ -11,7 +11,7 @@
             <button class="nav-link text-wrap" id="v-pills-software-tab" data-bs-toggle="pill" data-bs-target="#v-pills-software" type="button" role="tab" aria-controls="v-pills-software" aria-selected="false">{{ __('Software') }}</button>
         </div>
 
-        <div class="tab-content border-start px-3 w-100" id="v-pills-tabContent" style="height: 400px;">
+        <div class="tab-content border-start px-3 w-100" id="v-pills-tabContent" style="min-height: 400px;">
             <div class="tab-pane fade show active" id="v-pills-general" role="tabpanel" aria-labelledby="v-pills-general-tab">
                 <x-device-accounting.devices.create.general :types="$types"/>
             </div>
@@ -21,9 +21,9 @@
         </div>
     </div>
 
-    <div role="tabswitcher" class="d-flex mt-auto justify-content-end">
-        <x-button class="previous-tab-pane" aria-controls="#v-pills-tab" disabled>{{ __('dialog.actions.back') }}</x-button>
-        <x-button class="next-tab-pane ms-2" aria-controls="#v-pills-tab">{{ __('dialog.actions.next') }}</x-button>
+    <div role="tabswitcherlist" class="d-flex mt-auto justify-content-end">
+        <x-button role="tabswitcher" class="back" aria-controls="#v-pills-tab" disabled>{{ __('dialog.actions.back') }}</x-button>
+        <x-button role="tabswitcher" class="next ms-2" aria-controls="#v-pills-tab">{{ __('dialog.actions.next') }}</x-button>
         <x-button class="ms-2" disabled>{{ __('dialog.actions.finish') }}</x-button>
     </div>
 

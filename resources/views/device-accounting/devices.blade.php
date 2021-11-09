@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('scripts')
+    <script defer type="module" src="{{ asset('js\components\tabswitcher.js') }}"></script>
     <script defer type="module" src="{{ asset('js\views\device-accounting\devices.js') }}"></script>
-    <script defer type="module" src="{{ asset('js\components\tabs.js') }}"></script>
 @endsection
 
 @section('content')

@@ -93,12 +93,9 @@ class DeviceController extends Controller
      */
     public function update(Request $request, Device $device)
     {
-        $errors = $this->validateDevice($request);
-        if($errors){
-            return [
-                'status' => 0,
-                'errors' => $errors,
-            ];
+        $validation = $this->validateDevice($request);
+        if(!$validation['status']){
+            return $validation;
         }
 
         if($device->update($request->input())){
@@ -173,9 +170,12 @@ class DeviceController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return $validator->errors();
+            return [
+                'status' => 0,
+                'errors' => $validator->errors(),
+            ];
         }
 
-        return [];
+        return ['status' => 1];
     }
 }

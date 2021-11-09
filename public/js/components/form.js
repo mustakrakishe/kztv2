@@ -49,7 +49,7 @@ class Form{
 
         $.each(errors, (fieldName, fieldErrors) => {
             let ul = $.parseHTML('<ul class="invalid-feedback d-block pl-3" role="alert"></ul>');
-            let li = $.parseHTML('<strong style="display: list-item"></strong>');
+            let li = $.parseHTML('<strong class="small" style="display: list-item"></strong>');
 
             fieldErrors.forEach(fieldError => {
                 $(li).html(fieldError);
