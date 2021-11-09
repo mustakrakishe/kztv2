@@ -19,10 +19,10 @@
         </div>
     </div>
 
-    <div id="tab-switcher" class="d-flex mt-auto justify-content-end">
-        <x-button id="previous-tab">{{ __('dialog.actions.back') }}</x-button>
-        <x-button id="next-tab" class="ms-2">{{ __('dialog.actions.next') }}</x-button>
-        <x-button id="next-tab" class="ms-2">{{ __('dialog.actions.finish') }}</x-button>
+    <div role="tabswitcher" class="d-flex mt-auto justify-content-end">
+        <x-button class="previous-tab-pane" aria-controls="#v-pills-tab" disabled>{{ __('dialog.actions.back') }}</x-button>
+        <x-button class="next-tab-pane ms-2" aria-controls="#v-pills-tab">{{ __('dialog.actions.next') }}</x-button>
+        <x-button class="ms-2">{{ __('dialog.actions.finish') }}</x-button>
     </div>
 
 </x-modal>
