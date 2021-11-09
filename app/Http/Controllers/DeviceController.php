@@ -17,6 +17,7 @@ class DeviceController extends Controller
     public function index()
     {
         $devices = Device::paginate()->withPath(route('devices.fetch_data'));
+        $types = Type::all();
 
         $devices->load([
             'type',
@@ -26,7 +27,7 @@ class DeviceController extends Controller
             'last_software'
         ]);
             
-        return view('device-accounting.devices', compact('devices'));
+        return view('device-accounting.devices', compact('devices', 'types'));
     }
 
     /**
@@ -36,10 +37,7 @@ class DeviceController extends Controller
      */
     public function create()
     {
-        return [
-            'status' => 1,
-            'view' => view('components.device-accounting.devices.create')->render(),
-        ];
+        // 
     }
 
     /**

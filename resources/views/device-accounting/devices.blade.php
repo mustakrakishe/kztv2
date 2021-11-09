@@ -32,7 +32,7 @@
 <script>
     let contextMenuHtml = `<x-device-accounting.devices.context-menu/>`;
     let deleteConfirmationModalHtml = `<x-device-accounting.devices.deleteConfirmationModal />`;
-    let createModalHtml = `<x-device-accounting.devices.create/>`;
+    let createModalHtml = `<x-device-accounting.devices.create :types="$types" />`;
 </script>
 
 @endsection
