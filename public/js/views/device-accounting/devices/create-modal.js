@@ -11,7 +11,8 @@ $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
 
 // handlers
 
-function createModalShowHandler(){
+function createModalShowHandler()
+{
     initDatetimeInputs();
 }
 

@@ -1,6 +1,7 @@
 class Form{
 
-    static xhrAction(form, hasValidation = false){
+    static xhrAction(form, hasValidation = false)
+    {
         const spinner = '<span name="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
         const success = '<i name="result" class="fas fa-check"></i>';
         const fail = '<i name="result" class="fas fa-times"></i>';
@@ -12,7 +13,7 @@ class Form{
         $(submitter).append(spinner);
         $(submitter).prop('disabled', true);
 
-        if(hasValidation){
+        if (hasValidation) {
             this.formatWithErrors(form);
         }
 
@@ -21,13 +22,12 @@ class Form{
             method: $(form).attr('method'),
             data: $(form).serialize(),
             success: (response) => {
-                if(response.status === 1){
+                if (response.status === 1) {
                     $(submitter).find('[name="spinner"]').replaceWith(success);
-                }
-                else{
+                } else {
                     $(submitter).find('[name="spinner"]').replaceWith(fail);
 
-                    if(hasValidation){
+                    if (hasValidation) {
                         this.formatWithErrors(form, response.errors);
                     }
                 }
@@ -40,10 +40,11 @@ class Form{
                     });
                 }, 2000);
             },
-        })
+        });
     }
     
-    static formatWithErrors(form, errors = []){
+    static formatWithErrors(form, errors = [])
+    {
         $(form).find('.invalid-feedback').remove();
         $(form).find('.is-invalid').removeClass('is-invalid');
 
@@ -60,7 +61,8 @@ class Form{
         });
     }
 
-    static reset(formId){
+    static reset(formId)
+    {
         $(formId).find('.invalid-feedback').remove();
         $(formId).find('.is-invalid').removeClass('is-invalid');
         $(formId).trigger('reset');

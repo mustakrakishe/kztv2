@@ -25,31 +25,34 @@ $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 
 // Handlers
 
-async function searchDeviceHandler(event){
+async function searchDeviceHandler(event)
+{
     event.preventDefault();
 
     let response = await Form.xhrAction(SEARCH_FORM);
 
-    if(response.status === 1){
+    if (response.status === 1) {
         let resultDeviceTable = response.view;
         $(DEVICE_TABLE_CONTAINER).html(resultDeviceTable);
     }
 }
 
-async function contextMenuEditHandler(event){
+async function contextMenuEditHandler(event)
+{
     event.preventDefault();
 
     let link = event.target;
 
     let response = await $.get($(link).attr('href'));
 
-    if(response.status === 1){
+    if (response.status === 1) {
         let editDialog = $.parseHTML(response.view);
         showDialog(editDialog);
     }
 }
 
-async function contextMenuDeleteHandler(event){
+async function contextMenuDeleteHandler(event)
+{
     event.preventDefault();
 
     let link = event.target;
@@ -61,14 +64,16 @@ async function contextMenuDeleteHandler(event){
     showDialog(dialog);
 }
 
-async function createLinkClickHandler(event){
+async function createLinkClickHandler(event)
+{
     event.preventDefault();
 
     let dialog = $.parseHTML(createModalHtml);
     showDialog(dialog);
 }
 
-async function updateFormSubmitHandler(event){
+async function updateFormSubmitHandler(event)
+{
     event.preventDefault();
 
     let form = event.target;
@@ -76,12 +81,13 @@ async function updateFormSubmitHandler(event){
 
     let response = await Form.xhrAction(form, hasValidation);
 
-    if(response.status === 1){
+    if (response.status === 1) {
         switchDeviceTablePage(1);
     }
 }
 
-async function deleteFormSubmitHandler(event){
+async function deleteFormSubmitHandler(event)
+{
     event.preventDefault();
 
     let form = event.target;
@@ -91,13 +97,14 @@ async function deleteFormSubmitHandler(event){
         data: $(form).serialize(),
     });
 
-    if(response.status === 1){
+    if (response.status === 1) {
         let currentPage = $(DEVICE_TABLE_PAGINATOR).attr('current-page');
         switchDeviceTablePage(currentPage);
     }
 }
 
-async function switchPaginationPage(event){
+async function switchPaginationPage(event)
+{
     event.preventDefault();
 
     let link = event.target;
@@ -105,13 +112,14 @@ async function switchPaginationPage(event){
 
     let response = await $.get(url);
 
-    if(response.status === 1){
+    if (response.status === 1) {
         let resultDeviceTable = response.view;
         $(DEVICE_TABLE_CONTAINER).html(resultDeviceTable);
     }
 }
 
-async function showContextMenu(event){
+async function showContextMenu(event)
+{
     event.preventDefault();
 
     let coordinates = {
@@ -143,11 +151,13 @@ async function showContextMenu(event){
     $(contextMenu).css('z-index', 3000);
 }
 
-function hideContextMenu(){
+function hideContextMenu()
+{
     $('#contextmenu').remove();
 }
 
-function showDialog(dialog){
+function showDialog(dialog)
+{
     $('body').append(dialog);
     $(dialog).modal('show');
 
@@ -156,12 +166,13 @@ function showDialog(dialog){
     });
 }
 
-async function switchDeviceTablePage(page){
+async function switchDeviceTablePage(page)
+{
     let url = $(DEVICE_TABLE_PAGINATOR).attr('path');
         
     let response = await $.get(url, {page});
 
-    if(response.status === 1){
+    if (response.status === 1) {
         let deviceTablePage = response.view;
         $(DEVICE_TABLE_CONTAINER).html(deviceTablePage);
     }
