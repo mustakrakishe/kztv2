@@ -1,11 +1,17 @@
+const TAB = '[role=tab].has-tab-switcher'
 const TABSWITCHER_LIST = '[role=tabswitcherlist]';
 const TABSWITCHER_BACK = '[role=tabswitcher].back';
 const TABSWITCHER_NEXT = '[role=tabswitcher].next';
 
+$(document).on('shown', TAB, switchTabHandler);
 $(document).on('click', TABSWITCHER_BACK, tabswitcherBackClickHandler);
 $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
 
 // handlers
+
+function switchTabHandler(event){
+    
+}
 
 function tabswitcherBackClickHandler(){
     let ariaControls = $(this).attr('aria-controls');
