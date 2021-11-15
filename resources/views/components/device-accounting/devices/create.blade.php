@@ -11,7 +11,7 @@
             <div class="nav-link text-wrap" data-bs-target="#v-pills-software" aria-selected="false">{{ __('Software') }}</div>
         </div>
 
-        <div class="tab-content border-start px-3 w-100" id="v-pills-tabContent" style="min-height: 400px;">
+        <div class="tab-content border-start ps-3 w-100" id="v-pills-tabContent" style="min-height: 400px;">
             <div class="tab-pane fade show active" id="v-pills-general" role="tabpanel" aria-labelledby="v-pills-general-tab">
                 <x-device-accounting.devices.create.general :types="$types"/>
             </div>
