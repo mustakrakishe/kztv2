@@ -1,36 +1,30 @@
 import Form from "../../../components/form.js";
+import * as Tabswitcher from "../../../components/tabswitcher.js";
 
 const MODAL = '#create-modal';
-const PANEL = '[role=tabpanel]'
-const TAB = '[role=tab]'
-const TABSWITCHER_LIST = '[role=tabswitcherlist]';
-const TABSWITCHER_NEXT = '[role=tabswitcher].next';
+const TABSWITCHER_BACK = '[role=tabswitcher][direction=prev]';
+const TABSWITCHER_NEXT = '[role=tabswitcher][direction=next]';
 
+$(document).on('click', TABSWITCHER_BACK, tabswitcherBackClickHandler);
 $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
 
 // $(document).on('click', TAB, tabClickHandler);
 
 // handlers
 
+async function tabswitcherBackClickHandler()
+{
+    Tabswitcher.tabswitcherBackClickHandler(this);
+}
+
 async function tabswitcherNextClickHandler()
 {
     let form = getCurrentForm();
     let isValid = await validateForm(form);
 
-    // if (isValid) {
-    //     let ariaControls = $(this).attr('aria-controls');
-    
-    //     let nextTab = getNextTab(ariaControls);
-    //     new bootstrap.Tab(nextTab).show();
-    
-    //     let isLastTab = $(nextTab).next().length == 0;
-    //     if(isLastTab){
-    //         $(this).prop('disabled', true);
-    //     }
-    
-    //     let tabswitcherBack = $(this).closest(TABSWITCHER_LIST).find(TABSWITCHER_BACK);
-    //     $(tabswitcherBack).prop('disabled', false);
-    // }
+    if (isValid) {
+        Tabswitcher.tabswitcherNextClickHandler(this);
+    }
 }
 
 // procedures
