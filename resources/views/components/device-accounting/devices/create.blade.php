@@ -5,10 +5,10 @@
 
     <div class="d-flex align-items-start">
         <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="width: 180px;">
-            <button class="nav-link text-wrap active" id="v-pills-general-tab" data-bs-toggle="pill" data-bs-target="#v-pills-general" type="button" role="tab" aria-controls="v-pills-general" aria-selected="true">{{ __('General info') }}</button>
-            <button class="nav-link text-wrap" id="v-pills-location-tab" data-bs-toggle="pill" data-bs-target="#v-pills-location" type="button" role="tab" aria-controls="v-pills-location" aria-selected="false">{{ __('Location') }}</button>
-            <button class="nav-link text-wrap" id="v-pills-hardware-tab" data-bs-toggle="pill" data-bs-target="#v-pills-hardware" type="button" role="tab" aria-controls="v-pills-hardware" aria-selected="false">{{ __('Hardware') }}</button>
-            <button class="nav-link text-wrap" id="v-pills-software-tab" data-bs-toggle="pill" data-bs-target="#v-pills-software" type="button" role="tab" aria-controls="v-pills-software" aria-selected="false">{{ __('Software') }}</button>
+            <div class="nav-link text-wrap active" data-bs-target="#v-pills-general" aria-selected="true">{{ __('General info') }}</div>
+            <div class="nav-link text-wrap" data-bs-target="#v-pills-location" aria-selected="false">{{ __('Location') }}</div>
+            <div class="nav-link text-wrap" data-bs-target="#v-pills-hardware" aria-selected="false">{{ __('Hardware') }}</div>
+            <div class="nav-link text-wrap" data-bs-target="#v-pills-software" aria-selected="false">{{ __('Software') }}</div>
         </div>
 
         <div class="tab-content border-start px-3 w-100" id="v-pills-tabContent" style="min-height: 400px;">
