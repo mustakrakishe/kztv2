@@ -132,6 +132,7 @@ return [
         'comment'               => 'Коментар',
         'identification_code'   => 'Ідентифікаційний номер',
         'inventory_code'        => 'Інвентарний номер',
+        'location'              => 'Розташування',
         'model'                 => 'Модель',
         'name'                  => 'Ім\'я',
         'password'              => 'Пароль',

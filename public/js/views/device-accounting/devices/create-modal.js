@@ -34,7 +34,7 @@ async function tabswitcherNextClickHandler()
 
 function getCurrentForm()
 {
-    let activeTabPanel = $(MODAL).find('[role=tabpanel]');
+    let activeTabPanel = $(MODAL).find('[role=tabpanel].active');
     let currentForm = $(activeTabPanel).find('form').first();
     return currentForm;
 }

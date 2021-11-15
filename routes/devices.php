@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\DeviceController;
-use App\Http\Controllers\DeviceMovementController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/devices/search', [DeviceController::class, 'search'])
@@ -17,5 +16,3 @@ Route::get('/devices/validate', [DeviceController::class, 'validateDevice'])
     ->name('devices.validate');
     
 Route::resource('devices', DeviceController::class)->middleware('auth');
-
-Route::resource('devices.movements', DeviceMovementController::class)->middleware('auth');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Movement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class MovementController extends Controller
 {
@@ -87,6 +88,33 @@ class MovementController extends Controller
     public function destroy(Movement $movement)
     {
         $movement->delete();
+        return ['status' => 1];
+    }
+
+    /**
+     * Validate the movement store/update request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     *
+     */
+    public function validateMovement(Request $request)
+    {
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'date' => ['required', 'date'],
+            'location' => ['required', 'string'],
+            'comment' => ['nullable', 'string'],
+        ]);
+
+        if ($validator->fails()) {
+            return [
+                'status' => 0,
+                'errors' => $validator->errors(),
+            ];
+        }
+
         return ['status' => 1];
     }
 }
