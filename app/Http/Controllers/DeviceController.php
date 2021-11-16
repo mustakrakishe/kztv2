@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Type;
 use App\Models\Device;
+use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,6 +19,7 @@ class DeviceController extends Controller
     {
         $devices = Device::paginate()->withPath(route('devices.fetch_data'));
         $types = Type::all();
+        $statuses = Status::all();
 
         $devices->load([
             'type',
@@ -27,7 +29,7 @@ class DeviceController extends Controller
             'last_software'
         ]);
             
-        return view('device-accounting.devices', compact('devices', 'types'));
+        return view('device-accounting.devices', compact('devices', 'types', 'statuses'));
     }
 
     /**

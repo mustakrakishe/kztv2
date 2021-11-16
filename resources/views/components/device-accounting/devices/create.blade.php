@@ -1,4 +1,4 @@
-@props(['types'])
+@props(['types', 'statuses'])
 
 <x-modal id="create-modal" class="modal-lg modal-fullscreen-lg-down">
     <x-slot name="title">{{ __('dialog.create.header', ['entity' => trans('dialog.entities.device')]) }}</x-slot>
@@ -16,7 +16,7 @@
                 <x-device-accounting.devices.create.general :types="$types"/>
             </div>
             <div class="tab-pane fade" id="v-pills-movement" role="tabpanel" aria-labelledby="v-pills-location-tab">
-                <x-device-accounting.devices.create.movement />
+                <x-device-accounting.devices.create.movement :statuses="$statuses"/>
             </div>
             <div class="tab-pane fade" id="v-pills-hardware" role="tabpanel" aria-labelledby="v-pills-hardware-tab">...</div>
             <div class="tab-pane fade" id="v-pills-software" role="tabpanel" aria-labelledby="v-pills-software-tab">...</div>
