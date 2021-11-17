@@ -27,7 +27,7 @@ async function tabswitcherBackClickHandler() {
 async function tabswitcherNextClickHandler() {
     let form = getCurrentForm();
     
-    if (form.length) {
+    if ($(form).attr('validation')) {
         $(this).attr('disabled', true);
         let isValid = await validateForm(form);
         $(this).attr('disabled', false);
@@ -64,8 +64,17 @@ function initMovementPanel() {
 }
 
 async function validateForm(form) {
+    let formToValidate = $(form).clone();
+    let validationUrl = $(formToValidate).attr('validation');
+    $(formToValidate).attr('action', validationUrl);
+    $(formToValidate).attr('method', 'get');
+
     let hasValidation = true;
-    let response = await Form.xhrAction(form, hasValidation);
+    let response = await Form.xhrAction(formToValidate, hasValidation);
+
+    if (response.status === 0) {
+        Form.formatWithErrors(form, response.errors);
+    }
 
     return response.status;
 }

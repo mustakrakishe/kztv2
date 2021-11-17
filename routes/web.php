@@ -22,3 +22,5 @@ Auth::routes();
 
 require __DIR__.'/devices.php';
 require __DIR__.'/movements.php';
+require __DIR__.'/hardware.php';
+require __DIR__.'/software.php';
