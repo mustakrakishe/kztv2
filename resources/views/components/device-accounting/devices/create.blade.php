@@ -15,6 +15,7 @@
             <x-device-accounting.devices.create-dialog.panel.general class="active show" id="v-pills-general" aria-labelledby="v-pills-general-tab" :types="$types"/>
             <x-device-accounting.devices.create-dialog.panel.movement id="v-pills-movement" aria-labelledby="v-pills-movement-tab" :statuses="$statuses"/>
             <x-device-accounting.devices.create-dialog.panel.hardware id="v-pills-hardware" aria-labelledby="v-pills-hardware-tab"/>
+            <x-device-accounting.devices.create-dialog.panel.software id="v-pills-software" aria-labelledby="v-pills-software-tab"/>
         </div>
     </div>
 
