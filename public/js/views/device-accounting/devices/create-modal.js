@@ -4,6 +4,7 @@ import * as Tabswitcher from "../../../components/tabswitcher.js";
 const MODAL = '#create-modal';
 const MOVEMENT_PANEL = '#v-pills-movement';
 const PANEL = '[role=tabpanel]';
+const STORE_BTN = '#store-device-btn';
 const TABSWITCHER_BACK = '[role=tabswitcher][direction=prev]';
 const TABSWITCHER_NEXT = '[role=tabswitcher][direction=next]';
 
@@ -19,16 +20,17 @@ function createModalShowHandler() {
 }
 
 async function tabswitcherBackClickHandler() {
+    $(STORE_BTN).attr('disabled', true);
     Tabswitcher.tabswitcherBackClickHandler(this);
 }
 
 async function tabswitcherNextClickHandler() {
-    $(this).attr('disabled', true);
-
     let form = getCurrentForm();
-    console.log(form.length);
+    
     if (form.length) {
+        $(this).attr('disabled', true);
         let isValid = await validateForm(form);
+        $(this).attr('disabled', false);
 
         if (isValid) {
             Tabswitcher.tabswitcherNextClickHandler(this);
@@ -36,8 +38,6 @@ async function tabswitcherNextClickHandler() {
     } else {
         Tabswitcher.tabswitcherNextClickHandler(this);
     }
-    
-    $(this).attr('disabled', false);
 }
 
 // procedures

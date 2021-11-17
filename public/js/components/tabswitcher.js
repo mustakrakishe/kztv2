@@ -1,5 +1,6 @@
 const TABSWITCHER_LIST = '[role=tabswitcherlist]';
 const TABSWITCHER_BACK = '[role=tabswitcher][direction=prev]';
+const TABSWITCHER_FINISH = '[role=tabswitcher][direction=finish]';
 const TABSWITCHER_NEXT = '[role=tabswitcher][direction=next]';
 
 // handlers
@@ -17,6 +18,9 @@ export function tabswitcherBackClickHandler(tabswitcher) {
 
     let tabswitcherNext = $(tabswitcher).closest(TABSWITCHER_LIST).find(TABSWITCHER_NEXT);
     $(tabswitcherNext).prop('disabled', false);
+
+    let tabswitcherFinish = $(tabswitcher).closest(TABSWITCHER_LIST).find(TABSWITCHER_FINISH);
+    $(tabswitcherFinish).prop('disabled', true);
 }
 
 export function tabswitcherNextClickHandler(tabswitcher) {
@@ -25,9 +29,11 @@ export function tabswitcherNextClickHandler(tabswitcher) {
     let nextTab = getNextTab(ariaControls);
     new bootstrap.Tab(nextTab).show();
 
-    let isLastTab = $(nextTab).next().length == 0;
-    if (isLastTab) {
+    if (isLastTab(nextTab)) {
         $(tabswitcher).prop('disabled', true);
+
+        let tabswitcherFinish = $(tabswitcher).closest(TABSWITCHER_LIST).find(TABSWITCHER_FINISH);
+        $(tabswitcherFinish).prop('disabled', false);
     }
 
     let tabswitcherBack = $(tabswitcher).closest(TABSWITCHER_LIST).find(TABSWITCHER_BACK);
@@ -36,7 +42,7 @@ export function tabswitcherNextClickHandler(tabswitcher) {
 
 // helpers
 
-function getActiveTab(ariaControls) {
+export function getActiveTab(ariaControls) {
     return $(ariaControls).children('.active').first();
 }
 
@@ -48,4 +54,8 @@ function getNextTab(ariaControls) {
 export function getPrevTab(ariaControls) {
     let activeTab = getActiveTab(ariaControls);
     return $(activeTab).prev();
+}
+
+export function isLastTab(tab){
+    return $(tab).next().length == 0;
 }
