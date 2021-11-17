@@ -13,10 +13,6 @@ const PAGINATION_LINK = 'a.page-link';
 const SEARCH_FORM = 'form#search-form';
 const SEARCH_INPUT = 'input#search-input';
 
-// init
-
-
-
 // listeners
 
 $(document).on('click', hideContextMenu);
@@ -31,8 +27,7 @@ $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 
 // Handlers
 
-async function searchDeviceHandler(event)
-{
+async function searchDeviceHandler(event) {
     event.preventDefault();
 
     let response = await Form.xhrAction(SEARCH_FORM);
@@ -43,8 +38,7 @@ async function searchDeviceHandler(event)
     }
 }
 
-async function contextMenuEditHandler(event)
-{
+async function contextMenuEditHandler(event) {
     event.preventDefault();
 
     let link = event.target;
@@ -57,29 +51,26 @@ async function contextMenuEditHandler(event)
     }
 }
 
-async function contextMenuDeleteHandler(event)
-{
+async function contextMenuDeleteHandler(event) {
     event.preventDefault();
 
     let link = event.target;
     let url = $(link).attr('href');
-    
+
     let dialog = $.parseHTML(deleteConfirmationModalHtml);
     $(dialog).find('form').attr('action', url);
 
     showDialog(dialog);
 }
 
-async function createLinkClickHandler(event)
-{
+async function createLinkClickHandler(event) {
     event.preventDefault();
 
     let dialog = $.parseHTML(createModalHtml);
     showDialog(dialog);
 }
 
-async function updateFormSubmitHandler(event)
-{
+async function updateFormSubmitHandler(event) {
     event.preventDefault();
 
     let form = event.target;
@@ -92,12 +83,11 @@ async function updateFormSubmitHandler(event)
     }
 }
 
-async function deleteFormSubmitHandler(event)
-{
+async function deleteFormSubmitHandler(event) {
     event.preventDefault();
 
     let form = event.target;
-    
+
     let response = await $.post({
         url: $(form).attr('action'),
         data: $(form).serialize(),
@@ -109,8 +99,7 @@ async function deleteFormSubmitHandler(event)
     }
 }
 
-async function switchPaginationPage(event)
-{
+async function switchPaginationPage(event) {
     event.preventDefault();
 
     let link = event.target;
@@ -124,8 +113,7 @@ async function switchPaginationPage(event)
     }
 }
 
-async function showContextMenu(event)
-{
+async function showContextMenu(event) {
     event.preventDefault();
 
     let coordinates = {
@@ -137,46 +125,43 @@ async function showContextMenu(event)
 
     let tr = this;
     let deviceId = $(tr).attr('id');
-    
+
     let contextMenu = $.parseHTML(contextMenuHtml);
 
     $(contextMenu).children().each((index, link) => {
         let actualUrl = $(link).attr('href').replace('#', deviceId);
         $(link).attr('href', actualUrl);
     });
-    
-    
+
+
     $('body').prepend(contextMenu);
 
-    $(contextMenu).parent().css({position: 'relative'});
+    $(contextMenu).parent().css({ position: 'relative' });
     $(contextMenu).css({
         top: coordinates.y,
         left: coordinates.x,
-        position:'absolute'
+        position: 'absolute'
     });
     $(contextMenu).css('z-index', 3000);
 }
 
-function hideContextMenu()
-{
+function hideContextMenu() {
     $('#contextmenu').remove();
 }
 
-function showDialog(dialog)
-{
+function showDialog(dialog) {
     $('body').append(dialog);
     $(dialog).modal('show');
 
-    $(dialog).on('hidden.bs.modal', function(){
+    $(dialog).on('hidden.bs.modal', function () {
         $(this).remove();
     });
 }
 
-async function switchDeviceTablePage(page)
-{
+async function switchDeviceTablePage(page) {
     let url = $(DEVICE_TABLE_PAGINATOR).attr('path');
-        
-    let response = await $.get(url, {page});
+
+    let response = await $.get(url, { page });
 
     if (response.status === 1) {
         let deviceTablePage = response.view;

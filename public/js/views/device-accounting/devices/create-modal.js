@@ -13,24 +13,21 @@ $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
 
 // handlers
 
-function createModalShowHandler()
-{
+function createModalShowHandler() {
     $(MODAL).find('input[name=date]').val(currentDatetimeISO());
     initMovementPanel();
 }
 
-async function tabswitcherBackClickHandler()
-{
+async function tabswitcherBackClickHandler() {
     Tabswitcher.tabswitcherBackClickHandler(this);
 }
 
-async function tabswitcherNextClickHandler()
-{
+async function tabswitcherNextClickHandler() {
     let form = getCurrentForm();
     console.log(form.length);
     if (form.length) {
         let isValid = await validateForm(form);
-    
+
         if (isValid) {
             Tabswitcher.tabswitcherNextClickHandler(this);
         }
@@ -49,7 +46,7 @@ function getCurrentForm() {
 
 function initMovementPanel() {
     // init date
-    
+
 
     // init status
     const IN_STORAGE_STATUS_ID = 2;
@@ -62,8 +59,7 @@ function initMovementPanel() {
     $(MOVEMENT_PANEL).find('textarea[name=comment]').val('Новий');
 }
 
-async function validateForm(form)
-{
+async function validateForm(form) {
     let hasValidation = true;
     let response = await Form.xhrAction(form, hasValidation);
 
@@ -72,7 +68,7 @@ async function validateForm(form)
 
 // helpers
 
-function currentDatetimeISO(){
+function currentDatetimeISO() {
     let datetime = new Date();
 
     let year = datetime.getFullYear();

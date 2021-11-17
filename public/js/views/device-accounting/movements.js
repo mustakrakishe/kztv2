@@ -5,7 +5,7 @@ const CREATE_LINK = 'a#create';
 
 $(document).on('click', CREATE_LINK, createLinkClickHandler);
 
-async function createLinkClickHandler(event){
+async function createLinkClickHandler(event) {
     event.preventDefault();
 
     let link = event.target;
@@ -13,7 +13,7 @@ async function createLinkClickHandler(event){
 
     let response = await $.get(url);
 
-    if(response.status === 1){
+    if (response.status === 1) {
         let dialog = response.view;
         showDialog(dialog);
     }
@@ -21,11 +21,11 @@ async function createLinkClickHandler(event){
 
 // helpers
 
-function showDialog(dialog){
+function showDialog(dialog) {
     $('body').append(dialog);
     $(dialog).modal('show');
 
-    $(dialog).on('hidden.bs.modal', function(){
+    $(dialog).on('hidden.bs.modal', function () {
         $(this).remove();
     });
 }

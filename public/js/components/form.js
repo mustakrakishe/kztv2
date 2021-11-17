@@ -1,7 +1,6 @@
-class Form{
+class Form {
 
-    static xhrAction(form, hasValidation = false)
-    {
+    static xhrAction(form, hasValidation = false) {
         const spinner = '<span name="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
         const success = '<i name="result" class="fas fa-check"></i>';
         const fail = '<i name="result" class="fas fa-times"></i>';
@@ -40,9 +39,9 @@ class Form{
                         this.formatWithErrors(form, response.errors);
                     }
                 }
-    
+
                 setTimeout(() => {
-                    $(submitter).find('[name=result]').fadeOut('slow', function(self){
+                    $(submitter).find('[name=result]').fadeOut('slow', function (self) {
                         $(submitter).prop('disabled', false);
                         $(this).remove();
                         $(submitter).find('[name=init-content]').fadeIn('slow');
@@ -51,9 +50,8 @@ class Form{
             },
         });
     }
-    
-    static formatWithErrors(form, errors = [])
-    {
+
+    static formatWithErrors(form, errors = []) {
         $(form).find('.invalid-feedback').remove();
         $(form).find('.is-invalid').removeClass('is-invalid');
 
@@ -70,8 +68,7 @@ class Form{
         });
     }
 
-    static reset(formId)
-    {
+    static reset(formId) {
         $(formId).find('.invalid-feedback').remove();
         $(formId).find('.is-invalid').removeClass('is-invalid');
         $(formId).trigger('reset');
