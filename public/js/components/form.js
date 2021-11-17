@@ -7,6 +7,12 @@ class Form{
         const fail = '<i name="result" class="fas fa-times"></i>';
 
         let submitter = $(form).find(':submit').first();
+
+        if (!submitter.length) {
+            let submitterSelector = '#' + $(form).attr('submitter');
+            submitter = $(submitterSelector);
+        }
+
         $(submitter).width($(submitter).width());
         $(submitter).find('[name=result]').remove();
         $(submitter).find('[name=init-content]').hide();
@@ -22,10 +28,13 @@ class Form{
             method: $(form).attr('method'),
             data: $(form).serialize(),
             success: (response) => {
+                let submitterStatusDelay = 0;
+
                 if (response.status === 1) {
                     $(submitter).find('[name="spinner"]').replaceWith(success);
                 } else {
                     $(submitter).find('[name="spinner"]').replaceWith(fail);
+                    submitterStatusDelay = 2000;
 
                     if (hasValidation) {
                         this.formatWithErrors(form, response.errors);
@@ -38,7 +47,7 @@ class Form{
                         $(this).remove();
                         $(submitter).find('[name=init-content]').fadeIn('slow');
                     });
-                }, 2000);
+                }, submitterStatusDelay);
             },
         });
     }

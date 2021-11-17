@@ -9,7 +9,7 @@
     $default->comment = 'Новий';
 @endphp
 
-<form id="create-movement-form" class="mt-3" action="{{ route('movements.validate') }}" method="get">
+<form id="create-movement-form" class="mt-3" action="{{ route('movements.validate') }}" method="get" submitter="tabswitcher-next">
 
     <div class="row mb-3">
         <div class="col-md-6">

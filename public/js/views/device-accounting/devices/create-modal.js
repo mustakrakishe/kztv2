@@ -27,9 +27,14 @@ async function tabswitcherBackClickHandler()
 async function tabswitcherNextClickHandler()
 {
     let form = getCurrentForm();
-    let isValid = await validateForm(form);
-
-    if (isValid) {
+    console.log(form.length);
+    if (form.length) {
+        let isValid = await validateForm(form);
+    
+        if (isValid) {
+            Tabswitcher.tabswitcherNextClickHandler(this);
+        }
+    } else {
         Tabswitcher.tabswitcherNextClickHandler(this);
     }
 }

@@ -26,8 +26,8 @@
     </div>
 
     <div role="tabswitcherlist" class="d-flex mt-auto justify-content-end">
-        <x-button role="tabswitcher" direction="prev" aria-controls="#v-pills-tab" disabled>{{ __('dialog.actions.back') }}</x-button>
-        <x-button role="tabswitcher" direction="next" class="ms-2" aria-controls="#v-pills-tab">{{ __('dialog.actions.next') }}</x-button>
+        <x-button role="tabswitcher" direction="prev" id="tabswitcher-prev" aria-controls="#v-pills-tab" disabled>{{ __('dialog.actions.back') }}</x-button>
+        <x-button role="tabswitcher" direction="next" id="tabswitcher-next" class="ms-2" aria-controls="#v-pills-tab">{{ __('dialog.actions.next') }}</x-button>
         <x-button class="ms-2" disabled>{{ __('dialog.actions.finish') }}</x-button>
     </div>
 
