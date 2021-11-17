@@ -15,6 +15,7 @@ $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
 
 function createModalShowHandler()
 {
+    $(MODAL).find('input[name=date]').val(currentDatetimeISO());
     initMovementPanel();
 }
 
@@ -43,16 +44,7 @@ function getCurrentForm() {
 
 function initMovementPanel() {
     // init date
-    let currentDateTime = new Date();
-    let year = currentDateTime.getFullYear();
-    let month = currentDateTime.getMonth() + 1;
-    let day = currentDateTime.getDate();
-    let currentDateString = [year, month, day].join('-');
-    let currentTimeString = currentDateTime.toTimeString().substr(0, 8);
-
-    let currentDateTimeISO = currentDateString + 'T' + currentTimeString;
-
-    $(MOVEMENT_PANEL).find('input[name=date]').val(currentDateTimeISO);
+    
 
     // init status
     const IN_STORAGE_STATUS_ID = 2;
@@ -71,4 +63,21 @@ async function validateForm(form)
     let response = await Form.xhrAction(form, hasValidation);
 
     return response.status;
+}
+
+// helpers
+
+function currentDatetimeISO(){
+    let datetime = new Date();
+
+    let year = datetime.getFullYear();
+    let month = datetime.getMonth() + 1;
+    let day = datetime.getDate();
+    let date = [year, month, day].join('-');
+
+    let time = datetime.toTimeString().substr(0, 8);
+
+    let datetimeISO = date + 'T' + time;
+
+    return datetimeISO;
 }

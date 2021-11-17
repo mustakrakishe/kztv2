@@ -18,7 +18,9 @@
             <div class="tab-pane fade" id="v-pills-movement" role="tabpanel" aria-labelledby="v-pills-location-tab">
                 <x-device-accounting.devices.create.movement :statuses="$statuses"/>
             </div>
-            <div class="tab-pane fade" id="v-pills-hardware" role="tabpanel" aria-labelledby="v-pills-hardware-tab">...</div>
+            <div class="tab-pane fade" id="v-pills-hardware" role="tabpanel" aria-labelledby="v-pills-hardware-tab">
+                <x-device-accounting.devices.create.hardware />
+            </div>
             <div class="tab-pane fade" id="v-pills-software" role="tabpanel" aria-labelledby="v-pills-software-tab">...</div>
         </div>
     </div>

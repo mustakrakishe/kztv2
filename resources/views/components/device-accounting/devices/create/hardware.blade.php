@@ -1,6 +1,6 @@
 <form id="create-hardware-form" class="mt-3" action="" method="get">
 
-    <div class="mb-3">
+    <div class="mb-3 w-50">
         <label for="date" class="form-label">{{ __('Date') }}</label>
         <input type="datetime-local" name="date" class="form-control">
     </div>

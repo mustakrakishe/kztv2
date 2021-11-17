@@ -1,5 +1,14 @@
 @props(['statuses'])
 
+@php
+    $IN_STORAGE_STATUS_ID = 2;
+
+    $default = new class {};
+    $default->status_id = $IN_STORAGE_STATUS_ID;
+    $default->location = 'ЗУ. АСУ. 210';
+    $default->comment = 'Новий';
+@endphp
+
 <form id="create-movement-form" class="mt-3" action="{{ route('movements.validate') }}" method="get">
 
     <div class="row mb-3">
@@ -11,7 +20,10 @@
             <label for="status_id" class="form-label">{{ __('Status') }}</label>
             <select name="status_id" class="form-select">
                 @foreach($statuses as $status)
-                <option value="{{ $status->id }}">
+                <option
+                    value="{{ $status->id }}"
+                    @if($status->id == $default->status_id) selected @endif
+                >
                     {{ $status->name }}
                 </option>
                 @endforeach
@@ -25,7 +37,7 @@
             name="location"
             class="form-control"
             style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
-        ></textarea>
+        >{{ $default->location }}</textarea>
     </div>
 
     <div>
@@ -34,7 +46,7 @@
             name="comment"
             class="form-control"
             style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
-        ></textarea>
+        >{{ $default->comment }}</textarea>
     </div>
     
 </form>
