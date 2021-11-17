@@ -1,6 +1,10 @@
 import Form from "../../../components/form.js";
 import * as Tabswitcher from "../../../components/tabswitcher.js";
 
+const CREATE_DEVICE_FORM = '#create-device-form';
+const CREATE_HARDWARE_FORM = '#create-hardware-form';
+const CREATE_MOVEMENT_FORM = '#create-movement-form';
+const CREATE_SOFTWARE_FORM = '#create-software-form';
 const MODAL = '#create-modal';
 const MOVEMENT_PANEL = '#v-pills-movement';
 const PANEL = '[role=tabpanel]';
@@ -9,6 +13,7 @@ const TABSWITCHER_BACK = '[role=tabswitcher][direction=prev]';
 const TABSWITCHER_NEXT = '[role=tabswitcher][direction=next]';
 
 $(document).on('show.bs.modal', MODAL, createModalShowHandler);
+$(document).on('click', STORE_BTN, storeBtnClickHandler);
 $(document).on('click', TABSWITCHER_BACK, tabswitcherBackClickHandler);
 $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
 
@@ -17,6 +22,11 @@ $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
 function createModalShowHandler() {
     $(MODAL).find('input[name=date]').val(currentDatetimeISO());
     initMovementPanel();
+}
+
+async function storeBtnClickHandler() {
+    let response = await Form.xhrAction(CREATE_DEVICE_FORM);
+    console.log(response);
 }
 
 async function tabswitcherBackClickHandler() {

@@ -50,7 +50,23 @@ class DeviceController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        $validation = $this->validateDevice($request);
+        if(!$validation['status']){
+            return $validation;
+        }
+
+        $device = Device::create([
+            'inventory_code' => $request->inventory_code,
+            'identification_code' => $request->identification_code,
+            'model' => $request->model,
+            'comment' => $request->comment,
+            'type_id' => $request->type_id,
+        ]);
+
+        return [
+            'status' => 1,
+            'device' => $device,
+        ];
     }
 
     /**
