@@ -13,6 +13,12 @@ const PAGINATION_LINK = 'a.page-link';
 const SEARCH_FORM = 'form#search-form';
 const SEARCH_INPUT = 'input#search-input';
 
+// init
+
+
+
+// listeners
+
 $(document).on('click', hideContextMenu);
 $(document).on('click', CONTEXT_MENU_DELETE, contextMenuDeleteHandler);
 $(document).on('click', CONTEXT_MENU_EDIT, contextMenuEditHandler);

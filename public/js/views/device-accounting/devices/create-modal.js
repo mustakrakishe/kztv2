@@ -2,6 +2,8 @@ import Form from "../../../components/form.js";
 import * as Tabswitcher from "../../../components/tabswitcher.js";
 
 const MODAL = '#create-modal';
+const MOVEMENT_PANEL = '#v-pills-movement';
+const PANEL = '[role=tabpanel]';
 const TABSWITCHER_BACK = '[role=tabswitcher][direction=prev]';
 const TABSWITCHER_NEXT = '[role=tabswitcher][direction=next]';
 
@@ -13,7 +15,7 @@ $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
 
 function createModalShowHandler()
 {
-    initDatetimeInputs();
+    initMovementPanel();
 }
 
 async function tabswitcherBackClickHandler()
@@ -33,17 +35,26 @@ async function tabswitcherNextClickHandler()
 
 // procedures
 
-function getCurrentForm()
-{
-    let activeTabPanel = $(MODAL).find('[role=tabpanel].active');
+function getCurrentForm() {
+    let activeTabPanel = $(MODAL).find(PANEL + '.active');
     let currentForm = $(activeTabPanel).find('form').first();
     return currentForm;
 }
 
-function initDatetimeInputs()
-{
+function initMovementPanel() {
+    // init date
     let currentDatetimeJson = new Date().toJSON().slice(0,19);
-    $('input[type=datetime-local]').val(currentDatetimeJson);
+    $(MOVEMENT_PANEL).find('input[name=date]').val(currentDatetimeJson);
+
+    // init status
+    const IN_STORAGE_STATUS_ID = 2;
+    $(MOVEMENT_PANEL).find('select[name=status_id]').val(IN_STORAGE_STATUS_ID);
+
+    // init location
+    $(MOVEMENT_PANEL).find('textarea[name=location]').val('ЗУ. АСУ. 210');
+
+    // init comment
+    $(MOVEMENT_PANEL).find('textarea[name=comment]').val('Новий');
 }
 
 async function validateForm(form)

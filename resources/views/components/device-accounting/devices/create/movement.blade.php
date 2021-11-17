@@ -25,7 +25,7 @@
             name="location"
             class="form-control"
             style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
-        >ЗУ. АСУ. 210</textarea>
+        ></textarea>
     </div>
 
     <div>
