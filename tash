@@ -1,0 +1,1126 @@
+[33mcommit bf2e1152c563dec6bdbafe0268a2b2fa2d2274cf[m[33m ([m[1;36mHEAD -> [m[1;32mdevices_create[m[33m)[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Nov 17 10:45:55 2021 +0200
+
+    Fixed timezone missing when intialization of the create device dialog.
+
+[33mcommit 0adc8a6c306dc29d2f337f939b9ad5c94d51b26b[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Nov 17 09:50:46 2021 +0200
+
+    .env is updated.
+
+[33mcommit 4e3383d090ee9e8cfcb271cb5a52d81ecddcafe8[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Nov 17 09:26:41 2021 +0200
+
+    Create device dialog: movement panel init values are added.
+
+[33mcommit f8fb1c2c9088557dc3467f4673a74391418883ef[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 16 08:45:57 2021 +0200
+
+    Extended available status list.
+
+[33mcommit 48d15a657f29070858afae774febbe2f71bffc33[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 15 16:29:56 2021 +0200
+
+    js code review.
+
+[33mcommit 6e126ec66e9221be6e3dba99874a99576eb64d7b[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 15 16:23:00 2021 +0200
+
+    Create device dialog: fixed tab content spaces.
+
+[33mcommit e17b82472419997ab948f7930593829d37385bc9[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 15 16:15:56 2021 +0200
+
+    invalid-feedback is represented with divs instead of a list.
+
+[33mcommit 387eaee580e612eeacf041783c15e4d1130976af[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 15 16:05:39 2021 +0200
+
+    Create device dialog: movement form ajax validation is realized.
+
+[33mcommit c87ab745d9eb1ebc1e2fd66b140edb8cc4651d38[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 15 15:30:05 2021 +0200
+
+    Create device dialog: movement form is created.
+
+[33mcommit 3ddf4607c2e34448c22bfcb15ea3f7d77d070453[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 15 13:05:20 2021 +0200
+
+    Create device dialog: disable left sidebar clickability.
+
+[33mcommit 21c92591baa2ab850a82956e68e587b152e0de23[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 15 12:55:39 2021 +0200
+
+    Create device dialog: tabswitchers next and back works.
+
+[33mcommit b8ea6392a3bdefbc01d3e52ab4d8d30a9b0ba0e6[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 15 11:44:12 2021 +0200
+
+    Create device dialog: general parameters ajax validation is realized.
+
+[33mcommit d3be5bb3e97e996fcbd8b3e3e4f545acf51ae580[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Nov 10 08:35:14 2021 +0200
+
+    removed unusing device page view components folder.
+
+[33mcommit 0bcc1418d3f41edcd04ec01351f8c993b26fc756[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 9 16:44:05 2021 +0200
+
+    tabswitcher js component is created.
+
+[33mcommit 64e2194b211902d01b9458046ee120223f4a2cb2[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 9 13:05:45 2021 +0200
+
+    created create device dialog  general panel.
+
+[33mcommit eaf0617f808da5da89de2a1640ebbfe51e1ca0b8[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 9 12:21:11 2021 +0200
+
+    created tabs js component.
+
+[33mcommit 68044cb564f3f6529e467c43519d2bfcaee71d66[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 9 09:45:05 2021 +0200
+
+    create device modal is created.
+
+[33mcommit fbfcdda10ed5b07bad95e322a6b61210d7c68486[m[33m ([m[1;31mgh/devices[m[33m, [m[1;32mmovements[m[33m, [m[1;32mdevices[m[33m)[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 15:31:56 2021 +0200
+
+    Create movement dialog is displayable.
+
+[33mcommit fc68c95a0bb21f76d5ef811f27b0883fcff67cb2[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 15:18:59 2021 +0200
+
+    js folder structure reorganized.
+
+[33mcommit 75df29c72ed174f971a41e10b5b0b72ab03d37b6[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 15:15:39 2021 +0200
+
+    movements page localization.
+
+[33mcommit dd8768bf002f79e17772002e67dddfc704711000[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 14:50:30 2021 +0200
+
+    created "new movement button. created movements routes.
+
+[33mcommit e42fdb9c037f47958654d62965c72ee8bb4b54f8[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 14:25:48 2021 +0200
+
+    fixed devices page displaying.
+
+[33mcommit 11487b2ae039eae284bdb436957c6c5712a55354[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 14:21:18 2021 +0200
+
+    deleted unactual DeviceMovement and DeviceMuvementCOntroller controllers.
+
+[33mcommit 66d149bb1880da5cba0570c36a30c7a8a2c23684[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 14:19:12 2021 +0200
+
+    view recomposition.
+
+[33mcommit ff091e05632f84174fe17453eb4e526681a10857[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 14:12:31 2021 +0200
+
+    movement table header localization.
+
+[33mcommit ee83132b24e3b890f0845e14e4e4d5cd52ef3719[m
+Merge: 84fd9e6 1ca65e2
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 14:11:21 2021 +0200
+
+    Merge branch 'device_accounting' into movements
+
+[33mcommit 1ca65e2f90b76ee966c2010a7f085107501fdbc2[m[33m ([m[1;32mdevice_accounting[m[33m)[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 14:10:55 2021 +0200
+
+    fixed localization.
+
+[33mcommit 84fd9e60c1c6b46bc213e8989f091144a63b1dfd[m
+Merge: a59f774 7f79480
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 14:02:35 2021 +0200
+
+    Merge branch 'device_accounting' into movements
+
+[33mcommit 7f79480bf0880331690743e02d5395b18dbeb3b1[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 13:59:41 2021 +0200
+
+    device create dialog is displaying.
+
+[33mcommit 546aae7b76cfd5bccf9dc676d45ee0f2a96e7b52[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 13:38:22 2021 +0200
+
+    devices.js code review.
+
+[33mcommit 481144679495efbf90d5ea8868bd89a72b48d6fc[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 13:36:19 2021 +0200
+
+    deleted unusing js components for device properties view.
+
+[33mcommit d4860e728c8ba61db0d92ff218a9d7c39b0a8230[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 13:27:25 2021 +0200
+
+    Created "add device" link button.
+
+[33mcommit 367cb0a9d05e25ade79a1d91615babce1489a9dd[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 13:11:38 2021 +0200
+
+    fixed navbar dropdown displaying.
+
+[33mcommit a59f774cf43682df9e7144003b1f3e1ee214ce21[m
+Merge: 54c2cfa 06b6f33
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 13:08:00 2021 +0200
+
+    Merge branch 'device_accounting' into movements
+
+[33mcommit 06b6f3345c9f9eb0848770c5a62ec61720fbdebe[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 13:04:34 2021 +0200
+
+    fixed device edit form type select.
+
+[33mcommit 2168ecabf6d0e38038ee71a5846df2651cb64449[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 12:58:48 2021 +0200
+
+    Button component has min width.
+
+[33mcommit 28e0fbbe1ad47ee07d31a882c7adbd268aad5ca0[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 12:56:35 2021 +0200
+
+    button component is updated. It is removed fixed width.
+
+[33mcommit 1ccbdfeb95038012959ad6506d78315a69d634a4[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 12:23:12 2021 +0200
+
+    fixed context menu positioning.
+
+[33mcommit 11cc39adcc725ec6e0d19452d91591560551eaea[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 10:57:02 2021 +0200
+
+    Form js component: disabling submitter when it is processing.
+
+[33mcommit 9b59f9630fd378d70221e428e90f661fa4b86af9[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 10:45:52 2021 +0200
+
+    Edit dialog displaying.
+
+[33mcommit 91483b09c1463cd249d24a709711c84ae553df15[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 10:39:58 2021 +0200
+
+    created device.js showDialog func.
+
+[33mcommit 82f7963fe0b36c3e4e713b97da0e47cf7ccc1b8a[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 10:22:39 2021 +0200
+
+    removeing delete confirmation modal when it is hidden.
+
+[33mcommit 977832a9191518573c9a18c9a09fe0ef78945ffc[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 10:10:22 2021 +0200
+
+    dialog localization. device edit view has modal cover.
+
+[33mcommit af69a832b53cc867a3f9dcd04fd3a635eb8a6268[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 10:02:32 2021 +0200
+
+    context menu has actual actions only. edit js handler is created.
+
+[33mcommit 3007cabd4c63630bb27ef1bafcc0cdb10d777395[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 09:43:06 2021 +0200
+
+    device deleting with confirmation works perfect.
+
+[33mcommit 3b503cdf90ae5f07634ec43aa503469e6c093f98[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 09:35:33 2021 +0200
+
+    Deleted unusing device.js constants.
+
+[33mcommit dd045588ede60ff44ca7cd52240f0e3f89039cfd[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 09:34:50 2021 +0200
+
+    Removed unusing showDeviceProperties js func.
+
+[33mcommit a37feee3b45c477017417418df0d8b3940be60cd[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 09:34:14 2021 +0200
+
+    fix delete confirmation.
+
+[33mcommit 7c86d6f0b4b0b4aa7b57e565c8c4fc4fd001411b[m[33m ([m[1;31mgh/context_menu[m[33m)[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 09:08:16 2021 +0200
+
+    deleted device properties component.
+
+[33mcommit 8515c34800c2a113c034202efdc12efb9d61d728[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 08:57:39 2021 +0200
+
+    removed unactual protectBodyScrolling js function.
+
+[33mcommit 2af2cce102297a0959f9463e93779c13c67c75be[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 08:56:35 2021 +0200
+
+    context menu edit and delete links have actual urls.
+
+[33mcommit 195548080d65b7754a71519acab0572db4d167ad[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 08:07:41 2021 +0200
+
+    Fixed context menu displaying.
+
+[33mcommit 320420ed59c2bd753be032b03b86098b595a3a68[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Nov 8 07:52:27 2021 +0200
+
+    fix main container left space when sidebar is not displayed.
+
+[33mcommit 9cabd9a4864582153a948c487b7601f2306fe255[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Nov 5 15:44:38 2021 +0200
+
+    context menu is loaded vith the devices page view.
+
+[33mcommit b4bd818da0849453ed01fecdf64d012a6b088432[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Nov 5 15:08:12 2021 +0200
+
+    Created context menu.
+
+[33mcommit c82895a9e434c8a58037a54a72ec39bbf0875f7e[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Nov 5 11:30:44 2021 +0200
+
+    device accounting services components are placed into single components folder.
+
+[33mcommit 54c2cfaf69de91d76d02f413edb5af6c9bb3f2b4[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Nov 4 10:52:45 2021 +0200
+
+    Device movements table show a log.
+
+[33mcommit c66c7fc15c9b81a05d48d4b8a842a743fb551495[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Nov 4 10:21:37 2021 +0200
+
+    Created movement device relationship. Edited. movement table heated.
+
+[33mcommit 9bd28062675cebe30fca113bafe216cbfa894c2d[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Nov 4 10:06:39 2021 +0200
+
+    devices section pages are included into specific folder.
+
+[33mcommit f23bc2aaaee1dc6b18ece95361d9c5242351cc0c[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Nov 4 10:03:39 2021 +0200
+
+    Added movements route file to the web.php.
+
+[33mcommit 9ecba89cb81ded1a29e1cc153f3240bccc372fbf[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Nov 4 10:01:02 2021 +0200
+
+    device brief info page localizarion.
+
+[33mcommit 6722005e50c0d745806ee3b189d602ba3341e34b[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Nov 4 09:58:01 2021 +0200
+
+    Fixed sidebar collapsing.
+
+[33mcommit f8ef03f5968e1c9fe2c7ed6ffb8ae4ab31857a8d[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Nov 4 09:54:35 2021 +0200
+
+    sidebar menu item component is created.
+
+[33mcommit bbfdeaa7f6fb6561d21935e5f2dbfb197403e71c[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Nov 3 16:49:10 2021 +0200
+
+    eloquent sidebar menu.
+
+[33mcommit c1dc221ff3b6133315560bffb010e7aaa7e168b5[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Nov 3 11:27:04 2021 +0200
+
+    sidebar border applayed.
+
+[33mcommit de5da70432da2837576ec58cf1d4a5a2342236f6[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Nov 3 10:48:30 2021 +0200
+
+    main container has py-4
+
+[33mcommit 1a41805b9435cadbd00ad3aad6c0d34bb00434ab[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Nov 3 10:42:42 2021 +0200
+
+    fixed logout dropdown.
+
+[33mcommit 32f38b9d121aa39cd197e4ac80d9e7d0aa7166fb[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Nov 3 10:14:40 2021 +0200
+
+    page layout dark header. collapsed sidebar.
+
+[33mcommit 7eefe9ddae059bf84846124887782a6b78b42de7[m[33m ([m[1;32mproperties_movements[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 14:43:52 2021 +0200
+
+    device propertieas are disabled expect the general.
+
+[33mcommit 99d48d669ccf0412dc48b723779f18d4139028d2[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 13:31:56 2021 +0200
+
+    Device movements properties: new record button is updated.
+
+[33mcommit 57853ba0740c6bacc5358b0011d1d5938f02ec4b[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 13:10:46 2021 +0200
+
+    Device general properies view edited.
+
+[33mcommit 53103d318b3df005d850e858355075dede6cf292[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 13:06:45 2021 +0200
+
+    device properties modal full-screen in case window short width.
+
+[33mcommit 9717aac295354f7c4e7596f3b25d9c40f52002ea[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 12:38:44 2021 +0200
+
+    Seted fixed width for device movement properies table actions column.
+
+[33mcommit ed09ff45e92d71221398169b3c011bb2f6795adb[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 11:35:59 2021 +0200
+
+    toggle between modals is corrected.
+
+[33mcommit 3a8b756314c9d351e0170f5726ae45b572309c5a[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 11:31:43 2021 +0200
+
+    Device movements properies view is corrected.
+
+[33mcommit cce4c2e43fd3b5015325c3107ad50004bab5f90f[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 11:28:30 2021 +0200
+
+    devices properies general view is corrected.
+
+[33mcommit 38d3f94e7f5727bd4bb8affa4a1435995b06d20a[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 10:34:28 2021 +0200
+
+    device properies tabs works.
+
+[33mcommit 7e1bd2728c8a83f7b7985472b2a4acae2fdee093[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 10:16:29 2021 +0200
+
+    modal component close button is corrected.
+
+[33mcommit c6e1648cb7a0fa8d81ad829fe2cb6502fa10726f[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 10:13:39 2021 +0200
+
+    devices view corrected.
+
+[33mcommit a1a3551eb4433693a5f94f06f4571527471c992b[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 10:00:32 2021 +0200
+
+    register buttons has auto width.
+
+[33mcommit 0a3e694a21b53cbc15da4f08e7dd291313881d74[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 09:54:43 2021 +0200
+
+    login view corrected.
+
+[33mcommit fbb6edb6440fc7b732e923071f710906d9b244ca[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 09:53:07 2021 +0200
+
+    Button component width is removed.
+
+[33mcommit 2743d2b73d8bc8b4ff33e2346079d68ad80e4b3b[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 09:51:41 2021 +0200
+
+    Fixed unusing bootstrap variables.
+
+[33mcommit 214e2eefc5a9ca12a8581c26a5dcc3d3caba1526[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 09:41:19 2021 +0200
+
+    Register card paddings and text aligment are corrected.
+
+[33mcommit 87b8e9fc746f3205fd800763a08d99e9fffa42a0[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 09:30:22 2021 +0200
+
+    Removed navbar leftside links container.
+
+[33mcommit 81e90e91b74fd7a6ba30cb6706ff00b83ee2b969[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 09:29:16 2021 +0200
+
+    Navigation bar auth links moved back to the right side.
+
+[33mcommit 8950e6524554de393fe69fe093a722cbde110929[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 09:21:03 2021 +0200
+
+    bootstrap is upgraded to v5.1.3.
+
+[33mcommit 8edf147063950538e2d46da5c5b8ad5e50eccef0[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 09:03:42 2021 +0200
+
+    removed unusing public/fonts/vendor/font-awesome/ directoty.
+
+[33mcommit 6bf0f710d11b917e5cdadbe4a8fa7cd359202d32[m
+Merge: 41197a4 ad587af
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 08:58:09 2021 +0200
+
+    Merge branch 'master' into properties_movements
+
+[33mcommit ad587af28ae203fc8348941ddfdc5de515fcb807[m[33m ([m[1;33mtag: 1.1.0[m[33m, [m[1;31mgh/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Nov 2 08:55:14 2021 +0200
+
+    Readme is updated.
+
+[33mcommit 41197a47099b4afa24643652e85c42998a957e2c[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 15:23:33 2021 +0300
+
+    movements.js codereview.
+
+[33mcommit 266c924dd53b88f09e9379a40816ab15fc349ad1[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 15:12:48 2021 +0300
+
+    Movement delete and update correct displaying.
+
+[33mcommit c4a46bae9b85991830205b8461c7fe9c3e2ff187[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 14:49:34 2021 +0300
+
+    Returning of the movement table row when it is updated.
+
+[33mcommit 72da60544713875080f238a70da7c8617ad810ed[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 14:17:02 2021 +0300
+
+    Cancel edit movement works.
+
+[33mcommit b619d2074c5891ee3bdb08c8a55952d849a139f6[m
+Merge: 07d6265 0aa33e6
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 13:43:33 2021 +0300
+
+    Merge branch 'js_components' into properties_movements
+
+[33mcommit 0aa33e60adc25096b76df5870e231802a3a2ee97[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 13:42:27 2021 +0300
+
+    Removed mr from the form submit spinner.
+
+[33mcommit 07d6265e004cab5eeb7a989946cc0a69ba48e129[m
+Merge: 7feb11b 10a0fc0
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 13:42:47 2021 +0300
+
+    Merge branch 'js_components' into properties_movements
+
+[33mcommit 10a0fc0c71e1254c463c9a74b513181a98852914[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 13:42:27 2021 +0300
+
+    Removed mr from the form submit spinner.
+
+[33mcommit 7feb11bbe73422343bdd9a421e1708330b9f5d0d[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 12:27:37 2021 +0300
+
+    removed unexisted confirmation modal component require in devices page.
+
+[33mcommit 8bdef1dc3075d3f923ffae83610aed87b2ec52cc[m
+Merge: 076ae58 d22b60e
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 12:25:21 2021 +0300
+
+    merged with branch 'js_components'
+
+[33mcommit d22b60e6d4f0e9745b18b0186dba99b348242a01[m
+Merge: 52f8bcd 2dbc1f6
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 12:13:36 2021 +0300
+
+    merged with branch 'js_components'
+
+[33mcommit 076ae58b86ca7dfa805b00aebb69ce87830e3dfc[m
+Merge: c30c743 518115f
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 12:14:26 2021 +0300
+
+    Merge branch 'develop' into properties_movements
+
+[33mcommit c9bc54ed2459212c4a8aa405d49293e3309ed693[m
+Merge: b9ea0da 518115f
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 12:14:09 2021 +0300
+
+    Merge branch 'develop' into properties_general
+
+[33mcommit 518115f1c19db2c0a574bc9d24942bb45abaf626[m
+Merge: 52f8bcd 2dbc1f6
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 12:13:36 2021 +0300
+
+    merged with branch 'js_components'
+
+[33mcommit 2dbc1f647785f9e33446a17bbc6414de77017265[m[33m ([m[1;32mauth[m[33m)[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 11:44:21 2021 +0300
+
+    Created button view component. Added fade animation to form submit.
+
+[33mcommit c30c7437c88f906494e3f391f08d84afddb07478[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 11:12:30 2021 +0300
+
+    Works delete device movement confirmation.
+
+[33mcommit cdd789e8ca87c49a8189df1c534425b998f31844[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 08:35:04 2021 +0300
+
+    Added movement resource routes. Created MovementController. Initializated MovementController->destroy() method.
+
+[33mcommit 31056eb206c28dab79ce2bdb15baefafdca7fb56[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 08:28:56 2021 +0300
+
+    Created device movements property js scenario.
+
+[33mcommit 28458683ee3e7873ea61dbbcb9e74ea1fa18d7a3[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 08:10:04 2021 +0300
+
+    Created movements table row action buttons.
+
+[33mcommit 866d9cad2c420ac77636ce6f386f6508078fc8a0[m
+Merge: a3a70cf b9ea0da
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Fri Oct 29 07:57:05 2021 +0300
+
+    merged with branch 'properties_general'
+
+[33mcommit b9ea0da218540d2b22c78c213c51ef47accf877c[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 28 17:01:56 2021 +0300
+
+    Devices page: table is refreshing when it is device deleted.
+
+[33mcommit 3afe5a2d5c1f2fc2f253d081219a8abc2abcd701[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 28 16:58:48 2021 +0300
+
+    public/js/views/device.js: created switchDeviceTablePage().
+
+[33mcommit 52f8bcd5906d1fb79ef08c9ab73b4ec825d4ceee[m
+Merge: 683ded7 93f276d
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 28 16:22:21 2021 +0300
+
+    Merge branch 'properties_general' into develop
+
+[33mcommit 93f276d3483a4e16f0173cc27cc9d2768bc68c10[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 28 16:17:27 2021 +0300
+
+    Is able to delete device.
+
+[33mcommit dcb63f061e5f31de97e6ba0876239aa95024931a[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 28 16:01:44 2021 +0300
+
+    Submit displays success or failure query result.
+
+[33mcommit d1a81965bd0d748fff16fe349b9419c121ce84b4[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 28 12:56:03 2021 +0300
+
+    Created delete confirmation modal.
+
+[33mcommit 6e9f4ca040e81fc03843d346d1d1e0717305bbb6[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 28 10:04:39 2021 +0300
+
+    toggle between properties and delete device modals.
+
+[33mcommit a3a70cf108d559fbc1f1afa88eb301135270b2c8[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 16:51:32 2021 +0300
+
+    Displaying device movement table.
+
+[33mcommit 9c0a30b80067fecc4b6f9d02dd56975edcc76075[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 16:18:50 2021 +0300
+
+    Deleted test code from the DeviceController->show() method.
+
+[33mcommit a8c71c39fe916ebca10bf2c07e4f8c622f3d9a1e[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 16:14:15 2021 +0300
+
+    Devices brief info localization.
+
+[33mcommit 58ca0117dd96d3cebae0656205dec0794e253070[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 15:33:29 2021 +0300
+
+    Device properties: satus select is replaced with disabled input.
+
+[33mcommit bbd62f285312da7c189e01b6af902e3636304251[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 14:47:53 2021 +0300
+
+    Fixed bug when chanched device status and type do not stored.
+
+[33mcommit 1258922e91aeb1933416fcedd725b81ce9c516ef[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 14:43:25 2021 +0300
+
+    Go to the first device table page in case successfuly device updating instead of the current page.
+
+[33mcommit f65ef8c6367a49edec111e44f121a547fa90f379[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 14:34:32 2021 +0300
+
+    Refreshing of the table in case successful device updating.
+
+[33mcommit 1deec73d8ca3e6881bb9bb6b998b540eee8bd916[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 14:25:27 2021 +0300
+
+    Created paginator component. Device table has paginator from the component.
+
+[33mcommit 16d724cccecb71a2b6cb58a7d4dd33e51351c843[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 14:12:16 2021 +0300
+
+    Created alter_devices_table_add_updated_at_column. Defined device model default sorting.
+
+[33mcommit 2a867f6de94ea4f1b5553d241b282ca14e176c22[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 13:31:29 2021 +0300
+
+    Update device works. Displaying process result message in the  submit button.
+
+[33mcommit ad1db1822495fdf1eb723848b06d1ac5c2c10319[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 12:53:10 2021 +0300
+
+    Update device validation is added.
+
+[33mcommit 02cd2068ef2da577090a31f28a55051e69df0921[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 11:35:26 2021 +0300
+
+    Device properties bottom row with status and buttons display is fixed.
+
+[33mcommit 2e655e056a7dfc7b46ba373784f5b5683df9c28a[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 10:13:55 2021 +0300
+
+    eloquent device general properties.
+
+[33mcommit 25950a991072417046d4f1359603ff5fc5495f5c[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 09:59:06 2021 +0300
+
+    Created button component.
+
+[33mcommit 25e19064d68c681df8a5c45f329197ef51bc7428[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 09:51:43 2021 +0300
+
+    device properties display identification code.
+
+[33mcommit 9de41de3820665ede59129f06252c97bb79e9a90[m
+Merge: 458cfe7 8336769
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 09:49:39 2021 +0300
+
+    Merge branch 'devices' into devices_page
+
+[33mcommit 8336769dd3b42da95ceec6865853af18515123e2[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 09:49:18 2021 +0300
+
+    device table displays identification codes.
+
+[33mcommit 458cfe77bc83d2523c4b812e252d22649235a61f[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 09:46:41 2021 +0300
+
+    Added spacing between properties content and tabs.
+
+[33mcommit 17a7d326d6c59325390d9e6893907d796df51bf6[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 09:43:10 2021 +0300
+
+    Device properties display works.
+
+[33mcommit 095c7ee4b35b4100479e7ad7afb36202ea259059[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 08:42:23 2021 +0300
+
+    Created modal component.
+
+[33mcommit fa7d2c9dfdf3d68dfbeaeeeeb4ce319069f0f2ca[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 08:39:35 2021 +0300
+
+    device table row has device id as itself id.
+
+[33mcommit 2e48ee25e6a339e0f8955937a1ce72fb39dcda52[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 08:37:40 2021 +0300
+
+    devices.js: created showProperties(); Binded click event handler on the device table row.
+
+[33mcommit 275ee7582e1469de63803a7e91d4d15f06162eb3[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 08:27:07 2021 +0300
+
+    Hovered device from tr attributes in html. tr named "device".
+
+[33mcommit d8e7630d004b6fb5e0213eca9cad22670e842df3[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 08:24:58 2021 +0300
+
+    Deleted unusing table row component.
+
+[33mcommit 169660330e94f3dbd6ab0a7668c9aef1274e3168[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 08:23:33 2021 +0300
+
+    devices.js codereview.
+
+[33mcommit 860b5fccb02220f3d18ab2c4c579a9130eedf018[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 27 08:14:09 2021 +0300
+
+    DeviceController codereview
+
+[33mcommit b57624025e18385a86e2c5de17454c69d3d7ccb8[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 26 17:01:09 2021 +0300
+
+    Optimized fetch_data
+
+[33mcommit 0d948a9cd3ecf9228339f3041fa054956ddc0f67[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 26 16:45:50 2021 +0300
+
+    Works pagination of the initial device list and of the serach result device list.
+
+[33mcommit 0833ce3387ed0f021df4b966829a3a077ca2ddbf[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 26 16:29:45 2021 +0300
+
+    Added annotation to Device model scopeSearch.
+
+[33mcommit 8d8c322c9f6d26d3992af228b5089c2aecb43e9b[m
+Merge: ce52a12 b84e0b4
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 26 10:34:27 2021 +0300
+
+    Merge branch 'auth' into devices
+
+[33mcommit b84e0b4d75f2b44104a583aa3a63594a09964655[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 26 10:34:00 2021 +0300
+
+    Fixed determining if the ligining user exists.
+
+[33mcommit ce52a12bf80c5b75ec3661af769210809560a59c[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Oct 25 09:51:27 2021 +0300
+
+    device search with response status.
+
+[33mcommit 476e7ffd9f69040c9860662566a9f945ec30bdc3[m
+Merge: e8004d0 69e6aa8
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Oct 25 09:18:08 2021 +0300
+
+    merged with auth
+
+[33mcommit 683ded752c73c7cd3b76bc933f8d6b2ae6c92e69[m
+Merge: 2051b86 69e6aa8
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Oct 25 09:12:19 2021 +0300
+
+    Merge branch 'auth' into develop
+
+[33mcommit 69e6aa8138ee216c2a5b55b90141d3deada80327[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Oct 25 09:12:08 2021 +0300
+
+    login and register ajax validation is implemented. Form and textarea js components are updated.
+
+[33mcommit e8004d0616b0125f5089de4034ec6b9615dd8926[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 21 15:49:39 2021 +0300
+
+    Search device by its serachable and searchableRelationships.
+
+[33mcommit bbbcac083423e9f44b614071797143c987a99836[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 21 13:44:30 2021 +0300
+
+    Created device local scopeSearch.
+
+[33mcommit 108ecafbd40856688e8b7930e81d07c2ca570ec6[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 21 12:18:14 2021 +0300
+
+    Added search input help prompt.
+
+[33mcommit 124d7eea05a511ddb54297399b425b936ff07204[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 21 12:13:07 2021 +0300
+
+    Ajax pagination.
+
+[33mcommit 5f2b20f8b181995b79812c118358b492160baff1[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 21 11:07:07 2021 +0300
+
+    Ajax search by input.
+
+[33mcommit 669707924580d4016acf42163d7181aa95180e2e[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 21 09:08:07 2021 +0300
+
+    Device brief info table components has individual files. Table has id.
+
+[33mcommit e4f233bcc9695a9ff4c8e78240bc02c97e1cfb4a[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 21 09:00:14 2021 +0300
+
+    Search input is added.
+
+[33mcommit ca47b7a734533768ca94353f5ca868004f442609[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 21 08:38:33 2021 +0300
+
+    Bootstrap paginator.
+
+[33mcommit 42312a5244dab38a6c946188cca13941e4fc2061[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 21 08:26:49 2021 +0300
+
+    Device brief info pagination.
+
+[33mcommit 454a5273c4d230413e1b67d78100a9d472d7ea25[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Thu Oct 21 08:16:43 2021 +0300
+
+    Simple device brief info table.
+
+[33mcommit 91536fb7102023cb3beae1150c3a9cfc554fd957[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 20 16:57:49 2021 +0300
+
+    Cells with buttons inside.
+
+[33mcommit 1ef03b291b3c82975c4951f74858bb572567359e[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 20 15:50:42 2021 +0300
+
+    Created Device model last_hardware and last_software relationships. Devices page displays a device table. Column width problems exist.
+
+[33mcommit 65ef4fbe2c8b3124f66014421a0d45254f615ed7[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 20 09:32:02 2021 +0300
+
+    Created properties $fillable and $searchable for models Type, Status, Movement, Repair, Hardware, Software, MotherboardReplacementLog.
+
+[33mcommit 856d8dd13928080f5c5fea19c41c7883c66e16ef[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 20 09:24:07 2021 +0300
+
+    Created models Type, Status, Movement, Repair, Hardware, Software, MotherboardReplacementLog.
+
+[33mcommit 1813210e7405458bb0a71481acb2f6b35a1e2fc1[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Wed Oct 20 08:58:49 2021 +0300
+
+    Created DeviceController relationship methods.
+
+[33mcommit 2051b86f1cf4c444f77f1acd66a45ef7b5e7fb9f[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 19 14:48:54 2021 +0300
+
+    Readme is updated.
+
+[33mcommit 952529c9f7e1d0e2abab90314b41648539543fee[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 19 14:45:02 2021 +0300
+
+    auth by name. Ajax validation.
+
+[33mcommit e2f87fc92b8b6e324e67c38e1c5ac98141e594a1[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 19 12:59:43 2021 +0300
+
+    gitignore is updated.
+
+[33mcommit f5017ad6bc6d79d59918e7620700791ad6eca366[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 19 12:59:28 2021 +0300
+
+    gitignore is updated.
+
+[33mcommit c46cb0e513763c33fe3d1194312603784cbe8a64[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 19 12:25:24 2021 +0300
+
+    gitignore is updated.
+
+[33mcommit 79765bb104bc2983db724c09f57bfb091565208a[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 19 11:17:12 2021 +0300
+
+    exclude components and views js from the gitignore file.
+
+[33mcommit 6c16f1f7947d363fe322e3ba9345f3b8744c15e2[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 19 11:12:12 2021 +0300
+
+    Fixed LoginController attemptLogin method. Created Device model, controller.
+
+[33mcommit ee24f463358399b745c3f6d81b9f8c6c8a98cef5[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 19 10:18:47 2021 +0300
+
+    Fixed web.php route file.
+
+[33mcommit 687480ac31a7558b202371387a4d41372407a8cc[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 19 10:08:26 2021 +0300
+
+    Insalled Doctrine Dbal lib. Modified LoginController and RegisterController. Register view does not require an e-mail.
+
+[33mcommit fffb0dcf6e819c438e5d16734d8bb8498c06a234[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Tue Oct 19 08:14:11 2021 +0300
+
+    Login by name: view is chanched only.
+
+[33mcommit ee74b01e40e46df775268b501538dc44b3a0510c[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Oct 18 11:08:08 2021 +0300
+
+    Added ua localization.
+
+[33mcommit d27ceb3b3494412a664e033ccab45ea453d204ad[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Oct 18 11:03:04 2021 +0300
+
+    Fresh init routes.
+
+[33mcommit 3cc7d855fe7ef1e3409e546aa266d3e161b10d86[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Oct 18 10:57:43 2021 +0300
+
+    npm installed additional dependencies.
+
+[33mcommit b190d418ee6373c92511d2d755af08e8231939c9[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Oct 18 10:52:56 2021 +0300
+
+    fontawesome is installed.
+
+[33mcommit f4de403545bc4005ce7096d030cd876187dffe23[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Oct 18 10:52:08 2021 +0300
+
+    npm installed at the first time.
+
+[33mcommit cd8bdb0009db42eb5b3d3bc8adc3ba470ebc7a8e[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Oct 18 10:47:36 2021 +0300
+
+    bootstrap auth is installed.
+
+[33mcommit 29f9b626240e744a376fa0fae47a91f4e55b54e3[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Oct 18 10:45:48 2021 +0300
+
+    laravel\ui is installed.
+
+[33mcommit 4128ecf41bd1b568a74dc69c922af5011ca7d1f6[m
+Author: mustakrakishe <mustakrkish@gmail.com>
+Date:   Mon Oct 18 10:44:18 2021 +0300
+
+    Laravel is installed.

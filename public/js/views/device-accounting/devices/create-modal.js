@@ -43,8 +43,16 @@ function getCurrentForm() {
 
 function initMovementPanel() {
     // init date
-    let currentDatetimeJson = new Date().toJSON().slice(0,19);
-    $(MOVEMENT_PANEL).find('input[name=date]').val(currentDatetimeJson);
+    let currentDateTime = new Date();
+    let year = currentDateTime.getFullYear();
+    let month = currentDateTime.getMonth() + 1;
+    let day = currentDateTime.getDate();
+    let currentDateString = [year, month, day].join('-');
+    let currentTimeString = currentDateTime.toTimeString().substr(0, 8);
+
+    let currentDateTimeISO = currentDateString + 'T' + currentTimeString;
+
+    $(MOVEMENT_PANEL).find('input[name=date]').val(currentDateTimeISO);
 
     // init status
     const IN_STORAGE_STATUS_ID = 2;
