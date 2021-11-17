@@ -1,6 +1,8 @@
-<div class="mb-3 w-50">
-    <label for="date" class="form-label">{{ __('Date') }}</label>
-    <input type="datetime-local" name="date" class="form-control">
+<div class="row mb-3">
+    <div class="col-md-6">
+        <label for="date" class="form-label">{{ __('Date') }}</label>
+        <input type="datetime-local" name="date" class="form-control">
+    </div>
 </div>
 
 <div class="mb-3">

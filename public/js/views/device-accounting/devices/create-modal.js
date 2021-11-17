@@ -23,6 +23,8 @@ async function tabswitcherBackClickHandler() {
 }
 
 async function tabswitcherNextClickHandler() {
+    $(this).attr('disabled', true);
+
     let form = getCurrentForm();
     console.log(form.length);
     if (form.length) {
@@ -34,6 +36,8 @@ async function tabswitcherNextClickHandler() {
     } else {
         Tabswitcher.tabswitcherNextClickHandler(this);
     }
+    
+    $(this).attr('disabled', false);
 }
 
 // procedures
