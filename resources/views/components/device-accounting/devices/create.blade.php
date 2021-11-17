@@ -12,16 +12,9 @@
         </div>
 
         <div class="tab-content border-start ps-3 w-100" id="v-pills-tabContent" style="min-height: 400px;">
-            <div class="tab-pane fade show active" id="v-pills-general" role="tabpanel" aria-labelledby="v-pills-general-tab">
-                <x-device-accounting.devices.create.general :types="$types"/>
-            </div>
-            <div class="tab-pane fade" id="v-pills-movement" role="tabpanel" aria-labelledby="v-pills-location-tab">
-                <x-device-accounting.devices.create.movement :statuses="$statuses"/>
-            </div>
-            <div class="tab-pane fade" id="v-pills-hardware" role="tabpanel" aria-labelledby="v-pills-hardware-tab">
-                <x-device-accounting.devices.create.hardware />
-            </div>
-            <div class="tab-pane fade" id="v-pills-software" role="tabpanel" aria-labelledby="v-pills-software-tab">...</div>
+            <x-device-accounting.devices.create-dialog.panel.general class="active show" id="v-pills-general" aria-labelledby="v-pills-general-tab" :types="$types"/>
+            <x-device-accounting.devices.create-dialog.panel.movement id="v-pills-movement" aria-labelledby="v-pills-movement-tab" :statuses="$statuses"/>
+            <x-device-accounting.devices.create-dialog.panel.hardware id="v-pills-hardware" aria-labelledby="v-pills-hardware-tab"/>
         </div>
     </div>
 
