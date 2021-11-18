@@ -104,8 +104,7 @@ class MovementController extends Controller
 
         $validator = Validator::make($input, [
             'date' => ['required', 'date'],
-            'location' => ['required', 'string'],
-            'comment' => ['nullable', 'string'],
+            'location' => ['required', 'string']
         ]);
 
         if ($validator->fails()) {

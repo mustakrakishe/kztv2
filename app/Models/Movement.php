@@ -17,6 +17,7 @@ class Movement extends Model
         'location',
         'comment',
         'device_id',
+        'status_id',
     ];
 
     public static $searchable = [
