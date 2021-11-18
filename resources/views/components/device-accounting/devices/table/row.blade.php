@@ -5,34 +5,34 @@
     'name' => 'device'
 ]) }}>
     <td title="{{ $device->status->name }}">
-        @switch($device->status_id)
+        @switch($device->status->id)
 
-            @case("1")
+            @case(1)
                 <!-- Списан -->
                 <i class="fas fa-trash-alt"></i>
                 @break
 
-            @case("2")
+            @case(2)
                 <!-- На хранении -->
                 <i class="fas fa-box-open"></i>
                 @break
 
-            @case("3")
+            @case(3)
                 <!-- В эксплуатации -->
                 <i class="fas fa-check"></i>
                 @break
 
-            @case("4")
+            @case(4)
                 <!-- На ТО -->
                 <i class="fas fa-paint-brush"></i>
                 @break
 
-            @case("5")
+            @case(5)
                 <!-- На ремноте -->
                 <i class="fas fa-tools"></i>
                 @break
 
-            @case("6")
+            @case(6)
                 <!-- На модернизации -->
                 <i class="fas fa-angle-double-up"></i>
                 @break
