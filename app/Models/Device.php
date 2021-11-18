@@ -18,7 +18,6 @@ class Device extends Model
         'model',
         'comment',
         'type_id',
-        'status_id',
         'updated_at',
     ];
 
@@ -59,7 +58,8 @@ class Device extends Model
      */
     public function status()
     {
-        return $this->belongsTo(Status::class);
+        // A trick to make an one-to-one relationship with an intermediate table
+        return $this->hasOneThrough(Status::class, Movement::class, 'device_id', 'id', 'id', 'status_id');
     }
 
     /**
