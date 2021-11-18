@@ -1,11 +1,21 @@
 <x-device-accounting.devices.create-dialog.panel {{ $attributes }}>
     <form id="create-hardware-form" class="mt-3" action="{{ route('hardware.store') }}" method="post">
         @csrf
-
+        
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="date" class="form-label">{{ __('Date') }}</label>
                 <input type="datetime-local" name="date" class="form-control">
+            </div>
+
+            <div class="col-md-6 d-flex align-items-end">
+                <div class="form-check mb-2">
+                    <input type="checkbox" name="great_mod" class="form-check-input" id="great_mod" checked disabled>
+                    <input name="great_mod" type="hidden" value="true"/>
+                    <label for="great_mod" class="form-check-label">
+                        {{ __('Great modification') }}
+                    </label>
+                </div>
             </div>
         </div>
 

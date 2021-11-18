@@ -38,24 +38,24 @@ async function storeBtnClickHandler() {
         return;
     }
 
-    let hardwareStoreResponse = await Form.xhrAction(STORE_HARDWARE_FORM);
+    // let hardwareStoreResponse = await Form.xhrAction(STORE_HARDWARE_FORM);
     
-    if (hardwareStoreResponse.status === 0) {
-        return;
-    }
+    // if (hardwareStoreResponse.status === 0) {
+    //     return;
+    // }
 
-    let software = {
-        description: $(STORE_SOFTWARE_FORM).find('[name=description]').val(),
-        comment: $(STORE_SOFTWARE_FORM).find('[name=comment]').val(),
-    }
+    // let software = {
+    //     description: $(STORE_SOFTWARE_FORM).find('[name=description]').val(),
+    //     comment: $(STORE_SOFTWARE_FORM).find('[name=comment]').val(),
+    // }
 
-    if(software.description || software.comment){
-        let softwareStoreResponse = await Form.xhrAction(STORE_SOFTWARE_FORM);
+    // if(software.description || software.comment){
+    //     let softwareStoreResponse = await Form.xhrAction(STORE_SOFTWARE_FORM);
     
-        if (softwareStoreResponse.status === 0) {
-            return;
-        }
-    }
+    //     if (softwareStoreResponse.status === 0) {
+    //         return;
+    //     }
+    // }
 
     $(MODAL).hide();
 }
