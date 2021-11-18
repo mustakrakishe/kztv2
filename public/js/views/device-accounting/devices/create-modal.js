@@ -2,7 +2,6 @@ import Form from "../../../components/form.js";
 import * as Tabswitcher from "../../../components/tabswitcher.js";
 
 const MODAL = '#create-modal';
-const MOVEMENT_PANEL = '#v-pills-movement';
 const PANEL = '[role=tabpanel]';
 const STORE_BTN = '#store-device-btn';
 const STORE_DEVICE_FORM = '#create-device-form';
@@ -21,7 +20,6 @@ $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
 
 function createModalShowHandler() {
     $(MODAL).find('input[name=date]').val(currentDatetimeISO());
-    initMovementPanel();
 }
 
 async function storeBtnClickHandler() {
@@ -39,6 +37,27 @@ async function storeBtnClickHandler() {
     if (movementStoreResponse.status === 0) {
         return;
     }
+
+    let hardwareStoreResponse = await Form.xhrAction(STORE_HARDWARE_FORM);
+    
+    if (hardwareStoreResponse.status === 0) {
+        return;
+    }
+
+    let software = {
+        description: $(STORE_SOFTWARE_FORM).find('[name=description]').val(),
+        comment: $(STORE_SOFTWARE_FORM).find('[name=comment]').val(),
+    }
+
+    if(software.description || software.comment){
+        let softwareStoreResponse = await Form.xhrAction(STORE_SOFTWARE_FORM);
+    
+        if (softwareStoreResponse.status === 0) {
+            return;
+        }
+    }
+
+    $(MODAL).hide();
 }
 
 async function tabswitcherBackClickHandler() {
@@ -68,21 +87,6 @@ function getCurrentForm() {
     let activeTabPanel = $(MODAL).find(PANEL + '.active');
     let currentForm = $(activeTabPanel).find('form').first();
     return currentForm;
-}
-
-function initMovementPanel() {
-    // init date
-
-
-    // init status
-    const IN_STORAGE_STATUS_ID = 2;
-    $(MOVEMENT_PANEL).find('select[name=status_id]').val(IN_STORAGE_STATUS_ID);
-
-    // init location
-    $(MOVEMENT_PANEL).find('textarea[name=location]').val('ЗУ. АСУ. 210');
-
-    // init comment
-    $(MOVEMENT_PANEL).find('textarea[name=comment]').val('Новий');
 }
 
 async function validateForm(form) {
