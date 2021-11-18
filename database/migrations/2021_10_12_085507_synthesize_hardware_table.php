@@ -10,7 +10,7 @@ use Illuminate\Database\Migrations\Migration;
 // which characteristics was imported
 // from the Modernizations or the Repairs.
 
-class synthesizeHardwaresTable extends Migration
+class synthesizeHardwareTable extends Migration
 {
     /**
      * Run the migrations.
@@ -84,14 +84,14 @@ class synthesizeHardwaresTable extends Migration
         });
 
         // Rename [conditions]
-        // to [hardwares]
+        // to [hardware]
 
-        Schema::rename('conditions', 'hardwares');
+        Schema::rename('conditions', 'hardware');
 
-        // Rename [hardwares].[characteristics]
-        // to [hardwares].[description]
+        // Rename [hardware].[characteristics]
+        // to [hardware].[description]
 
-        Schema::table('hardwares', function (Blueprint $table) {
+        Schema::table('hardware', function (Blueprint $table) {
             $table->renameColumn('characteristics', 'description');
         });
     }
@@ -103,17 +103,17 @@ class synthesizeHardwaresTable extends Migration
      */
     public function down()
     {
-        // Rename [hardwares].[description]
-        // to [hardwares].[characteristics]
+        // Rename [hardware].[description]
+        // to [hardware].[characteristics]
 
-        Schema::table('hardwares', function (Blueprint $table) {
+        Schema::table('hardware', function (Blueprint $table) {
             $table->renameColumn('description', 'characteristics');
         });
 
-        // Rename [hardwares]
+        // Rename [hardware]
         // to [conditions]
 
-        Schema::rename('hardwares', 'conditions');
+        Schema::rename('hardware', 'conditions');
 
         // Set nullable constraint on [repairs].[device_id],
         // create [repairs].[condition_id]
