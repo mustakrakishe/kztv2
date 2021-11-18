@@ -88,10 +88,15 @@ class synthesizeHardwareTable extends Migration
 
         Schema::rename('conditions', 'hardware');
 
-        // Rename [hardware].[characteristics]
-        // to [hardware].[description]
+        // Alter hardware table
 
         Schema::table('hardware', function (Blueprint $table) {
+            
+            // Create great_mod
+            $table->boolean('great_mod')->default(false);
+
+            // Rename [hardware].[characteristics]
+            // to [hardware].[description]
             $table->renameColumn('characteristics', 'description');
         });
     }
