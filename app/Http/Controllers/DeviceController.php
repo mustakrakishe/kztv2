@@ -184,6 +184,7 @@ class DeviceController extends Controller
         $validator = Validator::make($input, [
             'inventory_code' => ['nullable', 'numeric'],
             'identification_code' => ['nullable', 'numeric'],
+            'type_id' => ['required', 'integer'],
             'model' => ['nullable', 'string', 'max:50'],
         ]);
 
