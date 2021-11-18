@@ -35,8 +35,10 @@ class AlterDevicesTableAddUpdatedAtColumn extends Migration
                 }
             }
 
+            $updatedAt = $lastChangesDates->max();
+
             Device::find($device->id)->update([
-                'updated_at' => $lastChangesDates->max(),
+                'updated_at' => date('Y-m-d', $updatedAt) . 'T' . date('H:i:s', $updatedAt),
             ]);
         }
     }
