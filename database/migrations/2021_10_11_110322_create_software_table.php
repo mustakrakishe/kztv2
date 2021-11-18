@@ -17,6 +17,7 @@ class CreateSoftwareTable extends Migration
             $table->id();
             $table->timestamp('date')->useCurrent();
             $table->text('description')->nullable();
+            $table->text('comment')->nullable();
             $table->foreignId('device_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
     }
