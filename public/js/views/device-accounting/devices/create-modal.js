@@ -1,14 +1,14 @@
 import Form from "../../../components/form.js";
 import * as Tabswitcher from "../../../components/tabswitcher.js";
 
-const CREATE_DEVICE_FORM = '#create-device-form';
-const CREATE_HARDWARE_FORM = '#create-hardware-form';
-const CREATE_MOVEMENT_FORM = '#create-movement-form';
-const CREATE_SOFTWARE_FORM = '#create-software-form';
 const MODAL = '#create-modal';
 const MOVEMENT_PANEL = '#v-pills-movement';
 const PANEL = '[role=tabpanel]';
 const STORE_BTN = '#store-device-btn';
+const STORE_DEVICE_FORM = '#create-device-form';
+const STORE_HARDWARE_FORM = '#create-hardware-form';
+const STORE_MOVEMENT_FORM = '#create-movement-form';
+const STORE_SOFTWARE_FORM = '#create-software-form';
 const TABSWITCHER_BACK = '[role=tabswitcher][direction=prev]';
 const TABSWITCHER_NEXT = '[role=tabswitcher][direction=next]';
 
@@ -25,8 +25,20 @@ function createModalShowHandler() {
 }
 
 async function storeBtnClickHandler() {
-    let response = await Form.xhrAction(CREATE_DEVICE_FORM);
-    console.log(response);
+    let deviceStoreResponse = await Form.xhrAction(STORE_DEVICE_FORM);
+    
+    if (deviceStoreResponse.status === 0) {
+        return;
+    }
+
+    let deviceIdInput = `<input type="numeric" name="device_id" value="${deviceStoreResponse.device.id}" hidden>`;
+    $(STORE_MOVEMENT_FORM).append(deviceIdInput);
+
+    let movementStoreResponse = await Form.xhrAction(STORE_MOVEMENT_FORM);
+    
+    if (movementStoreResponse.status === 0) {
+        return;
+    }
 }
 
 async function tabswitcherBackClickHandler() {
@@ -74,6 +86,8 @@ function initMovementPanel() {
 }
 
 async function validateForm(form) {
+    Form.formatWithErrors(form);
+
     let formToValidate = $(form).clone();
     let validationUrl = $(formToValidate).attr('validation');
     $(formToValidate).attr('action', validationUrl);

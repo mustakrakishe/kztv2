@@ -42,7 +42,22 @@ class MovementController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $this->validateMovement($request);
+        if(!$validation['status']){
+            return $validation;
+        }
+
+        Movement::create([
+            'date' => $request->date,
+            'location' => $request->location,
+            'comment' => $request->comment,
+            'device_id' => $request->device_id,
+            'status_id' => $request->status_id,
+        ]);
+
+        return [
+            'status' => 1,
+        ];
     }
 
     /**

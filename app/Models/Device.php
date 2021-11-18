@@ -12,6 +12,8 @@ class Device extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     public $fillable = [
         'inventory_code',
         'identification_code',
