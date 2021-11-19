@@ -1,60 +1,20 @@
-<x-modal id="edit-device-modal" class="modal-lg modal-fullscreen-lg-down">
+<x-modal id="edit-modal" class="modal-lg modal-fullscreen-lg-down">
+
     <x-slot name="title">{{ __('dialog.edit.header', ['entity' => trans('dialog.entities.device')]) }}</x-slot>
 
-    <form id="device-update-form" class="mt-3" action="{{ route('devices.update', ['device' => $device->id]) }}" method="post">
-        @csrf
-        @method('put')
-
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="inventory_code" class="form-label">{{ __('Inventory code') }}</label>
-                <input type="text" name="inventory_code" class="form-control" id="inventory_code" value="{{ $device->inventory_code }}">
-            </div>
-            <div class="col-md-6">
-                <label for="identification_code" class="form-label">{{ __('Identification code') }}</label>
-                <input type="text" name="identification_code" class="form-control" id="identification_code" value="{{ $device->identification_code }}">
-            </div>
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <button class="nav-link active" id="nav-general-tab" data-bs-toggle="tab" data-bs-target="#nav-general" type="button" role="tab" aria-controls="nav-general" aria-selected="true">{{ __('General info') }}</button>
+            <button class="nav-link" id="nav-movement-tab" data-bs-toggle="tab" data-bs-target="#nav-movement" type="button" role="tab" aria-controls="nav-movement" aria-selected="false">{{ __('Location') }}</button>
+            <button class="nav-link" id="nav-hardware-tab" data-bs-toggle="tab" data-bs-target="#nav-hardware" type="button" role="tab" aria-controls="nav-hardware" aria-selected="false">{{ __('Hardware') }}</button>
+            <button class="nav-link" id="nav-software-tab" data-bs-toggle="tab" data-bs-target="#nav-software" type="button" role="tab" aria-controls="nav-software" aria-selected="false">{{ __('Software') }}</button>
         </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <x-device-accounting.devices.edit.general class="tab-pane fade show active" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab"/>
+        <x-device-accounting.devices.edit.movement class="tab-pane fade" id="nav-movement" role="tabpanel" aria-labelledby="nav-movement-tab"/>
+        <x-device-accounting.devices.edit.hardware class="tab-pane fade" id="nav-hardware" role="tabpanel" aria-labelledby="nav-hardware-tab"/>
+        <x-device-accounting.devices.edit.software class="tab-pane fade" id="nav-software" role="tabpanel" aria-labelledby="nav-software-tab"/>
+    </div>
 
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="type_id" class="form-label">{{ __('Type') }}</label>
-                <select name="type_id" class="form-select" id="type_id">
-                    @foreach($types as $type)
-                    <option value="{{ $type->id }}" @if($type->id === $device->type_id) selected @endif >
-                        {{ $type->name }}
-                    </option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-6">
-                <label for="model" class="form-label">{{ __('Model') }}</label>
-                <input type="text" name="model" class="form-control" id="model" value="{{ $device->model }}">
-            </div>
-        </div>
-
-        <div class="row mb-3">
-            <div class="col">
-                <label for="comment" class="form-label">{{ __('Comment') }}</label>
-                <x-textarea name="comment" style="min-height: 81px; resize: none;">{{ $device->comment }}</x-textarea>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <div class="row mb-0 mr-0">
-                    <label for="status_id" class="col-auto col-form-label">{{ __('Status') }}:</label>
-                    <input type="text" name="status_id" class="form-control col" id="status_id" value="{{ $device->status->name }}" disabled>
-                    <i class="far fa-question-circle col-auto col-form-label ml-2" title="{{ __('The status is autoupdated as a feedback on you actions (change workplace, sent to repair, etc.).') }}"></i>
-                </div>
-            </div>
-
-            <div class="col d-flex">
-                <div class="ms-auto">
-                    <x-button>{{ __('dialog.actions.apply') }}</x-button>
-                </div>
-            </div>
-        </div>
-
-    </form>
 </x-modal>
