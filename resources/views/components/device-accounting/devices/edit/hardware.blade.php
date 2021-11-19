@@ -1,7 +1,7 @@
 @props(['hardware', 'statuses'])
 
 @php
-    $dateISO = str_replace(' ', 'T', $hardware->date);
+    $dateISO = str_replace(' ', 'T', $software->date);
 @endphp
 
 <x-tabpanel {{ $attributes }}>

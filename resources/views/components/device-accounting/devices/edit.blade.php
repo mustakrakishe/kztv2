@@ -14,7 +14,7 @@
         <x-device-accounting.devices.edit.general class="tab-pane fade h-100 show active" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab" :device="$device" :types="$types"/>
         <x-device-accounting.devices.edit.movement class="tab-pane fade h-100" id="nav-movement" role="tabpanel" aria-labelledby="nav-movement-tab" :movement="$device->last_movement" :statuses="$statuses"/>
         <x-device-accounting.devices.edit.hardware class="tab-pane fade h-100" id="nav-hardware" role="tabpanel" aria-labelledby="nav-hardware-tab" :hardware="$device->last_hardware"/>
-        <x-device-accounting.devices.edit.software class="tab-pane fade h-100" id="nav-software" role="tabpanel" aria-labelledby="nav-software-tab" :device="$device->last_software"/>
+        <x-device-accounting.devices.edit.software class="tab-pane fade h-100" id="nav-software" role="tabpanel" aria-labelledby="nav-software-tab" :software="$device->last_software"/>
     </div>
 
 </x-modal>

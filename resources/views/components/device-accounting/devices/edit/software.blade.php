@@ -1,6 +1,7 @@
 <x-tabpanel {{ $attributes }}>
-    <form id="create-software-form" class="h-100 d-flex flex-column mt-3" action="{{ route('software.store') }}" method="post">
+    <form id="software-update-form" class="h-100 d-flex flex-column mt-3" action="{{ route('software.update', ['software' => $software->id]) }}" method="post">
         @csrf
+        @method('put')
 
         <div class="row mb-3">
             <div class="col-md-6">
