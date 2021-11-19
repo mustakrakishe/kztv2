@@ -9,7 +9,7 @@
     $default->comment = 'Новий';
 @endphp
 
-<x-device-accounting.devices.create-dialog.panel {{ $attributes }}>
+<x-tabpanel {{ $attributes }}>
     <form id="create-movement-form" class="mt-3" action="{{ route('movements.store') }}" validation="{{ route('movements.validate') }}"  method="post">
         @csrf
 
@@ -52,4 +52,4 @@
         </div>
         
     </form>
-</x-device-accounting.devices.create-dialog.panel>
+</x-tabpanel>

@@ -13,10 +13,10 @@
         </div>
 
         <div class="tab-content border-start ps-3 w-100" id="v-pills-tabContent" style="min-height: 400px;">
-            <x-device-accounting.devices.create-dialog.panel.general class="active show" id="v-pills-general" aria-labelledby="v-pills-general-tab" :types="$types"/>
-            <x-device-accounting.devices.create-dialog.panel.movement id="v-pills-movement" aria-labelledby="v-pills-movement-tab" :statuses="$statuses"/>
-            <x-device-accounting.devices.create-dialog.panel.hardware id="v-pills-hardware" aria-labelledby="v-pills-hardware-tab"/>
-            <x-device-accounting.devices.create-dialog.panel.software id="v-pills-software" aria-labelledby="v-pills-software-tab"/>
+            <x-device-accounting.devices.create.general class="active show" id="v-pills-general" aria-labelledby="v-pills-general-tab" :types="$types"/>
+            <x-device-accounting.devices.create.movement id="v-pills-movement" aria-labelledby="v-pills-movement-tab" :statuses="$statuses"/>
+            <x-device-accounting.devices.create.hardware id="v-pills-hardware" aria-labelledby="v-pills-hardware-tab"/>
+            <x-device-accounting.devices.create.software id="v-pills-software" aria-labelledby="v-pills-software-tab"/>
         </div>
     </div>
 

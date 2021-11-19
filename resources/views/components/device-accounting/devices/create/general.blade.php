@@ -1,6 +1,6 @@
 @props(['types'])
 
-<x-device-accounting.devices.create-dialog.panel {{ $attributes }}>
+<x-tabpanel {{ $attributes }}>
     <form id="create-device-form" class="mt-3" action="{{ route('devices.store') }}" validation="{{ route('devices.validate') }}" method="post">
         @csrf
 
@@ -40,4 +40,4 @@
         </div>
         
     </form>
-</x-device-accounting.devices.create-dialog.panel>
+</x-tabpanel>
