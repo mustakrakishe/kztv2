@@ -77,7 +77,7 @@ class HardwareController extends Controller
      */
     public function update(Request $request, Hardware $hardware)
     {
-        if($hardware->update($request->input())){
+        if ($hardware->update($request->input())) {
             return ['status' => 1];
         }
 

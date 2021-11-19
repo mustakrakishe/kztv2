@@ -76,7 +76,7 @@ class SoftwareController extends Controller
      */
     public function update(Request $request, Software $software)
     {
-        if($software->update($request->input())){
+        if ($software->update($request->input())) {
             return ['status' => 1];
         }
 

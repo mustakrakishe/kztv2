@@ -115,11 +115,11 @@ class DeviceController extends Controller
     public function update(Request $request, Device $device)
     {
         $validation = $this->validateDevice($request);
-        if(!$validation['status']){
+        if (!$validation['status']) {
             return $validation;
         }
 
-        if($device->update($request->input())){
+        if ($device->update($request->input())) {
             return ['status' => 1];
         }
 
@@ -149,11 +149,11 @@ class DeviceController extends Controller
     public function fetch_data(Request $request){
         $urlQueryWithoutPage = http_build_query($request->collect()->except('page')->toArray());
 
-        if(isset($request->search_string)){
+        if (isset($request->search_string)) {
             $keywords = preg_split('/\s+/', trim($request->search_string));
             $devices = Device::search($keywords);
         }
-        else{
+        else {
             $devices = Device::getModel();
         }
 
