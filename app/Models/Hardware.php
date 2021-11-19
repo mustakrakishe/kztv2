@@ -14,6 +14,7 @@ class Hardware extends Model
         'date',
         'description',
         'comment',
+        'great_mod',
         'device_id',
     ];
 

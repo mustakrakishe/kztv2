@@ -5,8 +5,9 @@
 @endphp
 
 <x-tabpanel {{ $attributes }}>
-    <form id="create-hardware-form" class="mt-3" action="{{ route('hardware.store') }}" method="post">
+    <form id="hardware-update-form" class="mt-3" action="{{ route('hardware.update', ['hardware' => $hardware->id]) }}" method="post">
         @csrf
+        @method('put')
         
         <div class="row mb-3">
             <div class="col-md-6">
@@ -16,8 +17,7 @@
 
             <div class="col-md-6 d-flex align-items-end">
                 <div class="form-check mb-2">
-                    <input type="checkbox" name="great_mod" class="form-check-input" id="great_mod" checked disabled>
-                    <input name="great_mod" type="hidden" value="true"/>
+                    <input type="checkbox" name="great_mod" class="form-check-input" id="great_mod" @if($hardware->great_mod) checked @endif>
                     <label for="great_mod" class="form-check-label">
                         {{ __('Great modification') }}
                     </label>
@@ -31,7 +31,7 @@
                 name="description"
                 class="form-control"
                 style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
-            ></textarea>
+            >{{ $hardware->description }}</textarea>
         </div>
 
         <div>
@@ -40,7 +40,13 @@
                 name="comment"
                 class="form-control"
                 style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
-            ></textarea>
+            >{{ $hardware->comment }}</textarea>
+        </div>
+
+        <div class="col d-flex">
+            <div class="ms-auto">
+                <x-button>{{ __('dialog.actions.apply') }}</x-button>
+            </div>
         </div>
 
     </form>

@@ -31,7 +31,7 @@ class HardwareController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return array
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
@@ -49,10 +49,10 @@ class HardwareController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Hardware  $hardware
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Hardware $hardware)
     {
         //
     }
@@ -60,10 +60,10 @@ class HardwareController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Hardware  $hardware
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Hardware $hardware)
     {
         //
     }
@@ -72,21 +72,25 @@ class HardwareController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Hardware  $hardware
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Hardware $hardware)
     {
-        //
+        if($hardware->update($request->input())){
+            return ['status' => 1];
+        }
+
+        return ['status' => 0];
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Hardware  $hardware
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Hardware $hardware)
     {
         //
     }
