@@ -1,3 +1,9 @@
+@props(['hardware', 'statuses'])
+
+@php
+    $dateISO = str_replace(' ', 'T', $hardware->date);
+@endphp
+
 <x-tabpanel {{ $attributes }}>
     <form id="create-hardware-form" class="mt-3" action="{{ route('hardware.store') }}" method="post">
         @csrf
@@ -5,7 +11,7 @@
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="date" class="form-label">{{ __('Date') }}</label>
-                <input type="datetime-local" name="date" class="form-control">
+                <input type="datetime-local" name="date" class="form-control" value="{{ $dateISO }}">
             </div>
 
             <div class="col-md-6 d-flex align-items-end">

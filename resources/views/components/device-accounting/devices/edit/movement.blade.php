@@ -1,12 +1,8 @@
-@props(['statuses'])
+@props(['movement', 'statuses'])
 
 @php
     $IN_STORAGE_STATUS_ID = 2;
-
-    $default = new class {};
-    $default->status_id = $IN_STORAGE_STATUS_ID;
-    $default->location = 'ЗУ. АСУ. 210';
-    $default->comment = 'Новий';
+    $dateISO = str_replace(' ', 'T', $movement->date);
 @endphp
 
 <x-tabpanel {{ $attributes }}>
@@ -16,7 +12,7 @@
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="date" class="form-label">{{ __('Date') }}</label>
-                <input type="datetime-local" name="date" class="form-control">
+                <input type="datetime-local" name="date" class="form-control" value="{{ $dateISO }}">
             </div>
             <div class="col-md-6">
                 <label for="status_id" class="form-label">{{ __('Status') }}</label>
@@ -24,7 +20,7 @@
                     @foreach($statuses as $status)
                     <option
                         value="{{ $status->id }}"
-                        @if($status->id == $default->status_id) selected @endif
+                        @if($status->id == $movement->status_id) selected @endif
                     >
                         {{ $status->name }}
                     </option>
@@ -39,7 +35,7 @@
                 name="location"
                 class="form-control"
                 style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
-            >{{ $default->location }}</textarea>
+            >{{ $movement->location }}</textarea>
         </div>
 
         <div>
@@ -48,7 +44,7 @@
                 name="comment"
                 class="form-control"
                 style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
-            >{{ $default->comment }}</textarea>
+            >{{ $movement->comment }}</textarea>
         </div>
         
     </form>
