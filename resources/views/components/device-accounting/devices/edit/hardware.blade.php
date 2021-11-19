@@ -5,7 +5,7 @@
 @endphp
 
 <x-tabpanel {{ $attributes }}>
-    <form id="hardware-update-form" class="mt-3" action="{{ route('hardware.update', ['hardware' => $hardware->id]) }}" method="post">
+    <form id="hardware-update-form" class="h-100 d-flex flex-column mt-3" action="{{ route('hardware.update', ['hardware' => $hardware->id]) }}" method="post">
         @csrf
         @method('put')
         
@@ -34,7 +34,7 @@
             >{{ $hardware->description }}</textarea>
         </div>
 
-        <div>
+        <div class="mb-3">
             <label for="comment" class="form-label">{{ __('Comment') }}</label>
             <textarea
                 name="comment"
@@ -43,10 +43,8 @@
             >{{ $hardware->comment }}</textarea>
         </div>
 
-        <div class="col d-flex">
-            <div class="ms-auto">
-                <x-button>{{ __('dialog.actions.apply') }}</x-button>
-            </div>
+        <div class="ms-auto mt-auto">
+            <x-button>{{ __('dialog.actions.apply') }}</x-button>
         </div>
 
     </form>

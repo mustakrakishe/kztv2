@@ -2,7 +2,7 @@
 
 <x-tabpanel {{ $attributes }}>
 
-    <form id="device-update-form" class="mt-3" action="{{ route('devices.update', ['device' => $device->id]) }}" method="post">
+    <form id="device-update-form" class="h-100 d-flex flex-column mt-3" action="{{ route('devices.update', ['device' => $device->id]) }}" method="post">
         @csrf
         @method('put')
 
@@ -41,10 +41,8 @@
             </div>
         </div>
 
-        <div class="col d-flex">
-            <div class="ms-auto">
-                <x-button>{{ __('dialog.actions.apply') }}</x-button>
-            </div>
+        <div class="ms-auto mt-auto">
+            <x-button>{{ __('dialog.actions.apply') }}</x-button>
         </div>
 
     </form>

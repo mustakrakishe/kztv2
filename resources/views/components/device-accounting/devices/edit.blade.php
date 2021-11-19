@@ -10,11 +10,11 @@
             <button class="nav-link" id="nav-software-tab" data-bs-toggle="tab" data-bs-target="#nav-software" type="button" role="tab" aria-controls="nav-software" aria-selected="false">{{ __('Software') }}</button>
         </div>
     </nav>
-    <div class="tab-content" id="nav-tabContent">
-        <x-device-accounting.devices.edit.general class="tab-pane fade show active" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab" :device="$device" :types="$types"/>
-        <x-device-accounting.devices.edit.movement class="tab-pane fade" id="nav-movement" role="tabpanel" aria-labelledby="nav-movement-tab" :movement="$device->last_movement" :statuses="$statuses"/>
-        <x-device-accounting.devices.edit.hardware class="tab-pane fade" id="nav-hardware" role="tabpanel" aria-labelledby="nav-hardware-tab" :hardware="$device->last_hardware"/>
-        <x-device-accounting.devices.edit.software class="tab-pane fade" id="nav-software" role="tabpanel" aria-labelledby="nav-software-tab" :device="$device->last_software"/>
+    <div class="tab-content" id="nav-tabContent" style="height: 390px;">
+        <x-device-accounting.devices.edit.general class="tab-pane fade h-100 show active" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab" :device="$device" :types="$types"/>
+        <x-device-accounting.devices.edit.movement class="tab-pane fade h-100" id="nav-movement" role="tabpanel" aria-labelledby="nav-movement-tab" :movement="$device->last_movement" :statuses="$statuses"/>
+        <x-device-accounting.devices.edit.hardware class="tab-pane fade h-100" id="nav-hardware" role="tabpanel" aria-labelledby="nav-hardware-tab" :hardware="$device->last_hardware"/>
+        <x-device-accounting.devices.edit.software class="tab-pane fade h-100" id="nav-software" role="tabpanel" aria-labelledby="nav-software-tab" :device="$device->last_software"/>
     </div>
 
 </x-modal>

@@ -1,5 +1,5 @@
 <x-tabpanel {{ $attributes }}>
-    <form id="create-software-form" class="mt-3" action="{{ route('software.store') }}" method="post">
+    <form id="create-software-form" class="h-100 d-flex flex-column mt-3" action="{{ route('software.store') }}" method="post">
         @csrf
 
         <div class="row mb-3">
@@ -18,7 +18,7 @@
             ></textarea>
         </div>
 
-        <div>
+        <div class="mb-3">
             <label for="comment" class="form-label">{{ __('Comment') }}</label>
             <textarea
                 name="comment"
@@ -26,6 +26,10 @@
                 style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
             ></textarea>
         </div>
-    
+
+        <div class="ms-auto mt-auto">
+            <x-button>{{ __('dialog.actions.apply') }}</x-button>
+        </div>
+
     </form>
 </x-tabpanel>
