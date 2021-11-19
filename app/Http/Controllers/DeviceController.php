@@ -88,17 +88,21 @@ class DeviceController extends Controller
      */
     public function edit(Device $device)
     {
-        $device->load(
-            'status',
-            'type',
-            'movements'
-        );
-
+        $devices = Device::paginate()->withPath(route('devices.fetch_data'));
         $types = Type::all();
+        $statuses = Status::all();
+
+        $devices->load([
+            'type',
+            'status',
+            'last_movement',
+            'last_hardware',
+            'last_software'
+        ]);
         
         return [
             'status' => 1,
-            'view' => view('components.device-accounting.devices.edit', compact('device', 'types'))->render(),
+            'view' => view('components.device-accounting.devices.edit', compact('device', 'types', 'statuses'))->render(),
         ];
     }
 
