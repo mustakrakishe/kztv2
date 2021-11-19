@@ -91,7 +91,11 @@ class MovementController extends Controller
      */
     public function update(Request $request, Movement $movement)
     {
-        //
+        if($movement->update($request->input())){
+            return ['status' => 1];
+        }
+
+        return ['status' => 0];
     }
 
     /**

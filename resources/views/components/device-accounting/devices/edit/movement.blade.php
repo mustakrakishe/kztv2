@@ -6,8 +6,9 @@
 @endphp
 
 <x-tabpanel {{ $attributes }}>
-    <form id="create-movement-form" class="mt-3" action="{{ route('movements.store') }}" validation="{{ route('movements.validate') }}"  method="post">
+    <form id="movement-update-form" class="mt-3" action="{{ route('movements.update', ['movement' => $movement->id]) }}" method="post">
         @csrf
+        @method('put')
 
         <div class="row mb-3">
             <div class="col-md-6">
@@ -46,6 +47,12 @@
                 style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
             >{{ $movement->comment }}</textarea>
         </div>
-        
+
+        <div class="col d-flex">
+            <div class="ms-auto">
+                <x-button>{{ __('dialog.actions.apply') }}</x-button>
+            </div>
+        </div>
+
     </form>
 </x-tabpanel>
