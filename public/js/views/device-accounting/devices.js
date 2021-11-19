@@ -7,8 +7,8 @@ const CREATE_LINK = 'a#create'
 const DEVICE_ROW = 'tr[name=device]';
 const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
-const FORM_DELETE = 'form#delete';
-const FORM_UPDATE = '#device-update-form';
+const UPDATE_FORM = '#edit-modal form';
+const DELETE_FORM = 'form#delete';
 const PAGINATION_LINK = 'a.page-link';
 const SEARCH_FORM = 'form#search-form';
 const SEARCH_INPUT = 'input#search-input';
@@ -20,8 +20,8 @@ $(document).on('click', CONTEXT_MENU_DELETE, contextMenuDeleteHandler);
 $(document).on('click', CONTEXT_MENU_EDIT, contextMenuEditHandler);
 $(document).on('click', CREATE_LINK, createLinkClickHandler);
 $(document).on('contextmenu', DEVICE_ROW, showContextMenu);
-$(document).on('submit', FORM_DELETE, deleteFormSubmitHandler);
-$(document).on('submit', FORM_UPDATE, updateFormSubmitHandler);
+$(document).on('submit', UPDATE_FORM, updateFormSubmitHandler);
+$(document).on('submit', DELETE_FORM, deleteFormSubmitHandler);
 $(document).on('click', PAGINATION_LINK, switchPaginationPage);
 $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 
@@ -86,13 +86,11 @@ async function searchDeviceHandler(event) {
     }
 }
 
-async function updateFormSubmitHandler(event) {
+async function updateFormSubmitHandler(event){
     event.preventDefault();
 
-    let form = event.target;
     let hasValidation = true;
-
-    let response = await Form.xhrAction(form, hasValidation);
+    let response = await Form.xhrAction(this, hasValidation);
 
     if (response.status === 1) {
         switchDeviceTablePage(1);
