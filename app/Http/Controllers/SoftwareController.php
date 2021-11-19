@@ -76,7 +76,19 @@ class SoftwareController extends Controller
      */
     public function update(Request $request, Software $software)
     {
-        if ($software->update($request->input())) {
+        $input = $request->input();
+
+        $generalSoftwareFields = array_filter($software->fillable, function($value) {
+            return !in_array($value, ['device_id', 'date']);
+        });
+
+        $issetGeneralInput = !!array_filter($input, function($value, $key) use ($generalSoftwareFields) {
+            return $value && in_array($key, $generalSoftwareFields);
+        }, ARRAY_FILTER_USE_BOTH);
+
+        if (!$issetGeneralInput) {
+            return $this->destroy($software);
+        } elseif ($software->update($input)) {
             return ['status' => 1];
         }
 
@@ -91,6 +103,7 @@ class SoftwareController extends Controller
      */
     public function destroy(Software $software)
     {
-        //
+        $software->delete();
+        return ['status' => 1];
     }
 }

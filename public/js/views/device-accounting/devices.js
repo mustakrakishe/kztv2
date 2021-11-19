@@ -91,7 +91,7 @@ async function updateFormSubmitHandler(event){
 
     let hasValidation = true;
     let response = await Form.xhrAction(this, hasValidation);
-
+console.log(response);
     if (response.status === 1) {
         switchDeviceTablePage(1);
     }
