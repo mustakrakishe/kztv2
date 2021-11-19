@@ -28,7 +28,7 @@
                 @break
 
             @case(5)
-                <!-- На ремноте -->
+                <!-- На ремонте -->
                 <i class="fas fa-tools"></i>
                 @break
 
