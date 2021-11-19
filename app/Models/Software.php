@@ -23,6 +23,8 @@ class Software extends Model
         'comment',
     ];
 
+    public $timestamps = false;
+
     /**
      * The "booted" method of the model.
      *

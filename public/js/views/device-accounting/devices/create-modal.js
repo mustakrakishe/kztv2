@@ -29,7 +29,7 @@ async function storeBtnClickHandler() {
 
     let deviceStoreResponse = await Form.xhrAction(STORE_DEVICE_FORM);
     
-    if (deviceStoreResponse.status === 0) {
+    if (deviceStoreResponse.status !== 1) {
         $(this).prop('disabled',false);
         return;
     }
@@ -39,16 +39,15 @@ async function storeBtnClickHandler() {
     $(STORE_MOVEMENT_FORM).append(deviceIdInput);
     let movementStoreResponse = await Form.xhrAction(STORE_MOVEMENT_FORM);
     
-    if (movementStoreResponse.status === 0) {
+    if (movementStoreResponse.status !== 1) {
         $(this).prop('disabled',false);
         return;
     }
 
     $(STORE_HARDWARE_FORM).append(deviceIdInput);
-
     let hardwareStoreResponse = await Form.xhrAction(STORE_HARDWARE_FORM);
     
-    if (hardwareStoreResponse.status === 0) {
+    if (hardwareStoreResponse.status !== 1) {
         $(this).prop('disabled',false);
         return;
     }
@@ -59,9 +58,10 @@ async function storeBtnClickHandler() {
     }
 
     if(software.description || software.comment){
+        $(STORE_SOFTWARE_FORM).append(deviceIdInput);
         let softwareStoreResponse = await Form.xhrAction(STORE_SOFTWARE_FORM);
     
-        if (softwareStoreResponse.status === 0) {
+        if (softwareStoreResponse.status !== 1) {
             $(this).prop('disabled',false);
             return;
         }
