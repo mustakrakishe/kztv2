@@ -88,11 +88,10 @@ class DeviceController extends Controller
      */
     public function edit(Device $device)
     {
-        $devices = Device::paginate()->withPath(route('devices.fetch_data'));
         $types = Type::all();
         $statuses = Status::all();
 
-        $devices->load([
+        $device->load([
             'type',
             'status',
             'last_movement',
