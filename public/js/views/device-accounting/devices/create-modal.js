@@ -30,24 +30,26 @@ async function storeBtnClickHandler() {
     }
 
     let deviceIdInput = `<input type="numeric" name="device_id" value="${deviceStoreResponse.device.id}" hidden>`;
-    $(STORE_MOVEMENT_FORM).append(deviceIdInput);
 
+    $(STORE_MOVEMENT_FORM).append(deviceIdInput);
     let movementStoreResponse = await Form.xhrAction(STORE_MOVEMENT_FORM);
     
     if (movementStoreResponse.status === 0) {
         return;
     }
 
-    // let hardwareStoreResponse = await Form.xhrAction(STORE_HARDWARE_FORM);
-    
-    // if (hardwareStoreResponse.status === 0) {
-    //     return;
-    // }
+    $(STORE_HARDWARE_FORM).append(deviceIdInput);
 
-    // let software = {
-    //     description: $(STORE_SOFTWARE_FORM).find('[name=description]').val(),
-    //     comment: $(STORE_SOFTWARE_FORM).find('[name=comment]').val(),
-    // }
+    let hardwareStoreResponse = await Form.xhrAction(STORE_HARDWARE_FORM);
+    
+    if (hardwareStoreResponse.status === 0) {
+        return;
+    }
+
+    let software = {
+        description: $(STORE_SOFTWARE_FORM).find('[name=description]').val(),
+        comment: $(STORE_SOFTWARE_FORM).find('[name=comment]').val(),
+    }
 
     // if(software.description || software.comment){
     //     let softwareStoreResponse = await Form.xhrAction(STORE_SOFTWARE_FORM);

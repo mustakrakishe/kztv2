@@ -12,8 +12,6 @@ class Device extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     public $fillable = [
         'inventory_code',
         'identification_code',
@@ -22,6 +20,8 @@ class Device extends Model
         'type_id',
         'updated_at',
     ];
+
+    protected $perPage = 10;
 
     public static $searchable = [
         'inventory_code',
@@ -38,7 +38,7 @@ class Device extends Model
         'last_software',
     ];
 
-    protected $perPage = 10;
+    public $timestamps = false;
 
     /**
      * The "booted" method of the model.
