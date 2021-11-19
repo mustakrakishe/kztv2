@@ -1,6 +1,8 @@
 import Form from "../../../components/form.js";
 import * as Tabswitcher from "../../../components/tabswitcher.js";
 
+const DEVICE_TABLE_CONTAINER = '#device-table-container';
+const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
 const MODAL = '#create-modal';
 const PANEL = '[role=tabpanel]';
 const STORE_BTN = '#store-device-btn';
@@ -23,6 +25,8 @@ function createModalShowHandler() {
 }
 
 async function storeBtnClickHandler() {
+    $(this).prop('disabled', true);
+
     let deviceStoreResponse = await Form.xhrAction(STORE_DEVICE_FORM);
     
     if (deviceStoreResponse.status === 0) {
@@ -58,8 +62,10 @@ async function storeBtnClickHandler() {
     //         return;
     //     }
     // }
+    
+    await switchDeviceTablePage(1);
 
-    $(MODAL).hide();
+    $(MODAL).modal('hide');
 }
 
 async function tabswitcherBackClickHandler() {
@@ -89,6 +95,17 @@ function getCurrentForm() {
     let activeTabPanel = $(MODAL).find(PANEL + '.active');
     let currentForm = $(activeTabPanel).find('form').first();
     return currentForm;
+}
+
+async function switchDeviceTablePage(page) {
+    let url = $(DEVICE_TABLE_PAGINATOR).attr('path');
+
+    let response = await $.get(url, { page });
+
+    if (response.status === 1) {
+        let deviceTablePage = response.view;
+        $(DEVICE_TABLE_CONTAINER).html(deviceTablePage);
+    }
 }
 
 async function validateForm(form) {

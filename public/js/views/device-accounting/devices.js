@@ -27,17 +27,6 @@ $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 
 // Handlers
 
-async function searchDeviceHandler(event) {
-    event.preventDefault();
-
-    let response = await Form.xhrAction(SEARCH_FORM);
-
-    if (response.status === 1) {
-        let resultDeviceTable = response.view;
-        $(DEVICE_TABLE_CONTAINER).html(resultDeviceTable);
-    }
-}
-
 async function contextMenuEditHandler(event) {
     event.preventDefault();
 
@@ -70,19 +59,6 @@ async function createLinkClickHandler(event) {
     showDialog(dialog);
 }
 
-async function updateFormSubmitHandler(event) {
-    event.preventDefault();
-
-    let form = event.target;
-    let hasValidation = true;
-
-    let response = await Form.xhrAction(form, hasValidation);
-
-    if (response.status === 1) {
-        switchDeviceTablePage(1);
-    }
-}
-
 async function deleteFormSubmitHandler(event) {
     event.preventDefault();
 
@@ -98,6 +74,32 @@ async function deleteFormSubmitHandler(event) {
         switchDeviceTablePage(currentPage);
     }
 }
+
+async function searchDeviceHandler(event) {
+    event.preventDefault();
+
+    let response = await Form.xhrAction(SEARCH_FORM);
+
+    if (response.status === 1) {
+        let resultDeviceTable = response.view;
+        $(DEVICE_TABLE_CONTAINER).html(resultDeviceTable);
+    }
+}
+
+async function updateFormSubmitHandler(event) {
+    event.preventDefault();
+
+    let form = event.target;
+    let hasValidation = true;
+
+    let response = await Form.xhrAction(form, hasValidation);
+
+    if (response.status === 1) {
+        switchDeviceTablePage(1);
+    }
+}
+
+// helpers
 
 async function switchPaginationPage(event) {
     event.preventDefault();
