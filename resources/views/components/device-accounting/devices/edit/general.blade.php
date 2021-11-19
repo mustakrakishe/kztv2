@@ -1,8 +1,10 @@
 @props(['device', 'types'])
 
 <x-tabpanel {{ $attributes }}>
-    <form id="create-device-form" class="mt-3" action="{{ route('devices.store') }}" validation="{{ route('devices.validate') }}" method="post">
+
+    <form id="device-update-form" class="mt-3" action="{{ route('devices.update', ['device' => $device->id]) }}" method="post">
         @csrf
+        @method('put')
 
         <div class="row mb-3">
             <div class="col-md-6">
@@ -38,6 +40,12 @@
                 <textarea name="comment" class="form-control" style="height: 132px; resize: none; overflow-x: hidden; overflow-y: scroll;">{{ $device->comment }}</textarea>
             </div>
         </div>
-        
+
+        <div class="col d-flex">
+            <div class="ms-auto">
+                <x-button>{{ __('dialog.actions.apply') }}</x-button>
+            </div>
+        </div>
+
     </form>
 </x-tabpanel>
