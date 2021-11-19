@@ -48,12 +48,6 @@ class synthesizeHardwareTable extends Migration
             ]);
         }
 
-        // Set not nullable constraint on [conditions].[comment]
-
-        Schema::table('conditions', function (Blueprint $table){
-            $table->text('comment')->nullable(false)->change();
-        });
-
         // Drop [modernizations]
 
         Schema::dropIfExists('modernizations');
