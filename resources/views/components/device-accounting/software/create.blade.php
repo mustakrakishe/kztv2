@@ -1,10 +1,15 @@
+@php
+    $date = time();
+    $dateISO = date('Y-m-d', $date) . 'T' . date('H:i:s', $date);
+@endphp
+
 <form id="create-software-form" class="mt-3" action="{{ route('software.store') }}" method="post">
     @csrf
 
     <div class="row mb-3">
         <div class="col-md-6">
             <label for="date" class="form-label">{{ __('Date') }}</label>
-            <input type="datetime-local" name="date" class="form-control">
+            <input type="datetime-local" name="date" class="form-control" value="{{ $dateISO }}" step="1">
         </div>
     </div>
 
