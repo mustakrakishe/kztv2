@@ -20,7 +20,7 @@ $(document).on('click', hideContextMenu);
 $(document).on('click', CONTEXT_MENU_DELETE, contextMenuDeleteHandler);
 $(document).on('click', CONTEXT_MENU_EDIT, contextMenuEditHandler);
 $(document).on('click', CREATE_LINK, createLinkClickHandler);
-$(document).on('contextmenu', DEVICE_ROW, showContextMenu);
+$(document).on('contextmenu', DEVICE_ROW, deviceRowContextMenuHandler);
 $(document).on('submit', UPDATE_FORM, updateFormSubmitHandler);
 $(document).on('submit', DELETE_FORM, deleteFormSubmitHandler);
 $(document).on('click', PAGINATION_LINK, switchPaginationPage);
@@ -76,6 +76,11 @@ async function deleteFormSubmitHandler(event) {
     }
 }
 
+function deviceRowContextMenuHandler(event){
+    event.preventDefault();
+    showContextMenu(event);
+}
+
 async function searchDeviceHandler(event) {
     event.preventDefault();
 
@@ -117,16 +122,14 @@ async function switchPaginationPage(event) {
 }
 
 async function showContextMenu(event) {
-    event.preventDefault();
-
     let coordinates = {
         x: event.pageX,
         y: event.pageY,
     };
 
     hideContextMenu();
-
-    let tr = this;
+    
+    let tr = event.currentTarget;
     let deviceId = $(tr).attr('id');
 
     let contextMenu = $.parseHTML(contextMenuHtml);

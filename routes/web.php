@@ -20,7 +20,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-require __DIR__.'/devices.php';
-require __DIR__.'/movements.php';
-require __DIR__.'/hardware.php';
-require __DIR__.'/software.php';
+require __DIR__.'/device-accounting/device-accounts.php';
+require __DIR__.'/device-accounting/devices.php';
+require __DIR__.'/device-accounting/movements.php';
+require __DIR__.'/device-accounting/hardware.php';
+require __DIR__.'/device-accounting/software.php';
