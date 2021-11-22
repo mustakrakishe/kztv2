@@ -34,9 +34,9 @@ async function storeBtnClickHandler() {
         return;
     }
 
-    let deviceIdInput = `<input type="numeric" name="device_id" value="${deviceStoreResponse.device.id}" hidden>`;
+    let deviceId = deviceStoreResponse.device.id;
 
-    $(STORE_MOVEMENT_FORM).append(deviceIdInput);
+    $(STORE_MOVEMENT_FORM).find('[name=device_id]').val(deviceId);
     let movementStoreResponse = await Form.xhrAction(STORE_MOVEMENT_FORM);
     
     if (movementStoreResponse.status !== 1) {
@@ -44,7 +44,7 @@ async function storeBtnClickHandler() {
         return;
     }
 
-    $(STORE_HARDWARE_FORM).append(deviceIdInput);
+    $(STORE_HARDWARE_FORM).find('[name=device_id]').val(deviceId);
     let hardwareStoreResponse = await Form.xhrAction(STORE_HARDWARE_FORM);
     
     if (hardwareStoreResponse.status !== 1) {
@@ -58,7 +58,7 @@ async function storeBtnClickHandler() {
     }
 
     if(software.description || software.comment){
-        $(STORE_SOFTWARE_FORM).append(deviceIdInput);
+        $(STORE_SOFTWARE_FORM).find('[name=device_id]').val(deviceId);
         let softwareStoreResponse = await Form.xhrAction(STORE_SOFTWARE_FORM);
     
         if (softwareStoreResponse.status !== 1) {

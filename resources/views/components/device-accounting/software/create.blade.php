@@ -5,6 +5,8 @@
 
 <form id="create-software-form" class="mt-3" action="{{ route('software.store') }}" method="post">
     @csrf
+    
+    <input type="hidden" name="device_id">
 
     <div class="row mb-3">
         <div class="col-md-6">
