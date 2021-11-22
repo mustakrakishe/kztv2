@@ -88,21 +88,7 @@ class DeviceController extends Controller
      */
     public function edit(Device $device)
     {
-        $types = Type::all();
-        $statuses = Status::all();
-
-        $device->load([
-            'type',
-            'status',
-            'last_movement',
-            'last_hardware',
-            'last_software'
-        ]);
-        
-        return [
-            'status' => 1,
-            'view' => view('components.device-accounting.devices.edit', compact('device', 'types', 'statuses'))->render(),
-        ];
+        // 
     }
 
     /**
@@ -123,7 +109,7 @@ class DeviceController extends Controller
             $types = Type::all();
             return [
                 'status' => 1,
-                'view' => view('components.device-accounting.devices.edit.general', compact('device', 'types'))->render(),
+                'view' => view('components.device-accounting.devices.edit', compact('device', 'types'))->render(),
             ];
         }
 

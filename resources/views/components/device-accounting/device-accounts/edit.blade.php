@@ -12,7 +12,7 @@
     </nav>
     <div class="tab-content" id="nav-tabContent" style="height: 390px;">
         <x-tabpanel class="h-100 show active" id="nav-general" aria-labelledby="nav-general-tab">
-            <x-device-accounting.devices.edit.general :device="$device" :types="$types"/>
+            <x-device-accounting.devices.edit :device="$device" :types="$types"/>
         </x-tabpanel>
         <x-tabpanel class="h-100" id="nav-movement" aria-labelledby="nav-movement-tab">
             <x-device-accounting.movements.edit :movement="$device->last_movement" :statuses="$statuses"/>
