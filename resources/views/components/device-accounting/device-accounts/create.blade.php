@@ -17,7 +17,10 @@
                 <x-device-accounting.devices.create :types="$types"/>
             </x-tabpanel>
 
-            <x-device-accounting.devices.create.movement id="v-pills-movement" aria-labelledby="v-pills-movement-tab" :statuses="$statuses"/>
+            <x-tabpanel id="v-pills-movement" aria-labelledby="v-pills-movement-tab">
+                <x-device-accounting.movements.create :statuses="$statuses"/>
+            </x-tabpanel>
+            
             <x-device-accounting.devices.create.hardware id="v-pills-hardware" aria-labelledby="v-pills-hardware-tab"/>
             <x-device-accounting.devices.create.software id="v-pills-software" aria-labelledby="v-pills-software-tab"/>
         </div>

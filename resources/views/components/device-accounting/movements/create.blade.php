@@ -1,18 +1,53 @@
-<x-modal id="device-properties-modal" class="modal-lg modal-fullscreen-lg-down">
-    <x-slot name="title">{{ __('dialog.create.header', ['entity' => trans('dialog.entities.movement')]) }}</x-slot>
+@props(['statuses'])
 
-    <form id="store" class="mt-3" action="{{ route('movements.store') }}" method="post">
-        @csrf
+@php
+    $IN_STORAGE_STATUS_ID = 2;
 
-        <div class="mb-3">
+    $default = new class {};
+    $default->status_id = $IN_STORAGE_STATUS_ID;
+    $default->location = 'ЗУ. АСУ. 210';
+    $default->comment = 'Новий';
+@endphp
+
+<form id="create-movement-form" class="mt-3" action="{{ route('movements.store') }}" validation="{{ route('movements.validate') }}"  method="post">
+    @csrf
+
+    <div class="row mb-3">
+        <div class="col-md-6">
             <label for="date" class="form-label">{{ __('Date') }}</label>
-            <input type="datetime-local" name="date" id="date" class="form-control">
+            <input type="datetime-local" name="date" class="form-control">
         </div>
+        <div class="col-md-6">
+            <label for="status_id" class="form-label">{{ __('Status') }}</label>
+            <select name="status_id" class="form-select">
+                @foreach($statuses as $status)
+                <option
+                    value="{{ $status->id }}"
+                    @if($status->id == $default->status_id) selected @endif
+                >
+                    {{ $status->name }}
+                </option>
+                @endforeach
+            </select>
+        </div>
+    </div>
 
-    </form>
+    <div class="mb-3">
+        <label for="location" class="form-label">{{ __('Location') }}</label>
+        <textarea
+            name="location"
+            class="form-control"
+            style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
+        >{{ $default->location }}</textarea>
+    </div>
 
-    <x-slot name="footer">
-        <x-button type="button" class="btn-secondary" data-bs-dismiss="modal">{{ __('dialog.actions.cancel') }}</x-button>
-        <x-button data-bs-dismiss="modal">{{ __('dialog.actions.store') }}</x-button>
-    </x-slot>
-</x-modal>
+    <div>
+        <label for="comment" class="form-label">{{ __('Comment') }}</label>
+        <textarea
+            name="comment"
+            class="form-control"
+            style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
+        >{{ $default->comment }}</textarea>
+    </div>
+    
+</form>
