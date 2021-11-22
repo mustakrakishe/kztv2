@@ -11,10 +11,22 @@
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent" style="height: 390px;">
-        <x-device-accounting.devices.edit.general class="tab-pane fade h-100 show active" id="nav-general" role="tabpanel" aria-labelledby="nav-general-tab" :device="$device" :types="$types"/>
-        <x-device-accounting.devices.edit.movement class="tab-pane fade h-100" id="nav-movement" role="tabpanel" aria-labelledby="nav-movement-tab" :movement="$device->last_movement" :statuses="$statuses"/>
-        <x-device-accounting.devices.edit.hardware class="tab-pane fade h-100" id="nav-hardware" role="tabpanel" aria-labelledby="nav-hardware-tab" :hardware="$device->last_hardware"/>
-        <x-device-accounting.devices.edit.software class="tab-pane fade h-100" id="nav-software" role="tabpanel" aria-labelledby="nav-software-tab" :software="$device->last_software" :deviceId="$device->id"/>
+        <x-tabpanel class="h-100 show active" id="nav-general" aria-labelledby="nav-general-tab">
+            <x-device-accounting.devices.edit.general :device="$device" :types="$types"/>
+        </x-tabpanel>
+        <x-tabpanel class="h-100" id="nav-movement" aria-labelledby="nav-movement-tab">
+            <x-device-accounting.devices.edit.movement :movement="$device->last_movement" :statuses="$statuses"/>
+        </x-tabpanel>
+        <x-tabpanel class="h-100" id="nav-hardware" aria-labelledby="nav-hardware-tab">
+            <x-device-accounting.devices.edit.hardware :hardware="$device->last_hardware"/>
+        </x-tabpanel>
+        <x-tabpanel class="h-100" id="nav-software" aria-labelledby="nav-software-tab">
+            @isset($device->last_software)
+            <x-device-accounting.software.edit :software="$device->last_software" />
+            @else
+            <x-device-accounting.software.create :deviceId="$device->id"/>
+            @endisset
+        </x-tabpanel>
     </div>
 
 </x-modal>

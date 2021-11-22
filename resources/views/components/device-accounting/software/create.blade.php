@@ -1,16 +1,9 @@
 @php
-    if (isset($software)) {
-        $dateTimeISO  = str_replace(' ', 'T', $software->date);
-    } else {
-        $dateTime = time();
-        $dateTimeISO = date('Y-m-d', $dateTime) . 'T' . date('H:i:s', $dateTime);
-    }
+    $dateTime = time();
+    $dateTimeISO = date('Y-m-d', $dateTime) . 'T' . date('H:i:s', $dateTime);
 @endphp
 
-<form id="update-software-form" class="h-100 d-flex flex-column mt-3" action="{{ route('software.update') }}" method="post">
-    @isset($software)
-    @method('put')
-    @endisset
+<form id="update-software-form" class="h-100 d-flex flex-column mt-3" action="{{ route('software.store') }}" method="post">
     @csrf
 
     <input type="hidden" name="device_id" value="{{ $deviceId }}">
@@ -28,7 +21,7 @@
             name="description"
             class="form-control"
             style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
-        >{{ $software?->description }}</textarea>
+        ></textarea>
     </div>
 
     <div class="mb-3">
@@ -37,11 +30,11 @@
             name="comment"
             class="form-control"
             style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
-        >{{ $software?->comment }}</textarea>
+        ></textarea>
     </div>
 
     <div class="ms-auto mt-auto">
-        <x-button>{{ __('dialog.actions.apply') }}</x-button>
+        <x-button>{{ __('dialog.actions.store') }}</x-button>
     </div>
 
 </form>

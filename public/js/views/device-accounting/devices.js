@@ -12,6 +12,7 @@ const DELETE_FORM = 'form#delete';
 const PAGINATION_LINK = 'a.page-link';
 const SEARCH_FORM = 'form#search-form';
 const SEARCH_INPUT = 'input#search-input';
+const TAB_PANEL = '[role=tabpanel]';
 
 // listeners
 
@@ -91,8 +92,9 @@ async function updateFormSubmitHandler(event){
 
     let hasValidation = true;
     let response = await Form.xhrAction(this, hasValidation);
-console.log(response);
+    
     if (response.status === 1) {
+        $(this).closest(TAB_PANEL).html(response.view);
         switchDeviceTablePage(1);
     }
 }

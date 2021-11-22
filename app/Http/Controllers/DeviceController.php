@@ -120,7 +120,11 @@ class DeviceController extends Controller
         }
 
         if ($device->update($request->input())) {
-            return ['status' => 1];
+            $types = Type::all();
+            return [
+                'status' => 1,
+                'view' => view('components.device-accounting.devices.edit.general', compact('device', 'types'))->render(),
+            ];
         }
 
         return ['status' => 0];
@@ -185,8 +189,8 @@ class DeviceController extends Controller
         $input = $request->all();
 
         $validator = Validator::make($input, [
-            'inventory_code' => ['nullable', 'numeric'],
-            'identification_code' => ['nullable', 'numeric'],
+            'inventory_code' => ['nullable', 'numeric', 'max:2147483647'],
+            'identification_code' => ['nullable', 'numeric', 'max:2147483647'],
             'type_id' => ['required', 'integer'],
             'model' => ['nullable', 'string', 'max:50'],
         ]);

@@ -35,14 +35,17 @@ class SoftwareController extends Controller
      */
     public function store(Request $request)
     {
-        Software::create([
+        $software = Software::create([
             'date' => $request->date,
             'description' => $request->description,
             'comment' => $request->comment,
             'device_id' => $request->device_id,
         ]);
 
-        return ['status' => 1];
+        return [
+            'status' => 1,
+            'view' => view('components.device-accounting.software\edit', compact('software'))->render(),
+        ];
     }
 
     /**
@@ -87,9 +90,20 @@ class SoftwareController extends Controller
         }, ARRAY_FILTER_USE_BOTH);
 
         if (!$issetGeneralInput) {
-            return $this->destroy($software);
+            $deviceId = $software->device_id;
+            $deleteResponse = $this->destroy($software);
+
+            if ($deleteResponse['status'] === 1) {
+                return [
+                    'status' => 1,
+                    'view' => view('components.device-accounting.software.create', compact('deviceId'))->render(),
+                ];
+            }
         } elseif ($software->update($input)) {
-            return ['status' => 1];
+            return [
+                'status' => 1,
+                'view' => view('components.device-accounting.software.edit', compact('software'))->render(),
+            ];
         }
 
         return ['status' => 0];
