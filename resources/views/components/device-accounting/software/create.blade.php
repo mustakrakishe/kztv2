@@ -34,6 +34,7 @@
     </div>
 
     <div class="ms-auto mt-auto">
+        <x-button type="reset">{{ __('dialog.actions.reset') }}</x-button>
         <x-button>{{ __('dialog.actions.apply') }}</x-button>
     </div>
 
