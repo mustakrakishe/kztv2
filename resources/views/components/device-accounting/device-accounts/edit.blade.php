@@ -10,7 +10,7 @@
             <button class="nav-link" id="nav-software-tab" data-bs-toggle="tab" data-bs-target="#nav-software" type="button" role="tab" aria-controls="nav-software" aria-selected="false">{{ __('Software') }}</button>
         </div>
     </nav>
-    <div class="tab-content" id="nav-tabContent" style="height: 390px;">
+    <div class="tab-content" id="nav-tabContent" style="min-height: 390px;">
         <x-tabpanel class="h-100 show active" id="nav-general" aria-labelledby="nav-general-tab">
             <x-device-accounting.devices.edit :device="$device" :types="$types"/>
         </x-tabpanel>
