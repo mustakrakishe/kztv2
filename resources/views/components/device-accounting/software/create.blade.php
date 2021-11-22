@@ -34,7 +34,7 @@
     </div>
 
     <div class="ms-auto mt-auto">
-        <x-button>{{ __('dialog.actions.store') }}</x-button>
+        <x-button>{{ __('dialog.actions.apply') }}</x-button>
     </div>
 
 </form>

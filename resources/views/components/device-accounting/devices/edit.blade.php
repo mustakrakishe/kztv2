@@ -15,7 +15,7 @@
             <x-device-accounting.devices.edit.general :device="$device" :types="$types"/>
         </x-tabpanel>
         <x-tabpanel class="h-100" id="nav-movement" aria-labelledby="nav-movement-tab">
-            <x-device-accounting.devices.edit.movement :movement="$device->last_movement" :statuses="$statuses"/>
+            <x-device-accounting.movements.edit :movement="$device->last_movement" :statuses="$statuses"/>
         </x-tabpanel>
         <x-tabpanel class="h-100" id="nav-hardware" aria-labelledby="nav-hardware-tab">
             <x-device-accounting.devices.edit.hardware :hardware="$device->last_hardware"/>

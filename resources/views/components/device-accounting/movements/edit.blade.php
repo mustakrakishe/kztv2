@@ -1,5 +1,3 @@
-@props(['movement', 'statuses'])
-
 @php
     $IN_STORAGE_STATUS_ID = 2;
     $dateISO = str_replace(' ', 'T', $movement->date);
@@ -48,6 +46,7 @@
     </div>
 
     <div class="ms-auto mt-auto">
+        <x-button type="reset">{{ __('dialog.actions.reset') }}</x-button>
         <x-button>{{ __('dialog.actions.apply') }}</x-button>
     </div>
 

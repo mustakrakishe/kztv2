@@ -95,6 +95,7 @@ async function updateFormSubmitHandler(event){
     
     if (response.status === 1) {
         $(this).closest(TAB_PANEL).html(response.view);
+        console.log($(this).closest(TAB_PANEL));
         switchDeviceTablePage(1);
     }
 }

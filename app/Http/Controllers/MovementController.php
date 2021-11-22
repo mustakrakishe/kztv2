@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Status;
 use App\Models\Movement;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -92,7 +93,12 @@ class MovementController extends Controller
     public function update(Request $request, Movement $movement)
     {
         if ($movement->update($request->input())) {
-            return ['status' => 1];
+            $statuses = Status::all();
+
+            return [
+                'status' => 1,
+                'view' => view('components.device-accounting.movements.edit', compact('movement', 'statuses'))->render(),
+            ];
         }
 
         return ['status' => 0];
