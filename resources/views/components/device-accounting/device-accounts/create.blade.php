@@ -24,8 +24,10 @@
             <x-tabpanel id="v-pills-hardware" aria-labelledby="v-pills-hardware-tab">
                 <x-device-accounting.hardware.create/>
             </x-tabpanel>
-            
-            <x-device-accounting.devices.create.software id="v-pills-software" aria-labelledby="v-pills-software-tab"/>
+
+            <x-tabpanel id="v-pills-software" aria-labelledby="v-pills-software-tab">
+                <x-device-accounting.software.create/>
+            </x-tabpanel>
         </div>
     </div>
 
