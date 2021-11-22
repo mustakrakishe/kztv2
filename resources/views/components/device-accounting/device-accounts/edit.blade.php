@@ -14,12 +14,15 @@
         <x-tabpanel class="h-100 show active" id="nav-general" aria-labelledby="nav-general-tab">
             <x-device-accounting.devices.edit :device="$device" :types="$types"/>
         </x-tabpanel>
+
         <x-tabpanel class="h-100" id="nav-movement" aria-labelledby="nav-movement-tab">
             <x-device-accounting.movements.edit :movement="$device->last_movement" :statuses="$statuses"/>
         </x-tabpanel>
+
         <x-tabpanel class="h-100" id="nav-hardware" aria-labelledby="nav-hardware-tab">
             <x-device-accounting.hardware.edit :hardware="$device->last_hardware"/>
         </x-tabpanel>
+        
         <x-tabpanel class="h-100" id="nav-software" aria-labelledby="nav-software-tab">
             @isset($device->last_software)
             <x-device-accounting.software.edit :software="$device->last_software" />
