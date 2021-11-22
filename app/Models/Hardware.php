@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\Model;
 class Hardware extends Model
 {
     use HasFactory;
+    
+    protected $casts = [
+        'great_mod' => 'boolean',
+    ];
 
     public $fillable = [
         'date',

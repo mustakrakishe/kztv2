@@ -18,7 +18,7 @@
             <x-device-accounting.movements.edit :movement="$device->last_movement" :statuses="$statuses"/>
         </x-tabpanel>
         <x-tabpanel class="h-100" id="nav-hardware" aria-labelledby="nav-hardware-tab">
-            <x-device-accounting.devices.edit.hardware :hardware="$device->last_hardware"/>
+            <x-device-accounting.hardware.edit :hardware="$device->last_hardware"/>
         </x-tabpanel>
         <x-tabpanel class="h-100" id="nav-software" aria-labelledby="nav-software-tab">
             @isset($device->last_software)

@@ -78,7 +78,10 @@ class HardwareController extends Controller
     public function update(Request $request, Hardware $hardware)
     {
         if ($hardware->update($request->input())) {
-            return ['status' => 1];
+            return [
+                'status' => 1,
+                'view' => view('components.device-accounting.hardware.edit', compact('hardware'))->render(),
+            ];
         }
 
         return ['status' => 0];
