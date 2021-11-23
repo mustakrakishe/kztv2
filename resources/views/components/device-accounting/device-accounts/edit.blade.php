@@ -1,4 +1,4 @@
-<x-modal id="edit-modal" class="modal-lg modal-fullscreen-lg-down">
+<x-modal id="edit-device-account-modal" class="modal-lg modal-fullscreen-lg-down">
 
     <x-slot name="title">{{ __('dialog.edit.header', ['entity' => trans('dialog.entities.device')]) }}</x-slot>
 

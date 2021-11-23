@@ -1,6 +1,6 @@
 @props(['types', 'statuses'])
 
-<x-modal id="create-modal" class="modal-lg modal-fullscreen-lg-down">
+<x-modal id="create-device-account-modal" class="modal-lg modal-fullscreen-lg-down">
 
     <x-slot name="title">{{ __('dialog.create.header', ['entity' => trans('dialog.entities.device')]) }}</x-slot>
 

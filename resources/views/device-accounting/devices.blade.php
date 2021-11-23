@@ -17,7 +17,7 @@
     </div>
 
     <div class="col-auto text-right">
-        <a id="create" class="btn btn-primary" href="{{ route('device-accounts.create') }}">
+        <a id="create-device-account" class="btn btn-primary" href="{{ route('device-accounts.create') }}">
             <i class="fas fa-plus me-1"></i>
             {{ __('New device') }}
         </a>
@@ -31,7 +31,7 @@
 <script>
     let contextMenuHtml = `<x-device-accounting.devices.index.context-menu/>`;
     let deleteConfirmationModalHtml = `<x-device-accounting.devices.delete.confirm/>`;
-    let createModalHtml = `<x-device-accounting.device-accounts.create :types="$types" :statuses="$statuses"/>`;
+    let createDeviceAccountModalHtml = `<x-device-accounting.device-accounts.create :types="$types" :statuses="$statuses"/>`;
 </script>
 
 @endsection

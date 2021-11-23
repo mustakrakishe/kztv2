@@ -4,12 +4,13 @@ import * as Tabswitcher from "../../components/tabswitcher.js";
 
 const CONTEXT_MENU_DELETE = '#contextmenu [name=delete]';
 const CONTEXT_MENU_EDIT = '#contextmenu [name=edit]';
-const CREATE_DEVICE_MODAL = '#create-modal';
-const CREATE_LINK = 'a#create'
+const CONTEXT_MENU_MOVE = '#contextmenu [name=move]';
+const CREATE_DEVICE_ACCOUNT_MODAL = '#create-device-account-modal';
+const CREATE_DEVICE_ACCOUNT_LINK = 'a#create-device-account'
 const DEVICE_ROW = 'tr[name=device]';
 const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
-const UPDATE_FORM = '#edit-modal form';
+const UPDATE_FORM = '#edit-device-account-modal form';
 const DELETE_FORM = 'form#delete';
 const PAGINATION_LINK = 'a.page-link';
 const PANEL = '[role=tabpanel]';
@@ -29,8 +30,9 @@ const TABSWITCHER_NEXT = '[role=tabswitcher][direction=next]';
 $(document).on('click', hideContextMenu);
 $(document).on('click', CONTEXT_MENU_DELETE, contextMenuDeleteHandler);
 $(document).on('click', CONTEXT_MENU_EDIT, contextMenuEditHandler);
-$(document).on('show.bs.modal', CREATE_DEVICE_MODAL, createModalShowHandler);
-$(document).on('click', CREATE_LINK, createLinkClickHandler);
+$(document).on('click', CONTEXT_MENU_MOVE, contextMenuMoveHandler);
+$(document).on('show.bs.modal', CREATE_DEVICE_ACCOUNT_MODAL, createDeviceAccountModalShowHandler);
+$(document).on('click', CREATE_DEVICE_ACCOUNT_LINK, createLinkClickHandler);
 $(document).on('contextmenu', DEVICE_ROW, deviceRowContextMenuHandler);
 $(document).on('submit', UPDATE_FORM, updateFormSubmitHandler);
 $(document).on('submit', DELETE_FORM, deleteFormSubmitHandler);
@@ -40,7 +42,19 @@ $(document).on('click', STORE_BTN, storeBtnClickHandler);
 $(document).on('click', TABSWITCHER_BACK, tabswitcherBackClickHandler);
 $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
 
-// Handlers
+// handlers
+
+async function contextMenuDeleteHandler(event) {
+    event.preventDefault();
+
+    let link = event.target;
+    let url = $(link).attr('href');
+
+    let dialog = $.parseHTML(deleteConfirmationModalHtml);
+    $(dialog).find('form').attr('action', url);
+
+    showDialog(dialog);
+}
 
 async function contextMenuEditHandler(event) {
     event.preventDefault();
@@ -55,27 +69,29 @@ async function contextMenuEditHandler(event) {
     }
 }
 
-async function contextMenuDeleteHandler(event) {
+async function contextMenuMoveHandler(event) {
     event.preventDefault();
 
     let link = event.target;
     let url = $(link).attr('href');
 
-    let dialog = $.parseHTML(deleteConfirmationModalHtml);
-    $(dialog).find('form').attr('action', url);
+    let response = await $.get(url);
 
-    showDialog(dialog);
+    if (response.status === 1) {
+        let dialog = response.view;
+        showDialog(dialog);
+    }
 }
 
 async function createLinkClickHandler(event) {
     event.preventDefault();
 
-    let dialog = $.parseHTML(createModalHtml);
+    let dialog = $.parseHTML(createDeviceAccountModalHtml);
     showDialog(dialog);
 }
 
-function createModalShowHandler() {
-    $(CREATE_DEVICE_MODAL).find('input[name=date]').val(currentDatetimeISO());
+function createDeviceAccountModalShowHandler() {
+    $( CREATE_DEVICE_ACCOUNT_MODAL).find('input[name=date]').val(currentDatetimeISO());
 }
 
 async function deleteFormSubmitHandler(event) {
@@ -94,7 +110,7 @@ async function deleteFormSubmitHandler(event) {
     }
 }
 
-function deviceRowContextMenuHandler(event){
+function deviceRowContextMenuHandler(event) {
     event.preventDefault();
     showContextMenu(event);
 }
@@ -169,7 +185,7 @@ async function storeBtnClickHandler() {
     
     await switchDeviceTablePage(1);
 
-    $(CREATE_DEVICE_MODAL).modal('hide');
+    $( CREATE_DEVICE_ACCOUNT_MODAL).modal('hide');
 }
 
 async function tabswitcherBackClickHandler() {
@@ -178,7 +194,7 @@ async function tabswitcherBackClickHandler() {
 }
 
 async function tabswitcherNextClickHandler() {
-    let form = getModalCurrentForm(CREATE_DEVICE_MODAL);
+    let form = getModalCurrentForm( CREATE_DEVICE_ACCOUNT_MODAL);
     
     if ($(form).attr('validation')) {
         $(this).attr('disabled', true);
@@ -193,7 +209,7 @@ async function tabswitcherNextClickHandler() {
     }
 }
 
-async function updateFormSubmitHandler(event){
+async function updateFormSubmitHandler(event) {
     event.preventDefault();
 
     let hasValidation = true;
