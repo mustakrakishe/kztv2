@@ -10,7 +10,7 @@
         </x-slot>
     </x-context-menu.item>
 
-    <x-context-menu.item name="move" href="">{{ __('Move') }}</x-context-menu.item>
+    <x-context-menu.item name="move" href="{{ route('devices.movements.create', ['device' => '#']) }}">{{ __('Move') }}</x-context-menu.item>
     <x-context-menu.item name="edit" href="{{ route('device-accounts.edit', ['device_account' => '#']) }}">{{ __('actions.edit') }}</x-context-menu.item>
     <x-context-menu.item name="delete" href="{{ route('devices.destroy', ['device' => '#']) }}">{{ __('actions.delete') }}</x-context-menu.item>
 </x-context-menu>
