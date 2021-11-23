@@ -3,7 +3,7 @@
         {{ __('Events') }}
 
         <x-slot name="submenu">
-            <x-context-menu.item name="movement">{{ __('Movement') }}</x-context-menu.item>
+            <x-context-menu.item name="movement" href="">{{ __('Movement') }}</x-context-menu.item>
             <x-context-menu.item name="hardware">{{ __('Hardware') }}</x-context-menu.item>
             <x-context-menu.item name="software">{{ __('Software') }}</x-context-menu.item>
             <x-context-menu.item name="repair">{{ __('Repair') }}</x-context-menu.item>

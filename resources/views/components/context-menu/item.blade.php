@@ -1,13 +1,15 @@
 @isset($submenu)
 <li>
-    <div {{ $attributes->merge(['class' => 'btn-group dropend p-0 dropdown-item list-group-item-light list-group-item-action']) }}>
+    <div {{ $attributes->merge([
+        'class' => 'btn-group dropend p-0 dropdown-item list-group-item-light list-group-item-action',
+        'onmouseover' => 'new bootstrap.Dropdown($(this).children("button")).show()',
+        'onmouseout' => 'new bootstrap.Dropdown($(this).children("button")).hide()',
+    ]) }}>
         <button
             type="button"
             class="dropdown-toggle dropdown-item list-group-item-light list-group-item-action bg-transparent"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            onmouseover="new bootstrap.Dropdown(this).show()"
-            onmouseout="new bootstrap.Dropdown(this).hide()"
         >
             {{ $slot ?? $title }}
         </button>
