@@ -273,7 +273,7 @@ async function showContextMenu(event) {
 
     let contextMenu = $.parseHTML(contextMenuHtml);
 
-    $(contextMenu).children().each((index, link) => {
+    $(contextMenu).children('[href]').each((index, link) => {
         let actualUrl = $(link).attr('href').replace('#', deviceId);
         $(link).attr('href', actualUrl);
     });
