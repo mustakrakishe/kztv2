@@ -3,7 +3,7 @@ import * as Tabswitcher from "../../../components/tabswitcher.js";
 
 const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
-const MODAL = '#create-modal';
+const CREATE_DEVICE_MODAL = '#create-modal';
 const PANEL = '[role=tabpanel]';
 const STORE_BTN = '#store-device-btn';
 const STORE_DEVICE_FORM = '#create-device-form';
@@ -13,7 +13,7 @@ const STORE_SOFTWARE_FORM = '#create-software-form';
 const TABSWITCHER_BACK = '[role=tabswitcher][direction=prev]';
 const TABSWITCHER_NEXT = '[role=tabswitcher][direction=next]';
 
-$(document).on('show.bs.modal', MODAL, createModalShowHandler);
+$(document).on('show.bs.modal', CREATE_DEVICE_MODAL, createModalShowHandler);
 $(document).on('click', STORE_BTN, storeBtnClickHandler);
 $(document).on('click', TABSWITCHER_BACK, tabswitcherBackClickHandler);
 $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
@@ -21,7 +21,7 @@ $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
 // handlers
 
 function createModalShowHandler() {
-    $(MODAL).find('input[name=date]').val(currentDatetimeISO());
+    $(CREATE_DEVICE_MODAL).find('input[name=date]').val(currentDatetimeISO());
 }
 
 async function storeBtnClickHandler() {
@@ -69,7 +69,7 @@ async function storeBtnClickHandler() {
     
     await switchDeviceTablePage(1);
 
-    $(MODAL).modal('hide');
+    $(CREATE_DEVICE_MODAL).modal('hide');
 }
 
 async function tabswitcherBackClickHandler() {
@@ -78,7 +78,7 @@ async function tabswitcherBackClickHandler() {
 }
 
 async function tabswitcherNextClickHandler() {
-    let form = getCurrentForm();
+    let form = getModalCurrentForm(CREATE_DEVICE_MODAL);
     
     if ($(form).attr('validation')) {
         $(this).attr('disabled', true);
@@ -95,7 +95,7 @@ async function tabswitcherNextClickHandler() {
 
 // procedures
 
-function getCurrentForm() {
+function getModalCurrentForm(MODAL) {
     let activeTabPanel = $(MODAL).find(PANEL + '.active');
     let currentForm = $(activeTabPanel).find('form').first();
     return currentForm;

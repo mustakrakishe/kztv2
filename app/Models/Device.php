@@ -38,8 +38,6 @@ class Device extends Model
         'last_software',
     ];
 
-    public $timestamps = false;
-
     /**
      * The "booted" method of the model.
      *
@@ -56,12 +54,20 @@ class Device extends Model
     }
 
     /**
+     * Disable created_at.
+     */
+    public function setCreatedAt($value)
+    {
+      return null;
+    }
+
+    /**
      * Get the device status.
      */
     public function status()
     {
         // A trick to make an one-to-one relationship with an intermediate table
-        return $this->hasOneThrough(Status::class, Movement::class, 'device_id', 'id', 'id', 'status_id');
+        return $this->hasOneThrough(Status::class, Movement::class, 'device_id', 'id', 'id', 'status_id')->latest('date');
     }
 
     /**

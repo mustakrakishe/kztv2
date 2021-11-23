@@ -29,6 +29,13 @@ class Hardware extends Model
     ];
 
     public $timestamps = false;
+    
+    /**
+    * All of the relationships to be touched.
+    *
+    * @var array
+    */
+   protected $touches = ['device'];
 
     /**
      * The "booted" method of the model.
@@ -43,11 +50,10 @@ class Hardware extends Model
     }
 
     /**
-     * Check if the the motherboard replacement was.
+     * Get the movement device.
      */
-    public function motherboard_replacement_flag()
-    {
-        return $this->hasOne(MotherboardReplacementLog::class, 'hardware_id');
+    public function device(){
+        return $this->belongsTo(Device::class);
     }
 
     public static function scopeSearch($query, Array $keywords){

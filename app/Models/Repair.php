@@ -21,6 +21,20 @@ class Repair extends Model
         'cause',
         'result',
     ];
+    
+    /**
+    * All of the relationships to be touched.
+    *
+    * @var array
+    */
+   protected $touches = ['device'];
+
+    /**
+     * Get the movement device.
+     */
+    public function device(){
+        return $this->belongsTo(Device::class);
+    }
 
     public static function scopeSearch($query, Array $keywords){
         foreach($keywords as $keyword){

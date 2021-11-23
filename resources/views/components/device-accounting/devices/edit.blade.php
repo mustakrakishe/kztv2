@@ -18,7 +18,7 @@
             <label for="type_id" class="form-label">{{ __('Type') }}</label>
             <select name="type_id" class="form-select" id="type_id">
                 @foreach($types as $type)
-                <option value="{{ $type->id }}" @if($type->id === $device->type_id) selected @endif>
+                <option value="{{ $type->id }}" @if($type->id === intval($device->type_id)) selected @endif>
                     {{ $type->name }}
                 </option>
                 @endforeach

@@ -10,8 +10,6 @@ class Movement extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-
     public $fillable = [
         'date',
         'location',
@@ -26,6 +24,15 @@ class Movement extends Model
         'comment',
     ];
 
+    public $timestamps = false;
+    
+    /**
+    * All of the relationships to be touched.
+    *
+    * @var array
+    */
+   protected $touches = ['device'];
+
     /**
      * The "booted" method of the model.
      *
@@ -33,17 +40,23 @@ class Movement extends Model
      */
     protected static function booted()
     {
-        static::addGlobalScope('movement', function (Builder $builder) {
+        static::addGlobalScope('orderMovement', function (Builder $builder) {
             $builder->latest('date')->orderByDesc('id');
         });
     }
-
 
     /**
      * Get the movement device.
      */
     public function device(){
         return $this->belongsTo(Device::class);
+    }
+
+    /**
+     * Get the device status.
+     */
+    public function status(){
+        return $this->belongsTo(Status::class);
     }
 
     public static function scopeSearch($query, Array $keywords){

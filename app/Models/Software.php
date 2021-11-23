@@ -24,6 +24,13 @@ class Software extends Model
     ];
 
     public $timestamps = false;
+    
+    /**
+    * All of the relationships to be touched.
+    *
+    * @var array
+    */
+   protected $touches = ['device'];
 
     /**
      * The "booted" method of the model.
@@ -35,6 +42,13 @@ class Software extends Model
         static::addGlobalScope('software', function (Builder $builder) {
             $builder->latest('date')->orderByDesc('id');
         });
+    }
+
+    /**
+     * Get the movement device.
+     */
+    public function device(){
+        return $this->belongsTo(Device::class);
     }
 
     public static function scopeSearch($query, Array $keywords){

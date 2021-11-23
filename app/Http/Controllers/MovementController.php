@@ -92,6 +92,18 @@ class MovementController extends Controller
      */
     public function update(Request $request, Movement $movement)
     {
+        $validationResponse = $this->validateMovement($request);
+
+        if($validationResponse['status'] !== 1){
+            return $validationResponse;
+        }
+
+        // $movement->date = $request->date;
+        // $movement->status_id = $request->status_id;
+        // $movement->location = $request->location;
+        // $movement->comment = $request->comment;
+        // $movement->save();
+
         if ($movement->update($request->input())) {
             $statuses = Status::all();
 
