@@ -159,7 +159,7 @@ class DeviceController extends Controller
 
         return [
             'status' => 1,
-            'view' => view('components.device-accounting.devices.table', compact('devices'))->render(),
+            'view' => view('components.device-accounting.devices.index.table', compact('devices'))->render(),
         ];
     }
 

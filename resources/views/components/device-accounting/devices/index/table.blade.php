@@ -15,7 +15,7 @@
 
     <tbody>
         @foreach($devices as $device)
-        <x-device-accounting.devices.table.row :device="$device" />
+        <x-device-accounting.devices.index.table.row :device="$device" />
         @endforeach
     </tbody>
 

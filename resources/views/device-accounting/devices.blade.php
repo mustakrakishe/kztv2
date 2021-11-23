@@ -25,11 +25,11 @@
 </div>
 
 <div id="device-table-container">
-    <x-device-accounting.devices.table :devices="$devices"/>
+    <x-device-accounting.devices.index.table :devices="$devices"/>
 </div>
 
 <script>
-    let contextMenuHtml = `<x-device-accounting.devices.context-menu/>`;
+    let contextMenuHtml = `<x-device-accounting.devices.index.context-menu/>`;
     let deleteConfirmationModalHtml = `<x-device-accounting.devices.delete.confirm/>`;
     let createModalHtml = `<x-device-accounting.device-accounts.create :types="$types" :statuses="$statuses"/>`;
 </script>
