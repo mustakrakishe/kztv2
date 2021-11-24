@@ -48,13 +48,15 @@ class MovementController extends Controller
             return $validation;
         }
 
-        Movement::create([
+        $movement = Movement::create([
             'date' => $request->date,
             'location' => $request->location,
             'comment' => $request->comment,
             'device_id' => $request->device_id,
             'status_id' => $request->status_id,
         ]);
+
+        $movement->device->touch();
 
         return [
             'status' => 1,

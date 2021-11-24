@@ -33,13 +33,6 @@ class Movement extends Model
     ];
 
     public $timestamps = false;
-    
-    /**
-    * All of the relationships to be touched.
-    *
-    * @var array
-    */
-   protected $touches = ['device'];
 
     /**
      * The "booted" method of the model.
