@@ -199,7 +199,8 @@ async function storeMovementFormSubmitHandler(event) {
         let response = await Form.xhrAction(this, hasValidation);
         
         if (response.status === 1) {
-            switchDeviceTablePage(1);
+            await switchDeviceTablePage(1);
+            $(modal).modal('hide');
         }
     }
 }
