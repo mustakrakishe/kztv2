@@ -31,6 +31,7 @@ $(document).on('click', hideContextMenu);
 $(document).on('click', CONTEXT_MENU_DELETE, contextMenuDeleteHandler);
 $(document).on('click', CONTEXT_MENU_EDIT, contextMenuEditHandler);
 $(document).on('click', CONTEXT_MENU_MOVE, contextMenuMoveHandler);
+$(document).on('show.bs.modal', CREATE_DEVICE_ACCOUNT_MODAL, createDeviceAccountModalShowHandler);
 $(document).on('click', CREATE_DEVICE_ACCOUNT_LINK, createLinkClickHandler);
 $(document).on('contextmenu', DEVICE_ROW, deviceRowContextMenuHandler);
 $(document).on('submit', UPDATE_FORM, updateFormSubmitHandler);
@@ -87,6 +88,10 @@ async function createLinkClickHandler(event) {
 
     let dialog = $.parseHTML(createDeviceAccountModalHtml);
     showDialog(dialog);
+}
+
+function createDeviceAccountModalShowHandler() {
+    $( CREATE_DEVICE_ACCOUNT_MODAL).find('input[name=date]').val(currentDatetimeISO());
 }
 
 async function deleteFormSubmitHandler(event) {
