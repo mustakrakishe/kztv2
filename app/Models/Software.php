@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class Software extends Model
 {
@@ -31,6 +32,15 @@ class Software extends Model
     * @var array
     */
    protected $touches = ['device'];
+
+   public function __construct(array $attributes = [])
+   {
+       $this->setRawAttributes([
+           'date' => Carbon::now(),
+       ], true);
+       
+       parent::__construct($attributes);
+   }
 
     /**
      * The "booted" method of the model.
@@ -63,5 +73,15 @@ class Software extends Model
         }
         
         return $query;
+    }
+    
+    /**
+     * Prepare a date for array / JSON serialization to 'Y-m-dTH:i:s' format.
+     *
+     * @return string
+     */
+    protected function getDateAttribute()
+    {
+        return str_replace(' ', 'T', $this->attributes['date']);
     }
 }

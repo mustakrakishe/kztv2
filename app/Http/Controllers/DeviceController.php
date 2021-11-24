@@ -7,6 +7,7 @@ use App\Models\Device;
 use App\Models\Status;
 use App\Models\Hardware;
 use App\Models\Movement;
+use App\Models\Software;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -34,6 +35,7 @@ class DeviceController extends Controller
         $device = new Device();
         $device->last_movement = new Movement();
         $device->last_hardware = new Hardware();
+        $device->last_software = new Software();
             
         return view('device-accounting.devices', compact('devices', 'types', 'statuses'))->with([
             'contextMenuView' => view('components.device-accounting.devices.index.context-menu')->render(),

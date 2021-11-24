@@ -24,7 +24,7 @@
             </x-tabpanel>
 
             <x-tabpanel id="v-pills-software" aria-labelledby="v-pills-software-tab">
-                <x-device-accounting.software.create/>
+                <x-device-accounting.software.create.form :software="$device->last_software"/>
             </x-tabpanel>
         </div>
     </div>
