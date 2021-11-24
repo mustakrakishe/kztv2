@@ -55,8 +55,13 @@ class Movement extends Model
 
     public function __construct(array $attributes = [])
     {
+        $IN_STORAGE_STATUS_ID = 2;
+
         $this->setRawAttributes([
-          'date' => Carbon::now(),
+            'location' => 'ЗУ. АСУ. 210',
+            'comment' => 'Новий',
+            'status_id' => $IN_STORAGE_STATUS_ID,
+            'date' => Carbon::now(),
         ], true);
         
         parent::__construct($attributes);
