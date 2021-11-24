@@ -1,5 +1,3 @@
-@props(['types', 'statuses'])
-
 <x-modal id="create-device-account-modal" class="modal-lg modal-fullscreen-lg-down">
 
     <x-slot name="title">{{ __('dialog.create.header', ['entity' => trans('dialog.entities.device')]) }}</x-slot>
@@ -18,7 +16,7 @@
             </x-tabpanel>
 
             <x-tabpanel id="v-pills-movement" aria-labelledby="v-pills-movement-tab">
-                <x-device-accounting.movements.create :statuses="$statuses"/>
+                <x-device-accounting.movements.create.form :statuses="$statuses" :movement="$device->last_movement"/>
             </x-tabpanel>
 
             <x-tabpanel id="v-pills-hardware" aria-labelledby="v-pills-hardware-tab">

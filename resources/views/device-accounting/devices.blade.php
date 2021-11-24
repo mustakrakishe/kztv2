@@ -29,9 +29,9 @@
 </div>
 
 <script>
-    let contextMenuHtml = `<x-device-accounting.devices.index.context-menu/>`;
-    let deleteConfirmationModalHtml = `<x-device-accounting.devices.delete.confirm/>`;
-    let createDeviceAccountModalHtml = `<x-device-accounting.device-accounts.create :types="$types" :statuses="$statuses"/>`;
+    let contextMenuHtml = <?php echo json_encode($contextMenuView); ?>;
+    let deleteConfirmationModalHtml = <?php echo json_encode($deleteDeviceConfirmationView); ?>;
+    let createDeviceAccountModalHtml = <?php echo json_encode($createDeviceAccountView); ?>;
 </script>
 
 @endsection

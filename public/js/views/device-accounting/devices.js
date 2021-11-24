@@ -91,7 +91,7 @@ async function createLinkClickHandler(event) {
 }
 
 function createDeviceAccountModalShowHandler() {
-    $( CREATE_DEVICE_ACCOUNT_MODAL).find('input[name=date]').val(currentDatetimeISO());
+    // $( CREATE_DEVICE_ACCOUNT_MODAL).find('input[name=date]').val(currentDatetimeISO());
 }
 
 async function deleteFormSubmitHandler(event) {

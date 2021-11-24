@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Device;
+use App\Models\Status;
 use App\Models\Movement;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,13 @@ class DeviceMovementController extends Controller
      */
     public function create(Device $device)
     {
-        //
+        $device->load('last_movement');
+        $statuses = Status::all();
+
+        return [
+            'status' => 1,
+            'view' => view('components.device-accounting.movements.create', compact('device', 'statuses'))->render(),
+        ];
     }
 
     /**

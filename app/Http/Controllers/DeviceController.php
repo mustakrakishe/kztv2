@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Type;
 use App\Models\Device;
+use App\Models\Movement;
 use App\Models\Status;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -28,8 +29,15 @@ class DeviceController extends Controller
             'last_hardware',
             'last_software'
         ]);
+
+        $device = new Device();
+        $device->last_movement = new Movement();
             
-        return view('device-accounting.devices', compact('devices', 'types', 'statuses'));
+        return view('device-accounting.devices', compact('devices', 'types', 'statuses'))->with([
+            'contextMenuView' => view('components.device-accounting.devices.index.context-menu')->render(),
+            'deleteDeviceConfirmationView' => view('components.device-accounting.devices.delete.confirm')->render(),
+            'createDeviceAccountView' => view('components.device-accounting.device-accounts.create', compact('types', 'statuses', 'device'))->render(),
+        ]);
     }
 
     /**

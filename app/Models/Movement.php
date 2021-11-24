@@ -2,13 +2,21 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class Movement extends Model
 {
     use HasFactory;
+
+    protected $attributes = [
+        'location' => 'ЗУ. АСУ. 210',
+        'comment' => 'Новий',
+        // "in storage" status id
+        'status_id' => 2
+    ];
 
     public $fillable = [
         'date',
@@ -43,6 +51,25 @@ class Movement extends Model
         static::addGlobalScope('orderMovement', function (Builder $builder) {
             $builder->latest('date')->orderByDesc('id');
         });
+    }
+
+    public function __construct(array $attributes = [])
+    {
+        $this->setRawAttributes([
+          'date' => Carbon::now(),
+        ], true);
+        
+        parent::__construct($attributes);
+    }
+    
+    /**
+     * Prepare a date for array / JSON serialization to 'Y-m-dTH:i:s' format.
+     *
+     * @return string
+     */
+    protected function getDateAttribute()
+    {
+        return str_replace(' ', 'T', $this->attributes['date']);
     }
 
     /**
