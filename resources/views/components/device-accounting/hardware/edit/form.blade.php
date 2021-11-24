@@ -1,6 +1,4 @@
-@php
-    $dateISO = str_replace(' ', 'T', $hardware->date);
-@endphp
+@props(['hardware'])
 
 <form id="hardware-update-form" class="h-100 d-flex flex-column mt-3" action="{{ route('hardware.update', ['hardware' => $hardware->id]) }}" method="post">
     @csrf
@@ -9,7 +7,7 @@
     <div class="row mb-3">
         <div class="col-md-6">
             <label for="date" class="form-label">{{ __('Date') }}</label>
-            <input type="datetime-local" name="date" class="form-control" value="{{ $dateISO }}">
+            <input type="datetime-local" name="date" class="form-control" step="1" value="{{ $hardware->date }}">
         </div>
 
         <div class="col-md-6 d-flex align-items-end">

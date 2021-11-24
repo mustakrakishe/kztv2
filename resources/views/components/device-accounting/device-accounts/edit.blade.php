@@ -20,7 +20,7 @@
         </x-tabpanel>
 
         <x-tabpanel class="h-100" id="nav-hardware" aria-labelledby="nav-hardware-tab">
-            <x-device-accounting.hardware.edit :hardware="$device->last_hardware"/>
+            <x-device-accounting.hardware.edit.form :hardware="$device->last_hardware"/>
         </x-tabpanel>
         
         <x-tabpanel class="h-100" id="nav-software" aria-labelledby="nav-software-tab">
