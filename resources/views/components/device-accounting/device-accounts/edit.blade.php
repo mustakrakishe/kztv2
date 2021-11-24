@@ -24,16 +24,7 @@
         </x-tabpanel>
         
         <x-tabpanel class="h-100" id="nav-software" aria-labelledby="nav-software-tab">
-            @isset($device->last_software)
-            <x-device-accounting.software.edit :software="$device->last_software" />
-            @else
-            <x-device-accounting.software.create :deviceId="$device->id"/>
-
-            <div class="ms-auto mt-3">
-                <x-button type="reset" form="create-software-form">{{ __('dialog.actions.reset') }}</x-button>
-                <x-button form="create-software-form">{{ __('dialog.actions.apply') }}</x-button>
-            </div>
-            @endisset
+            <x-device-accounting.software.edit.form :software="$device->last_software" />
         </x-tabpanel>
     </div>
 

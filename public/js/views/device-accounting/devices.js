@@ -62,7 +62,7 @@ async function contextMenuEditHandler(event) {
     let link = event.target;
 
     let response = await $.get($(link).attr('href'));
-
+    
     if (response.status === 1) {
         let editDialog = $.parseHTML(response.view);
         showDialog(editDialog);

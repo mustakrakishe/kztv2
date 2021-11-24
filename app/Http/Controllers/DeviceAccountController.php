@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Type;
 use App\Models\Device;
 use App\Models\Status;
+use App\Models\Software;
 use Illuminate\Http\Request;
 
 class DeviceAccountController extends Controller
@@ -68,8 +69,10 @@ class DeviceAccountController extends Controller
                 'status',
                 'last_movement',
                 'last_hardware',
-                'last_software'
+                'last_software',
             ]);
+        
+        $device->last_software = $device->last_software ?? new Software(['device_id' => $deviceId]);
         
         return [
             'status' => 1,

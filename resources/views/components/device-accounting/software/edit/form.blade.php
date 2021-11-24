@@ -1,15 +1,13 @@
-@php
-    $dateTimeISO  = str_replace(' ', 'T', $software->date);
-@endphp
-
 <form id="update-software-form" class="h-100 d-flex flex-column mt-3" action="{{ route('software.update', ['software' => $software->id]) }}" method="post">
     @method('put')
     @csrf
 
+    <input type="hidden" name="device_id" value="{{ $software->device_id }}">
+
     <div class="row mb-3">
         <div class="col-md-6">
             <label for="date" class="form-label">{{ __('Date') }}</label>
-            <input type="datetime-local" name="date" class="form-control" value="{{ $dateTimeISO }}">
+            <input type="datetime-local" name="date" class="form-control" value="{{ $software->date }}">
         </div>
     </div>
 
