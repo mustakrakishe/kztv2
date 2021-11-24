@@ -30,23 +30,16 @@ class Hardware extends Model
     ];
 
     public $timestamps = false;
-    
-    /**
-    * All of the relationships to be touched.
-    *
-    * @var array
-    */
-   protected $touches = ['device'];
 
-   public function __construct(array $attributes = [])
-   {
-       $this->setRawAttributes([
-           'date' => Carbon::now(),
-           'great_mod' => true
-       ], true);
-       
-       parent::__construct($attributes);
-   }
+    public function __construct(array $attributes = [])
+    {
+        $this->setRawAttributes([
+            'date' => Carbon::now(),
+            'great_mod' => true
+        ], true);
+        
+        parent::__construct($attributes);
+    }
 
     /**
      * The "booted" method of the model.

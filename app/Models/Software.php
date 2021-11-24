@@ -25,13 +25,6 @@ class Software extends Model
     ];
 
     public $timestamps = false;
-    
-    /**
-    * All of the relationships to be touched.
-    *
-    * @var array
-    */
-   protected $touches = ['device'];
 
    public function __construct(array $attributes = [])
    {

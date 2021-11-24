@@ -21,13 +21,6 @@ class Repair extends Model
         'cause',
         'result',
     ];
-    
-    /**
-    * All of the relationships to be touched.
-    *
-    * @var array
-    */
-   protected $touches = ['device'];
 
     /**
      * Get the movement device.
