@@ -20,7 +20,7 @@
             </x-tabpanel>
 
             <x-tabpanel id="v-pills-hardware" aria-labelledby="v-pills-hardware-tab">
-                <x-device-accounting.hardware.create/>
+                <x-device-accounting.hardware.create.form :hardware="$device->last_hardware"/>
             </x-tabpanel>
 
             <x-tabpanel id="v-pills-software" aria-labelledby="v-pills-software-tab">
