@@ -13,6 +13,7 @@ const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
 const UPDATE_FORM = '#edit-device-account-modal form';
 const DELETE_FORM = 'form#delete';
+const GENERAL_TAB_PANEL = '[name=general]'
 const PAGINATION_LINK = 'a.page-link';
 const PANEL = '[role=tabpanel]';
 const SEARCH_FORM = 'form#search-form';
@@ -106,8 +107,7 @@ async function deleteFormSubmitHandler(event) {
     });
 
     if (response.status === 1) {
-        let currentPage = $(DEVICE_TABLE_PAGINATOR).attr('current-page');
-        switchDeviceTablePage(currentPage);
+        refreshDeviceTablePage();
     }
 }
 
@@ -232,12 +232,23 @@ async function updateFormSubmitHandler(event) {
     let response = await Form.xhrAction(this, hasValidation);
     
     if (response.status === 1) {
-        $(this).closest(TAB_PANEL).html(response.view);
-        switchDeviceTablePage(1);
+        let currentTabPanel = $(this).closest(TAB_PANEL);
+        $(currentTabPanel).html(response.view);
+
+        if ($(currentTabPanel).attr('id') === 'nav-general') {
+            switchDeviceTablePage(1);
+        } else {
+            refreshDeviceTablePage();
+        }
     }
 }
 
 // procedures
+
+function refreshDeviceTablePage(){
+    let currentPage = $(DEVICE_TABLE_PAGINATOR).attr('current-page');
+    switchDeviceTablePage(currentPage);
+}
 
 function getModalCurrentForm(MODAL) {
     let activeTabPanel = $(MODAL).find(PANEL + '.active');
@@ -246,10 +257,9 @@ function getModalCurrentForm(MODAL) {
 }
 
 async function switchDeviceTablePage(page) {
-    let response = await $.get({
-        url: $(DEVICE_TABLE_PAGINATOR).attr('path'),
-        data: page,
-    });
+    let url = $(DEVICE_TABLE_PAGINATOR).attr('path') + '?page=' + page;
+
+    let response = await $.get(url);
     
     if (response.status === 1) {
         let deviceTablePage = response.view;
