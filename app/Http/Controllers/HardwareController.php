@@ -80,7 +80,7 @@ class HardwareController extends Controller
         if ($hardware->update($request->input())) {
             return [
                 'status' => 1,
-                'view' => view('components.device-accounting.hardware.edit', compact('hardware'))->render(),
+                'view' => view('components.device-accounting.hardware.edit.form', compact('hardware'))->render(),
             ];
         }
 

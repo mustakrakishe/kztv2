@@ -7,6 +7,7 @@ const CONTEXT_MENU_EDIT = '#contextmenu [name=edit]';
 const CONTEXT_MENU_MOVE = '#contextmenu [name=move]';
 const CREATE_DEVICE_ACCOUNT_MODAL = '#create-device-account-modal';
 const CREATE_DEVICE_ACCOUNT_LINK = 'a#create-device-account'
+const CREATE_MOVEMENT_MODAL = '#create-movement-modal'
 const DEVICE_ROW = 'tr[name=device]';
 const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
@@ -16,7 +17,7 @@ const PAGINATION_LINK = 'a.page-link';
 const PANEL = '[role=tabpanel]';
 const SEARCH_FORM = 'form#search-form';
 const SEARCH_INPUT = 'input#search-input';
-const STORE_BTN = '#store-device-btn';
+const STORE_DEVICE_ACCOUNT_BUTTON = '#store-device-btn';
 const STORE_DEVICE_FORM = '#create-device-form';
 const STORE_HARDWARE_FORM = '#create-hardware-form';
 const STORE_MOVEMENT_FORM = '#create-movement-form';
@@ -38,7 +39,8 @@ $(document).on('submit', UPDATE_FORM, updateFormSubmitHandler);
 $(document).on('submit', DELETE_FORM, deleteFormSubmitHandler);
 $(document).on('click', PAGINATION_LINK, paginationLinkClickHandler);
 $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
-$(document).on('click', STORE_BTN, storeBtnClickHandler);
+$(document).on('click', STORE_DEVICE_ACCOUNT_BUTTON, storeDeviceAccountButtonClickHandler);
+$(document).on('submit', STORE_MOVEMENT_FORM, storeMovementFormSubmitHandler);
 $(document).on('click', TABSWITCHER_BACK, tabswitcherBackClickHandler);
 $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
 
@@ -73,13 +75,12 @@ async function contextMenuMoveHandler(event) {
     event.preventDefault();
 
     let link = event.target;
-    let url = $(link).attr('href');
 
-    let response = await $.get(url);
+    let response = await $.get($(link).attr('href'));
 
     if (response.status === 1) {
-        let dialog = response.view;
-        showDialog(dialog);
+        let moveDialog = $.parseHTML(response.view);
+        showDialog(moveDialog);
     }
 }
 
@@ -140,7 +141,7 @@ async function searchDeviceHandler(event) {
     }
 }
 
-async function storeBtnClickHandler() {
+async function storeDeviceAccountButtonClickHandler() {
     $(this).prop('disabled', true);
 
     let deviceStoreResponse = await Form.xhrAction(STORE_DEVICE_FORM);
@@ -188,8 +189,23 @@ async function storeBtnClickHandler() {
     $( CREATE_DEVICE_ACCOUNT_MODAL).modal('hide');
 }
 
+async function storeMovementFormSubmitHandler(event) {
+    let modal = $(this).closest('.modal');
+
+    if ($(modal).is(CREATE_MOVEMENT_MODAL)) {
+        event.preventDefault();
+    
+        let hasValidation = true;
+        let response = await Form.xhrAction(this, hasValidation);
+        
+        if (response.status === 1) {
+            switchDeviceTablePage(1);
+        }
+    }
+}
+
 async function tabswitcherBackClickHandler() {
-    $(STORE_BTN).attr('disabled', true);
+    $(STORE_DEVICE_ACCOUNT_BUTTON).attr('disabled', true);
     Tabswitcher.tabswitcherBackClickHandler(this);
 }
 

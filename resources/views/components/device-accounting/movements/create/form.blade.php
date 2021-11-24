@@ -3,7 +3,7 @@
 <form id="create-movement-form" class="mt-3" action="{{ route('movements.store') }}" validation="{{ route('movements.validate') }}"  method="post">
     @csrf
     
-    <input type="hidden" name="device_id" value="$movement->device_id">
+    <input type="hidden" name="device_id" value="{{ $movement->device_id }}">
 
     <div class="row mb-3">
         <div class="col-md-6">

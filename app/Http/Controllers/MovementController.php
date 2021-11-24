@@ -44,7 +44,7 @@ class MovementController extends Controller
     public function store(Request $request)
     {
         $validation = $this->validateMovement($request);
-        if (!$validation['status']) {
+        if ($validation['status'] !== 1) {
             return $validation;
         }
 

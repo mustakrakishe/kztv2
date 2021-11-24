@@ -8,8 +8,8 @@ class Form {
         let submitter = $(form).find(':submit').first();
 
         if (!submitter.length) {
-            let submitterSelector = '#' + $(form).attr('submitter');
-            submitter = $(submitterSelector);
+            let formId = $(form).attr('id');
+            submitter = $(`[type=submit][form=${formId}]`);
         }
 
         $(submitter).width($(submitter).width());
@@ -33,7 +33,7 @@ class Form {
                     $(submitter).find('[name="spinner"]').replaceWith(success);
                 } else {
                     $(submitter).find('[name="spinner"]').replaceWith(fail);
-                    submitterStatusDelay = 2000;
+                    submitterStatusDelay = 750;
 
                     if (hasValidation) {
                         this.formatWithErrors(form, response.errors);

@@ -1,5 +1,3 @@
-@props(['hardware'])
-
 <form id="hardware-update-form" class="h-100 d-flex flex-column mt-3" action="{{ route('hardware.update', ['hardware' => $hardware->id]) }}" method="post">
     @csrf
     @method('put')

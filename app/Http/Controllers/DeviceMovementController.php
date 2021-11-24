@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Device;
 use App\Models\Status;
 use App\Models\Movement;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DeviceMovementController extends Controller
@@ -29,6 +30,7 @@ class DeviceMovementController extends Controller
     public function create(Device $device)
     {
         $device->load('last_movement');
+        $device->last_movement->date = Carbon::now()->format('Y-m-d\TH:i:s');
         $statuses = Status::all();
 
         return [
