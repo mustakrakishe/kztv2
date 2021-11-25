@@ -60,6 +60,8 @@ class DeviceAccountController extends Controller
             $software->device_id = $device->id;
             $software->save();
         }
+
+        return ['status' => 1];
     }
 
     /**

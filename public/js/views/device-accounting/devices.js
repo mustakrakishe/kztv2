@@ -160,20 +160,15 @@ async function storeDeviceAccountFormSubmitHandler(event) {
             });
         });
 
-        
-        console.log(data);
-
         let response = await $.post({
             url: $(storeDeviceAccountForm).attr('action'),
             data: data,
         });
 
-        console.log(response);
-
-        // if (response === 1) {
-        //     await switchDeviceTablePage(1);
-        //     $(CREATE_DEVICE_ACCOUNT_MODAL).modal('hide');
-        // }
+        if (response.status === 1) {
+            await switchDeviceTablePage(1);
+            $(CREATE_DEVICE_ACCOUNT_MODAL).modal('hide');
+        }
     }
 }
 
