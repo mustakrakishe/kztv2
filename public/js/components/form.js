@@ -9,7 +9,7 @@ class Form {
             submitter = $(`[type=submit][form=${formId}]`);
         }
 
-        this.showProgressInSubmitter(submitter);
+        this.showProgresInSubmitter(submitter);
 
         if (hasValidation) {
             this.formatWithErrors(form);
@@ -53,7 +53,7 @@ class Form {
         $(formId).trigger('reset');
     }
 
-    static showProgressInSubmitter(submitter) {
+    static showProgresInSubmitter(submitter) {
         const SPINNER = '<span name="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
 
         $(submitter).width($(submitter).width());
@@ -63,7 +63,7 @@ class Form {
         $(submitter).prop('disabled', true);
     }
 
-    static playResultInSubmitter(submitter, isResultSuccessfull) {
+    static playResultInSubmitter(submitter, isResultSuccessfull, duration = 750) {
         return new Promise(resolve => {
             const SUCCESS = '<i name="result" class="fas fa-check"></i>';
             const FAIL = '<i name="result" class="fas fa-times"></i>';
@@ -79,7 +79,7 @@ class Form {
                     $(submitter).find('[name=init-content]').fadeIn('slow');
                     resolve();
                 });
-            }, 750);
+            }, duration);
         });
     }
 }

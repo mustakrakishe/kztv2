@@ -141,6 +141,8 @@ async function searchDeviceHandler(event) {
 
 async function storeDeviceAccountFormSubmitHandler(event) {
     event.preventDefault();
+
+    Form.showProgresInSubmitter($(STORE_DEVICE_ACCOUNT_BUTTON));
     
     let modalLastForm = getModalCurrentForm(CREATE_DEVICE_ACCOUNT_MODAL);
 
@@ -170,6 +172,9 @@ async function storeDeviceAccountFormSubmitHandler(event) {
             $(CREATE_DEVICE_ACCOUNT_MODAL).modal('hide');
         }
     }
+    
+    let isResultSuccessfull = response.status;
+    Form.playResultInSubmitter($(STORE_DEVICE_ACCOUNT_BUTTON), isResultSuccessfull);
 }
 
 async function storeMovementFormSubmitHandler(event) {
@@ -197,14 +202,14 @@ async function tabswitcherNextClickHandler() {
     let tabswitcherNext = this;
     let form = getModalCurrentForm(CREATE_DEVICE_ACCOUNT_MODAL);
     
-    Form.showProgressInSubmitter(tabswitcherNext);
+    Form.showProgresInSubmitter(tabswitcherNext);
 
     const HAS_VALIDATION = true;
     let response = await Form.xhrAction(form, HAS_VALIDATION);
     
-    $(tabswitcherNext).prop('disabled', false);
-
-    console.log(response);
+    let isResulSuccessfull = response.status;
+    let duration = 0;
+    Form.playResultInSubmitter(tabswitcherNext, isResulSuccessfull, duration);
 
     if (response.status === 1) {
         Tabswitcher.tabswitcherNextClickHandler(this);
