@@ -211,17 +211,17 @@ async function tabswitcherBackClickHandler() {
 }
 
 async function tabswitcherNextClickHandler() {
-    let form = getModalCurrentForm( CREATE_DEVICE_ACCOUNT_MODAL);
+    let tabswitcherNext = this;
+    let form = getModalCurrentForm(CREATE_DEVICE_ACCOUNT_MODAL);
     
-    if ($(form).attr('validation')) {
-        $(this).attr('disabled', true);
-        let isValid = await validateForm(form);
-        $(this).attr('disabled', false);
+    $(tabswitcherNext).prop('disabled', true);
 
-        if (isValid) {
-            Tabswitcher.tabswitcherNextClickHandler(this);
-        }
-    } else {
+    const HAS_VALIDATION = true;
+    let response = await Form.xhrAction(form, HAS_VALIDATION);
+    
+    $(tabswitcherNext).prop('disabled', false);
+
+    if (response.status === 1) {
         Tabswitcher.tabswitcherNextClickHandler(this);
     }
 }
@@ -266,24 +266,6 @@ async function switchDeviceTablePage(page) {
         let deviceTablePage = response.view;
         $(DEVICE_TABLE_CONTAINER).html(deviceTablePage);
     }
-}
-
-async function validateForm(form) {
-    Form.formatWithErrors(form);
-
-    let formToValidate = $(form).clone();
-    let validationUrl = $(formToValidate).attr('validation');
-    $(formToValidate).attr('action', validationUrl);
-    $(formToValidate).attr('method', 'get');
-
-    let hasValidation = true;
-    let response = await Form.xhrAction(formToValidate, hasValidation);
-
-    if (response.status === 0) {
-        Form.formatWithErrors(form, response.errors);
-    }
-
-    return response.status;
 }
 
 // helpers

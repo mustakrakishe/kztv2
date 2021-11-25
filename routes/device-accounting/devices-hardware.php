@@ -3,7 +3,7 @@
 use App\Http\Controllers\DeviceHardwareController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/devices/{device?}/hardware/validate', [DeviceHardwareController::class, 'validateDeviceHardware'])
+Route::get('/devices/hardware/validate', [DeviceHardwareController::class, 'validateDeviceHardware'])
     ->middleware('auth')
     ->name('devices.hardware.validate');
 

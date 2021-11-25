@@ -108,7 +108,7 @@ class DeviceMovementController extends Controller
      * @return array
      *
      */
-    public function validateDeviceMovement(Request $request, Device $device)
+    public function validateDeviceMovement(Request $request, Device $device = null)
     {
         $input = $request->all();
 
@@ -118,13 +118,15 @@ class DeviceMovementController extends Controller
         ]);
         
         $validator->after(function ($validator) use ($request, $device){
-            $movement = $device->last_movement;
-            $movement->location = $request->location;
-
-            if ($movement->isClean()) {
-                $validator->errors()->add(
-                    'location', trans('The device is alrady has the specified location.'),
-                );
+            if ($device) {
+                $movement = $device->last_movement;
+                $movement->location = $request->location;
+    
+                if ($movement->isClean()) {
+                    $validator->errors()->add(
+                        'location', trans('The device is alrady has the specified location.'),
+                    );
+                }
             }
         });
 
