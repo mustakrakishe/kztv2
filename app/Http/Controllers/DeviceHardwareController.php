@@ -71,13 +71,26 @@ class DeviceHardwareController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Device  $device
+     * @param  string  $deviceId
      * @param  \App\Models\Hardware  $hardware
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Device $device, Hardware $hardware)
+    public function update(Request $request, string $deviceId, Hardware $hardware)
     {
-        //
+        $validationResponse = $this->validateDeviceHardware($request);
+
+        if($validationResponse['status'] !== 1){
+            return $validationResponse;
+        }
+
+        if ($hardware->update($request->input())) {
+            return [
+                'status' => 1,
+                'view' => view('components.device-accounting.hardware.edit.form', compact('hardware'))->render(),
+            ];
+        }
+
+        return ['status' => 0];
     }
 
     /**
@@ -99,7 +112,7 @@ class DeviceHardwareController extends Controller
      * @return array
      *
      */
-    public function validateDeviceHardware(Request $request, Device $device)
+    public function validateDeviceHardware(Request $request)
     {
         $input = $request->all();
 

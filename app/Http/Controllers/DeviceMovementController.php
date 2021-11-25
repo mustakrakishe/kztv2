@@ -80,13 +80,28 @@ class DeviceMovementController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Device  $device
+     * @param  string  $deviceId
      * @param  \App\Models\Movement  $movement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Device $device, Movement $movement)
+    public function update(Request $request, string $deviceId, Movement $movement)
     {
-        //
+        $validationResponse = $this->validateDeviceMovement($request);
+
+        if($validationResponse['status'] !== 1){
+            return $validationResponse;
+        }
+
+        if ($movement->update($request->input())) {
+            $statuses = Status::all();
+
+            return [
+                'status' => 1,
+                'view' => view('components.device-accounting.movements.edit.form', compact('movement', 'statuses'))->render(),
+            ];
+        }
+
+        return ['status' => 0];
     }
 
     /**

@@ -1,4 +1,4 @@
-<form id="device-update-form" class="h-100 d-flex flex-column mt-3" action="{{ route('devices.update', ['device' => $device->id]) }}" method="post">
+<form id="device-edit-form" class="h-100 d-flex flex-column mt-3" action="{{ route('devices.update', ['device' => $device->id]) }}" method="post">
     @csrf
     @method('put')
 

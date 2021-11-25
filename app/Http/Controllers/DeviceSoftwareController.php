@@ -71,25 +71,59 @@ class DeviceSoftwareController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Device  $device
+     * @param  string  $deviceId
      * @param  \App\Models\Software  $software
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Device $device, Software $software)
+    public function update(Request $request, Software $software)
     {
-        //
+        $validationResponse = $this->validateDeviceSoftware($request);
+
+        if($validationResponse['status'] !== 1){
+            return $validationResponse;
+        }
+
+        $input = $request->input();
+
+        if (!$software) {
+            $software = Software::create($input);
+        } else {
+            $generalSoftwareFields = array_filter((new Software())->fillable, function($value) {
+                return !in_array($value, ['device_id', 'date']);
+            });
+
+            $issetGeneralInput = !!array_filter($input, function($value, $key) use ($generalSoftwareFields) {
+                return $value && in_array($key, $generalSoftwareFields);
+            }, ARRAY_FILTER_USE_BOTH);
+
+            if (!$issetGeneralInput) {
+                $deviceId = $software->device_id;
+                $deleteResponse = $this->destroy($software);
+
+                if ($deleteResponse['status'] === 1) {
+                    $software = new Software(['device_id' => $request->device_id]);
+                }
+            } else {
+                $software->update($input);
+            }
+        }
+
+        return [
+            'status' => 1,
+            'view' => view('components.device-accounting.software.edit.form', compact('software'))->render(),
+        ];
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Device  $device
      * @param  \App\Models\Software  $software
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Device $device, Software $software)
+    public function destroy(Software $software)
     {
-        //
+        $software->delete();
+        return ['status' => 1];
     }
 
     /**
@@ -99,7 +133,7 @@ class DeviceSoftwareController extends Controller
      * @return array
      *
      */
-    public function validateDeviceSoftware(Request $request, Device $device)
+    public function validateDeviceSoftware(Request $request)
     {
         $input = $request->all();
 

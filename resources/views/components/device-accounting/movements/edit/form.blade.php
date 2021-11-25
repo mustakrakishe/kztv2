@@ -1,16 +1,11 @@
-@php
-    $IN_STORAGE_STATUS_ID = 2;
-    $dateISO = str_replace(' ', 'T', $movement->date);
-@endphp
-
-<form id="movement-update-form" class="h-100 d-flex flex-column mt-3" action="{{ route('movements.update', ['movement' => $movement->id]) }}" method="post">
+<form id="movement-edit-form" class="h-100 d-flex flex-column mt-3" action="{{ route('devices.movements.update', ['device' => $movement->device_id, 'movement' => $movement->id]) }}" method="post">
     @csrf
     @method('put')
 
     <div class="row mb-3">
         <div class="col-md-6">
             <label for="date" class="form-label">{{ __('Date') }}</label>
-            <input type="datetime-local" name="date" class="form-control" value="{{ $dateISO }}">
+            <input type="datetime-local" name="date" class="form-control" value="{{ $movement->date }}">
         </div>
         <div class="col-md-6">
             <label for="status_id" class="form-label">{{ __('Status') }}</label>
