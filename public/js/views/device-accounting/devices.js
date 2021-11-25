@@ -1,4 +1,3 @@
-import * as Textarea from "../../components/textarea.js";
 import Form from "../../components/form.js";
 import * as Tabswitcher from "../../components/tabswitcher.js";
 
