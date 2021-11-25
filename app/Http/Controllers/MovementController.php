@@ -29,10 +29,7 @@ class MovementController extends Controller
      */
     public function create()
     {
-        return [
-            'status' => 1,
-            'view' => view('components.device-accounting.movements.create')->render(),
-        ];
+        // 
     }
 
     /**
@@ -48,7 +45,7 @@ class MovementController extends Controller
             return $validation;
         }
 
-        $movement = Movement::create([
+        $movement = new Movement([
             'date' => $request->date,
             'location' => $request->location,
             'comment' => $request->comment,
@@ -99,12 +96,6 @@ class MovementController extends Controller
         if($validationResponse['status'] !== 1){
             return $validationResponse;
         }
-
-        // $movement->date = $request->date;
-        // $movement->status_id = $request->status_id;
-        // $movement->location = $request->location;
-        // $movement->comment = $request->comment;
-        // $movement->save();
 
         if ($movement->update($request->input())) {
             $statuses = Status::all();

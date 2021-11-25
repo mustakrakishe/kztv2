@@ -7,6 +7,7 @@ use App\Models\Status;
 use App\Models\Movement;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DeviceMovementController extends Controller
 {
@@ -48,7 +49,7 @@ class DeviceMovementController extends Controller
      */
     public function store(Request $request, Device $device)
     {
-        //
+        // 
     }
 
     /**
@@ -98,5 +99,42 @@ class DeviceMovementController extends Controller
     public function destroy(Device $device, Movement $movement)
     {
         //
+    }
+
+    /**
+     * Validate the movement store/update request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     *
+     */
+    public function validateDeviceMovement(Request $request, Device $device)
+    {
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+            'date' => ['required', 'date'],
+            'location' => ['required', 'string']
+        ]);
+        
+        $validator->after(function ($validator) use ($request, $device){
+            $movement = $device->last_movement;
+            $movement->location = $request->location;
+
+            if ($movement->isClean()) {
+                $validator->errors()->add(
+                    'location', trans('The device is alrady has the specified location.'),
+                );
+            }
+        });
+
+        if ($validator->fails()) {
+            return [
+                'status' => 0,
+                'errors' => $validator->errors(),
+            ];
+        }
+
+        return ['status' => 1];
     }
 }
