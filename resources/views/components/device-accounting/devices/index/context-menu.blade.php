@@ -3,7 +3,8 @@
         {{ __('Special actions') }}
 
         <x-slot name="submenu">
-            <x-context-menu.item name="move" href="{{ route('devices.movements.create', ['device' => '#']) }}">{{ __('Move') }}</x-context-menu.item>
+            <x-context-menu.item name="movement" href="{{ route('devices.movements.create', ['device' => '#']) }}">{{ __('Move') }}</x-context-menu.item>
+            <x-context-menu.item name="hardware" href="{{ route('devices.hardware.create', ['device' => '#']) }}">{{ __('New hardware') }}</x-context-menu.item>
         </x-slot>
     </x-context-menu.item>
 
