@@ -10,6 +10,7 @@
             class="dropdown-toggle dropdown-item list-group-item-light list-group-item-action bg-transparent"
             data-bs-toggle="dropdown"
             aria-expanded="false"
+            data-bs-offset="0,0"
         >
             {{ $slot ?? $title }}
         </button>

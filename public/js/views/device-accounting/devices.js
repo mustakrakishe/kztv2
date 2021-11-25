@@ -6,7 +6,6 @@ const CONTEXT_MENU_EDIT = '#contextmenu [name=edit]';
 const CONTEXT_MENU_MOVE = '#contextmenu [name=move]';
 const CREATE_DEVICE_ACCOUNT_MODAL = '#create-device-account-modal';
 const CREATE_DEVICE_ACCOUNT_LINK = 'a#create-device-account'
-const CREATE_MOVEMENT_MODAL = '#create-movement-modal'
 const DEVICE_ROW = 'tr[name=device]';
 const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
