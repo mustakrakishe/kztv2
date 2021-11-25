@@ -38,7 +38,10 @@ class DeviceAccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input = (object) array_map(function($form) {
+            parse_str($form, $arr);
+            return $arr;
+        }, $request->except('_token'));
     }
 
     /**

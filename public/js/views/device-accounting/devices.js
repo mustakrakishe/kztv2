@@ -13,16 +13,14 @@ const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
 const UPDATE_FORM = '#edit-device-account-modal form';
 const DELETE_FORM = 'form#delete';
-const GENERAL_TAB_PANEL = '[name=general]'
 const PAGINATION_LINK = 'a.page-link';
 const PANEL = '[role=tabpanel]';
 const SEARCH_FORM = 'form#search-form';
 const SEARCH_INPUT = 'input#search-input';
-const STORE_DEVICE_ACCOUNT_BUTTON = '#store-device-btn';
-const STORE_DEVICE_FORM = '#create-device-form';
-const STORE_HARDWARE_FORM = '#create-hardware-form';
+const STORE_DEVICE_ACCOUNT_BUTTON = '#store-device-account-button';
+const STORE_DEVICE_ACCOUNT_FORM = 'form#store-device-account-form';
 const STORE_MOVEMENT_FORM = '#create-movement-form';
-const STORE_SOFTWARE_FORM = '#create-software-form';
+const TAB_CONTENT = '#v-pills-tabContent';
 const TAB_PANEL = '[role=tabpanel]';
 const TABSWITCHER_BACK = '[role=tabswitcher][direction=prev]';
 const TABSWITCHER_NEXT = '[role=tabswitcher][direction=next]';
@@ -40,7 +38,7 @@ $(document).on('submit', UPDATE_FORM, updateFormSubmitHandler);
 $(document).on('submit', DELETE_FORM, deleteFormSubmitHandler);
 $(document).on('click', PAGINATION_LINK, paginationLinkClickHandler);
 $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
-$(document).on('click', STORE_DEVICE_ACCOUNT_BUTTON, storeDeviceAccountButtonClickHandler);
+$(document).on('submit', STORE_DEVICE_ACCOUNT_FORM, storeDeviceAccountFormSubmitHandler);
 $(document).on('submit', STORE_MOVEMENT_FORM, storeMovementFormSubmitHandler);
 $(document).on('click', TABSWITCHER_BACK, tabswitcherBackClickHandler);
 $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
@@ -141,52 +139,42 @@ async function searchDeviceHandler(event) {
     }
 }
 
-async function storeDeviceAccountButtonClickHandler() {
-    $(this).prop('disabled', true);
-
-    let deviceStoreResponse = await Form.xhrAction(STORE_DEVICE_FORM);
+async function storeDeviceAccountFormSubmitHandler(event) {
+    event.preventDefault();
     
-    if (deviceStoreResponse.status !== 1) {
-        $(this).prop('disabled',false);
-        return;
+    let modalLastForm = getModalCurrentForm(CREATE_DEVICE_ACCOUNT_MODAL);
+
+    const HAS_VALIDATION = true;
+    let response = await Form.xhrAction(modalLastForm, HAS_VALIDATION);
+
+    if (response.status === 1) {
+        let storeDeviceAccountForm = event.target;
+
+        let data = $(storeDeviceAccountForm).serializeArray();
+
+        $(TAB_CONTENT).find('form').each((index, form) => {
+            let formName = $(form).attr('name');
+            data.push({
+                name: formName,
+                value: $(form).serialize(),
+            });
+        });
+
+        
+        console.log(data);
+
+        let response = await $.post({
+            url: $(storeDeviceAccountForm).attr('action'),
+            data: data,
+        });
+
+        console.log(response);
+
+        // if (response === 1) {
+        //     await switchDeviceTablePage(1);
+        //     $(CREATE_DEVICE_ACCOUNT_MODAL).modal('hide');
+        // }
     }
-
-    let deviceId = deviceStoreResponse.device.id;
-
-    $(STORE_MOVEMENT_FORM).find('[name=device_id]').val(deviceId);
-    let movementStoreResponse = await Form.xhrAction(STORE_MOVEMENT_FORM);
-    
-    if (movementStoreResponse.status !== 1) {
-        $(this).prop('disabled',false);
-        return;
-    }
-
-    $(STORE_HARDWARE_FORM).find('[name=device_id]').val(deviceId);
-    let hardwareStoreResponse = await Form.xhrAction(STORE_HARDWARE_FORM);
-    
-    if (hardwareStoreResponse.status !== 1) {
-        $(this).prop('disabled',false);
-        return;
-    }
-
-    let software = {
-        description: $(STORE_SOFTWARE_FORM).find('[name=description]').val(),
-        comment: $(STORE_SOFTWARE_FORM).find('[name=comment]').val(),
-    }
-
-    if(software.description || software.comment){
-        $(STORE_SOFTWARE_FORM).find('[name=device_id]').val(deviceId);
-        let softwareStoreResponse = await Form.xhrAction(STORE_SOFTWARE_FORM);
-    
-        if (softwareStoreResponse.status !== 1) {
-            $(this).prop('disabled',false);
-            return;
-        }
-    }
-    
-    await switchDeviceTablePage(1);
-
-    $( CREATE_DEVICE_ACCOUNT_MODAL).modal('hide');
 }
 
 async function storeMovementFormSubmitHandler(event) {
@@ -220,6 +208,8 @@ async function tabswitcherNextClickHandler() {
     let response = await Form.xhrAction(form, HAS_VALIDATION);
     
     $(tabswitcherNext).prop('disabled', false);
+
+    console.log(response);
 
     if (response.status === 1) {
         Tabswitcher.tabswitcherNextClickHandler(this);
