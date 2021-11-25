@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Software;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SoftwareController extends Controller
 {
@@ -116,6 +117,30 @@ class SoftwareController extends Controller
     public function destroy(Software $software)
     {
         $software->delete();
+        return ['status' => 1];
+    }
+
+    /**
+     * Validate the device hardware store/update request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     *
+     */
+    public function validateDeviceHardware(Request $request, Device $device)
+    {
+        $input = $request->all();
+
+        $validator = Validator::make($input, [
+        ]);
+
+        if ($validator->fails()) {
+            return [
+                'status' => 0,
+                'errors' => $validator->errors(),
+            ];
+        }
+
         return ['status' => 1];
     }
 }

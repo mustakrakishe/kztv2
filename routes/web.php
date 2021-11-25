@@ -24,5 +24,5 @@ require __DIR__.'/device-accounting/device-accounts.php';
 require __DIR__.'/device-accounting/devices.php';
 require __DIR__.'/device-accounting/devices-movements.php';
 require __DIR__.'/device-accounting/movements.php';
-require __DIR__.'/device-accounting/hardware.php';
-require __DIR__.'/device-accounting/software.php';
+require __DIR__.'/device-accounting/devices-hardware.php';
+require __DIR__.'/device-accounting/devices-software.php';

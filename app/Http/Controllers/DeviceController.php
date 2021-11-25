@@ -32,15 +32,16 @@ class DeviceController extends Controller
             'last_software'
         ]);
 
-        $device = new Device();
-        $device->last_movement = new Movement();
-        $device->last_hardware = new Hardware();
-        $device->last_software = new Software();
+        $default = new class {};
+        $default->device = new Device();
+        $default->movement = new Movement();
+        $default->hardware = new Hardware();
+        $default->software = new Software();
             
         return view('device-accounting.devices', compact('devices', 'types', 'statuses'))->with([
             'contextMenuView' => view('components.device-accounting.devices.index.context-menu')->render(),
             'deleteDeviceConfirmationView' => view('components.device-accounting.devices.delete.confirm')->render(),
-            'createDeviceAccountView' => view('components.device-accounting.device-accounts.create', compact('types', 'statuses', 'device'))->render(),
+            'createDeviceAccountView' => view('components.device-accounting.device-accounts.create', compact('default', 'types', 'statuses'))->render(),
         ]);
     }
 

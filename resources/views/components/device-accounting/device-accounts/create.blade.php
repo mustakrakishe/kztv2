@@ -12,19 +12,27 @@
 
         <div class="tab-content border-start ps-3 w-100" id="v-pills-tabContent" style="min-height: 400px;">
             <x-tabpanel class="show active" id="v-pills-general" aria-labelledby="v-pills-general-tab">
-                <x-device-accounting.devices.create :types="$types"/>
+                <form class="mt-3" action="{{ route('devices.validate') }}"  method="get">
+                    <x-device-accounting.devices.create.form.fields :device="$default->device" :types="$types" />
+                </form>
             </x-tabpanel>
 
             <x-tabpanel id="v-pills-movement" aria-labelledby="v-pills-movement-tab">
-                <x-device-accounting.movements.create.form :statuses="$statuses" :movement="$device->last_movement"/>
+                <form class="mt-3" action="{{ route('devices.movements.validate') }}"  method="get">
+                    <x-device-accounting.movements.create.form.fields :movement="$default->movement" :statuses="$statuses" />
+                </form>
             </x-tabpanel>
 
             <x-tabpanel id="v-pills-hardware" aria-labelledby="v-pills-hardware-tab">
-                <x-device-accounting.hardware.create.form :hardware="$device->last_hardware"/>
+                <form class="mt-3" action="{{ route('devices.hardware.validate') }}"  method="get">
+                    <x-device-accounting.hardware.create.form.fields :hardware="$default->hardware"/>
+                </form>
             </x-tabpanel>
 
             <x-tabpanel id="v-pills-software" aria-labelledby="v-pills-software-tab">
-                <x-device-accounting.software.create.form :software="$device->last_software"/>
+                <form class="mt-3" action="{{ route('devices.software.validate') }}"  method="get">
+                    <x-device-accounting.software.create.form.fields :software="$default->software"/>
+                </form>
             </x-tabpanel>
         </div>
     </div>
