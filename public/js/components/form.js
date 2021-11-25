@@ -1,9 +1,6 @@
 class Form {
 
     static xhrAction(form, hasValidation = false) {
-        const spinner = '<span name="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
-        const success = '<i name="result" class="fas fa-check"></i>';
-        const fail = '<i name="result" class="fas fa-times"></i>';
 
         let submitter = $(form).find(':submit').first();
 
@@ -12,11 +9,7 @@ class Form {
             submitter = $(`[type=submit][form=${formId}]`);
         }
 
-        $(submitter).width($(submitter).width());
-        $(submitter).find('[name=result]').remove();
-        $(submitter).find('[name=init-content]').hide();
-        $(submitter).append(spinner);
-        $(submitter).prop('disabled', true);
+        this.showProgressInSubmitter(submitter);
 
         if (hasValidation) {
             this.formatWithErrors(form);
@@ -27,26 +20,12 @@ class Form {
             method: $(form).attr('method'),
             data: $(form).serialize(),
             success: (response) => {
-                let submitterStatusDelay = 0;
+                let isResultSuccessfull = response.status;
+                this.playResultInSubmitter(submitter, isResultSuccessfull);
 
-                if (response.status === 1) {
-                    $(submitter).find('[name="spinner"]').replaceWith(success);
-                } else {
-                    $(submitter).find('[name="spinner"]').replaceWith(fail);
-                    submitterStatusDelay = 750;
-
-                    if (hasValidation) {
-                        this.formatWithErrors(form, response.errors);
-                    }
+                if (response.status === 0 && hasValidation) {
+                    this.formatWithErrors(form, response.errors);
                 }
-
-                setTimeout(() => {
-                    $(submitter).find('[name=result]').fadeOut('slow', function (self) {
-                        $(submitter).prop('disabled', false);
-                        $(this).remove();
-                        $(submitter).find('[name=init-content]').fadeIn('slow');
-                    });
-                }, submitterStatusDelay);
             },
         });
     }
@@ -72,6 +51,36 @@ class Form {
         $(formId).find('.invalid-feedback').remove();
         $(formId).find('.is-invalid').removeClass('is-invalid');
         $(formId).trigger('reset');
+    }
+
+    static showProgressInSubmitter(submitter) {
+        const SPINNER = '<span name="spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>';
+
+        $(submitter).width($(submitter).width());
+        $(submitter).find('[name=result]').remove();
+        $(submitter).find('[name=init-content]').hide();
+        $(submitter).append(SPINNER);
+        $(submitter).prop('disabled', true);
+    }
+
+    static playResultInSubmitter(submitter, isResultSuccessfull) {
+        return new Promise(resolve => {
+            const SUCCESS = '<i name="result" class="fas fa-check"></i>';
+            const FAIL = '<i name="result" class="fas fa-times"></i>';
+    
+            let result = isResultSuccessfull ? SUCCESS : FAIL;
+    
+            $(submitter).find('[name="spinner"]').replaceWith(result);
+    
+            setTimeout(() => {
+                $(submitter).find('[name=result]').fadeOut('slow', function (self) {
+                    $(submitter).prop('disabled', false);
+                    $(this).remove();
+                    $(submitter).find('[name=init-content]').fadeIn('slow');
+                    resolve();
+                });
+            }, 750);
+        });
     }
 }
 

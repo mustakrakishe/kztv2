@@ -197,7 +197,7 @@ async function tabswitcherNextClickHandler() {
     let tabswitcherNext = this;
     let form = getModalCurrentForm(CREATE_DEVICE_ACCOUNT_MODAL);
     
-    $(tabswitcherNext).prop('disabled', true);
+    Form.showProgressInSubmitter(tabswitcherNext);
 
     const HAS_VALIDATION = true;
     let response = await Form.xhrAction(form, HAS_VALIDATION);
