@@ -10,19 +10,19 @@ const CREATE_MOVEMENT_MODAL = '#create-movement-modal'
 const DEVICE_ROW = 'tr[name=device]';
 const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
-const UPDATE_FORM = '#edit-device-account-modal form';
 const DELETE_FORM = 'form#delete';
+const MOVEMENT_CREATE_FORM = '#movement-create-form';
 const PAGINATION_LINK = 'a.page-link';
 const PANEL = '[role=tabpanel]';
 const SEARCH_FORM = 'form#search-form';
 const SEARCH_INPUT = 'input#search-input';
 const STORE_DEVICE_ACCOUNT_BUTTON = '#store-device-account-button';
 const STORE_DEVICE_ACCOUNT_FORM = 'form#store-device-account-form';
-const STORE_MOVEMENT_FORM = '#create-movement-form';
 const TAB_CONTENT = '#v-pills-tabContent';
 const TAB_PANEL = '[role=tabpanel]';
 const TABSWITCHER_BACK = '[role=tabswitcher][direction=prev]';
 const TABSWITCHER_NEXT = '[role=tabswitcher][direction=next]';
+const UPDATE_FORM = '#edit-device-account-modal form';
 
 // listeners
 
@@ -33,14 +33,14 @@ $(document).on('click', CONTEXT_MENU_MOVE, contextMenuMoveHandler);
 $(document).on('show.bs.modal', CREATE_DEVICE_ACCOUNT_MODAL, createDeviceAccountModalShowHandler);
 $(document).on('click', CREATE_DEVICE_ACCOUNT_LINK, createLinkClickHandler);
 $(document).on('contextmenu', DEVICE_ROW, deviceRowContextMenuHandler);
-$(document).on('submit', UPDATE_FORM, updateFormSubmitHandler);
+$(document).on('submit', MOVEMENT_CREATE_FORM, movementCreateFormSubmitHandler);
 $(document).on('submit', DELETE_FORM, deleteFormSubmitHandler);
 $(document).on('click', PAGINATION_LINK, paginationLinkClickHandler);
 $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
 $(document).on('submit', STORE_DEVICE_ACCOUNT_FORM, storeDeviceAccountFormSubmitHandler);
-$(document).on('submit', STORE_MOVEMENT_FORM, storeMovementFormSubmitHandler);
 $(document).on('click', TABSWITCHER_BACK, tabswitcherBackClickHandler);
 $(document).on('click', TABSWITCHER_NEXT, tabswitcherNextClickHandler);
+$(document).on('submit', UPDATE_FORM, updateFormSubmitHandler);
 
 // handlers
 
@@ -113,6 +113,21 @@ function deviceRowContextMenuHandler(event) {
     showContextMenu(event);
 }
 
+async function movementCreateFormSubmitHandler(event) {
+    event.preventDefault();
+    let form = this;
+    
+    let hasValidation = true;
+    let response = await Form.xhrAction(form, hasValidation);
+    
+    if (response.status === 1) {
+        await switchDeviceTablePage(1);
+
+        let modal = $(form).closest('.modal');
+        $(modal).modal('hide');
+    }
+}
+
 async function paginationLinkClickHandler(event) {
     event.preventDefault();
 
@@ -174,22 +189,6 @@ async function storeDeviceAccountFormSubmitHandler(event) {
     
     let isResultSuccessfull = response.status;
     Form.playResultInSubmitter($(STORE_DEVICE_ACCOUNT_BUTTON), isResultSuccessfull);
-}
-
-async function storeMovementFormSubmitHandler(event) {
-    let modal = $(this).closest('.modal');
-
-    if ($(modal).is(CREATE_MOVEMENT_MODAL)) {
-        event.preventDefault();
-    
-        let hasValidation = true;
-        let response = await Form.xhrAction(this, hasValidation);
-        
-        if (response.status === 1) {
-            await switchDeviceTablePage(1);
-            $(modal).modal('hide');
-        }
-    }
 }
 
 async function tabswitcherBackClickHandler() {

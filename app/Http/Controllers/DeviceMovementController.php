@@ -30,13 +30,14 @@ class DeviceMovementController extends Controller
      */
     public function create(Device $device)
     {
-        $device->load('last_movement');
-        $device->last_movement->date = Carbon::now()->format('Y-m-d\TH:i:s');
+        $movement = $device->last_movement;
+        $movement->date = Carbon::now()->format('Y-m-d\TH:i:s');
+
         $statuses = Status::all();
 
         return [
             'status' => 1,
-            'view' => view('components.device-accounting.movements.create', compact('device', 'statuses'))->render(),
+            'view' => view('components.device-accounting.movements.create.modal', compact('movement', 'statuses'))->render(),
         ];
     }
 
@@ -49,7 +50,21 @@ class DeviceMovementController extends Controller
      */
     public function store(Request $request, Device $device)
     {
-        // 
+        $validationResponse = $this->validateDeviceMovement($request, $device);
+
+        if($validationResponse['status'] !== 1){
+            return $validationResponse;
+        }
+
+        $movement = new Movement($request->input());
+        $movement->device_id = $device->id;
+
+        if ($movement->save()) {
+            $device->touch();
+            return ['status' => 1];
+        }
+
+        return ['status' => 0];
     }
 
     /**
