@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Type;
 use App\Models\Device;
 use App\Models\Status;
+use App\Models\Hardware;
+use App\Models\Movement;
 use App\Models\Software;
 use Illuminate\Http\Request;
 
@@ -42,6 +44,22 @@ class DeviceAccountController extends Controller
             parse_str($form, $arr);
             return $arr;
         }, $request->except('_token'));
+
+        $device = Device::create($input->device);
+
+        $movement = new Movement($input->movement);
+        $movement->device_id = $device->id;
+        $movement->save();
+
+        $hardware = new Hardware($input->hardware);
+        $hardware->device_id = $device->id;
+        $hardware->save();
+
+        if ($input->software['description'] || $input->software['comment']) {
+            $software = new Software($input->software);
+            $software->device_id = $device->id;
+            $software->save();
+        }
     }
 
     /**

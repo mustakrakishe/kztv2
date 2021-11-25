@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Device extends Model
 {
     use HasFactory;
-
     public $fillable = [
         'inventory_code',
         'identification_code',
@@ -59,6 +58,22 @@ class Device extends Model
     public function setCreatedAt($value)
     {
       return null;
+    }
+
+    public function setInventoryCodeAttribute($value)
+    {
+        if ($value === '') {
+            $value = null;
+        }
+        $this->attributes['inventory_code'] = $value;
+    }
+
+    public function setIdentificationCodeAttribute($value)
+    {
+        if ($value === '') {
+            $value = null;
+        }
+        $this->attributes['identification_code'] = $value;
     }
 
     /**
