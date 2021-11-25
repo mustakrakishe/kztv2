@@ -1,5 +1,5 @@
 <x-modal>
-    <x-slot name="title">{{ __('Move') }}</x-slot>
+    <x-slot name="title">{{ __('New movement') }}</x-slot>
 
     <form id="movement-create-form" action="{{ route('devices.movements.store', ['device' => $movement->device_id]) }}" method="post">
         @csrf

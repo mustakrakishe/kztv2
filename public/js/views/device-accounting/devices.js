@@ -3,7 +3,7 @@ import * as Tabswitcher from "../../components/tabswitcher.js";
 
 const CONTEXT_MENU_DELETE = '#contextmenu [name=delete]';
 const CONTEXT_MENU_EDIT = '#contextmenu [name=edit]';
-const CONTEXT_MENU_MOVE = '#contextmenu [name=move]';
+const CONTEXT_MENU_MOVEMENTMENT = '#contextmenu [name=movement]';
 const CREATE_DEVICE_ACCOUNT_MODAL = '#create-device-account-modal';
 const CREATE_DEVICE_ACCOUNT_LINK = 'a#create-device-account'
 const DEVICE_ROW = 'tr[name=device]';
@@ -28,7 +28,7 @@ const UPDATE_FORM = '#edit-device-account-modal form';
 $(document).on('click', hideContextMenu);
 $(document).on('click', CONTEXT_MENU_DELETE, contextMenuDeleteHandler);
 $(document).on('click', CONTEXT_MENU_EDIT, contextMenuEditHandler);
-$(document).on('click', CONTEXT_MENU_MOVE, contextMenuMoveHandler);
+$(document).on('click', CONTEXT_MENU_MOVEMENTMENT, contextMenuMoveHandler);
 $(document).on('show.bs.modal', CREATE_DEVICE_ACCOUNT_MODAL, createDeviceAccountModalShowHandler);
 $(document).on('click', CREATE_DEVICE_ACCOUNT_LINK, createLinkClickHandler);
 $(document).on('contextmenu', DEVICE_ROW, deviceRowContextMenuHandler);
