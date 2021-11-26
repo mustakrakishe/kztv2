@@ -29,7 +29,7 @@
         name="description"
         class="form-control"
         style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
-    ></textarea>
+    >{{ $hardware->description }}</textarea>
 </div>
 
 <div>
@@ -38,5 +38,5 @@
         name="comment"
         class="form-control"
         style="height: 81px; resize: none; overflow-x: hidden; overflow-y: scroll;"
-    ></textarea>
+    >{{ $hardware->comment }}</textarea>
 </div>

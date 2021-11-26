@@ -130,6 +130,7 @@ return [
     ],
     'attributes'           => [
         'comment'               => 'Коментар',
+        'description'           => 'Опис',
         'identification_code'   => 'Ідентифікаційний номер',
         'inventory_code'        => 'Інвентарний номер',
         'location'              => 'Розташування',

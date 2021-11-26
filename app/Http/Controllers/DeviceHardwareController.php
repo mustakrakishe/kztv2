@@ -48,7 +48,21 @@ class DeviceHardwareController extends Controller
      */
     public function store(Request $request, Device $device)
     {
-        //
+        $validationResponse = $this->validateDeviceHardware($request);
+
+        if($validationResponse['status'] !== 1){
+            return $validationResponse;
+        }
+
+        $hardware = new Hardware($request->input());
+        $hardware->device_id = $device->id;
+
+        if ($hardware->save()) {
+            $device->touch();
+            return ['status' => 1];
+        }
+
+        return ['status' => 0];
     }
 
     /**

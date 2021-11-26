@@ -48,7 +48,21 @@ class DeviceSoftwareController extends Controller
      */
     public function store(Request $request, Device $device)
     {
-        //
+        $validationResponse = $this->validateDeviceSoftware($request);
+
+        if($validationResponse['status'] !== 1){
+            return $validationResponse;
+        }
+
+        $software = new Software($request->input());
+        $software->device_id = $device->id;
+
+        if ($software->save()) {
+            $device->touch();
+            return ['status' => 1];
+        }
+
+        return ['status' => 0];
     }
 
     /**
@@ -146,6 +160,7 @@ class DeviceSoftwareController extends Controller
         $input = $request->all();
 
         $validator = Validator::make($input, [
+            'description' => ['required'],
         ]);
 
         if ($validator->fails()) {

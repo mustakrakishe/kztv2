@@ -9,7 +9,7 @@ const DEVICE_ROW = 'tr[name=device]';
 const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
 const DELETE_FORM = 'form#delete';
-const MOVEMENT_CREATE_FORM = '#movement-create-form';
+const DEVICE_RELATIONSHIP_CREATE_FORM = 'form.device-relationship-create-form';
 const PAGINATION_LINK = 'a.page-link';
 const PANEL = '[role=tabpanel]';
 const SEARCH_FORM = 'form#search-form';
@@ -29,7 +29,7 @@ $(document).on('click', CALL_DIALOG, callDialogClickHandler);
 $(document).on('show.bs.modal', CREATE_DEVICE_ACCOUNT_MODAL, createDeviceAccountModalShowHandler);
 $(document).on('click', CREATE_DEVICE_ACCOUNT_LINK, createLinkClickHandler);
 $(document).on('contextmenu', DEVICE_ROW, deviceRowContextMenuHandler);
-$(document).on('submit', MOVEMENT_CREATE_FORM, movementCreateFormSubmitHandler);
+$(document).on('submit', DEVICE_RELATIONSHIP_CREATE_FORM, deviceRelationshipCreateFormSubmitHandler);
 $(document).on('submit', DELETE_FORM, deleteFormSubmitHandler);
 $(document).on('click', PAGINATION_LINK, paginationLinkClickHandler);
 $(document).on('input', SEARCH_INPUT, searchDeviceHandler);
@@ -85,9 +85,9 @@ function deviceRowContextMenuHandler(event) {
     showContextMenu(event);
 }
 
-async function movementCreateFormSubmitHandler(event) {
+async function deviceRelationshipCreateFormSubmitHandler(event) {
     event.preventDefault();
-    let form = this;
+    let form = event.target;
     
     let hasValidation = true;
     let response = await Form.xhrAction(form, hasValidation);

@@ -1,7 +1,7 @@
 <x-modal>
     <x-slot name="title">{{ __('New software') }}</x-slot>
 
-    <form class="device-special-actions" id="software-create-form" action="{{ route('devices.software.store', ['device' => $software->device_id]) }}" method="post">
+    <form class="device-relationship-create-form" id="software-create-form" action="{{ route('devices.software.store', ['device' => $software->device_id]) }}" method="post">
         @csrf
         <x-device-accounting.software.create.form.fields :software="$software"/>
     </form>
