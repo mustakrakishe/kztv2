@@ -219,9 +219,14 @@ function getModalCurrentForm(MODAL) {
 }
 
 async function switchDeviceTablePage(page) {
-    let url = $(DEVICE_TABLE_PAGINATOR).attr('path') + '?page=' + page;
+    let url = $(DEVICE_TABLE_PAGINATOR).attr('path');
 
-    let response = await $.get(url);
+    let response = await $.get({
+        url: url,
+        data: {
+            page: page,
+        }
+    });
     
     if (response.status === 1) {
         let deviceTablePage = response.view;
