@@ -191,8 +191,6 @@ async function updateFormSubmitHandler(event) {
 
     let hasValidation = true;
     let response = await Form.xhrAction(this, hasValidation);
-
-    console.log(response);
     
     if (response.status === 1) {
         let currentTabPanelId = $(this).closest(TAB_PANEL).attr('id');

@@ -99,7 +99,7 @@ class DeviceSoftwareController extends Controller
      */
     public function update(Request $request, string $deviceId, Software $software = null)
     {
-        $validationResponse = $this->validateDeviceHardware($request);
+        $validationResponse = $this->validateDeviceSoftware($request);
 
         if($validationResponse['status'] !== 1){
             return $validationResponse;
