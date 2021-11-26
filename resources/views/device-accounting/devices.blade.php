@@ -10,8 +10,7 @@
 
 <div class="row my-3">
     <div class="col">
-        <form id="search-form" action="{{ route('devices.fetch_data') }}" method="get">
-            <input type="hidden" id="page-input" name="page">
+        <form id="search-form" action="{{ route('devices.fetch_data') }}" method="get" onsubmit="return false;">
             <input type="search" id="search-input" name="search_string" class="form-control" placeholder="{{ __('Search by keywords') }}..." title="{{ __('Enter for search. Esc for reset.') }}">
         </form>
     </div>
