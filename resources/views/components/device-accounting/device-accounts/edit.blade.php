@@ -17,16 +17,16 @@
             </x-tabpanel>
 
             <x-tabpanel id="nav-movement" aria-labelledby="nav-movement-tab">
-                <x-device-accounting.movements.edit.form :movement="$device->last_movement" :statuses="$statuses"/>
+                <x-device-accounting.movements.edit.form :movement="$device->latestMovement" :statuses="$statuses"/>
             </x-tabpanel>
 
             <x-tabpanel id="nav-hardware" aria-labelledby="nav-hardware-tab">
-                <x-device-accounting.hardware.edit.form :hardware="$device->last_hardware"/>
+                <x-device-accounting.hardware.edit.form :hardware="$device->latestHardware"/>
             </x-tabpanel>
             
             <x-tabpanel id="nav-software" aria-labelledby="nav-software-tab">
-                @isset($device->last_software)
-                <x-device-accounting.software.edit.form :software="$device->last_software" />
+                @isset($device->latestSoftware)
+                <x-device-accounting.software.edit.form :software="$device->latestSoftware" />
                 @else
                 <div class="h-100 d-flex mx-auto justify-content-center align-items-center">
                     {{ __('It is no software exists for this device yet.') }}

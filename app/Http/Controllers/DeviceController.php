@@ -27,9 +27,9 @@ class DeviceController extends Controller
         $devices->load([
             'type',
             'status',
-            'last_movement',
-            'last_hardware',
-            'last_software'
+            'latestMovement',
+            'latestHardware',
+            'latestSoftware'
         ]);
 
         $default = new class {};
@@ -166,11 +166,6 @@ class DeviceController extends Controller
         if (isset($request->search_string)) {
             $keywords = preg_split('/\s+/', trim($request->search_string));
             $devices = $devices->search($keywords);
-            
-            // return [
-            //     'status' => 1,
-            //     'view' => $devices->toSql(),
-            // ];
         }
 
         $devices = $devices->paginate()->withPath(route('devices.fetch_data', $urlQueryWithoutPage));
@@ -178,9 +173,9 @@ class DeviceController extends Controller
         $devices->load([
             'type',
             'status',
-            'last_movement',
-            'last_hardware',
-            'last_software'
+            'latestMovement',
+            'latestHardware',
+            'latestSoftware'
         ]);
 
         return [

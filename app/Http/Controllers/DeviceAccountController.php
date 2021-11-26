@@ -90,9 +90,9 @@ class DeviceAccountController extends Controller
             ->load([
                 'type',
                 'status',
-                'last_movement',
-                'last_hardware',
-                'last_software',
+                'latestMovement',
+                'latestHardware',
+                'latestSoftware',
             ]);
         
         return [

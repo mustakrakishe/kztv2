@@ -25,16 +25,16 @@ class Device extends Model
 
     public static $searchable = [
         'inventory_code',
-        // 'identification_code',
-        // 'model',
-        // 'comment',
+        'identification_code',
+        'model',
+        'comment',
     ];
 
     public static $searchableRelationships = [
-        // 'type',
-        'last_movement',
-        // 'last_hardware',
-        // 'last_software',
+        'type',
+        'latestMovement',
+        'latestHardware',
+        'latestSoftware',
     ];
 
     /**
@@ -102,7 +102,7 @@ class Device extends Model
     }
 
     /**
-     * Get the device last movement entry.
+     * Get the device latest movement.
      */
     public function latestMovement()
     {
@@ -121,11 +121,14 @@ class Device extends Model
     }
 
     /**
-     * Get the device last hardware entry.
+     * Get the device latest hardware.
      */
-    public function last_hardware()
+    public function latestHardware()
     {
-        return $this->hasOne(Hardware::class);
+        return $this->hasOne(Hardware::class)->ofMany([
+            'date' => 'max',
+            'id' => 'max',
+        ]);
     }
 
     /**
@@ -145,11 +148,14 @@ class Device extends Model
     }
 
     /**
-     * Get the device last software entry.
+     * Get the device latest software.
      */
-    public function last_software()
+    public function latestSoftware()
     {
-        return $this->hasOne(Software::class);
+        return $this->hasOne(Software::class)->ofMany([
+            'date' => 'max',
+            'id' => 'max',
+        ]);
     }
     
     /**

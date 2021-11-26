@@ -42,18 +42,6 @@ class Hardware extends Model
     }
 
     /**
-     * The "booted" method of the model.
-     *
-     * @return void
-     */
-    protected static function booted()
-    {
-        static::addGlobalScope('hardware', function (Builder $builder) {
-            $builder->latest('date')->orderByDesc('id');
-        });
-    }
-
-    /**
      * Get the movement device.
      */
     public function device(){

@@ -55,8 +55,8 @@
     </td>
     <td>{{ $device->type->name }}</td>
     <td>{{ $device->model }}</td>
-    <td>{{ $device->last_hardware?->description }}</td>
-    <td>{{ $device->last_software?->description }}</td>
-    <td>{{ $device->last_movement?->location }}</td>
+    <td>{{ $device->latestHardware?->description }}</td>
+    <td>{{ $device->latestSoftware?->description }}</td>
+    <td>{{ $device->latestMovement?->location }}</td>
     <td>{{ $device->comment }}</td>
 </tr>
