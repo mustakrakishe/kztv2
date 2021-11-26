@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Device extends Model
 {
     use HasFactory;
+
     public $fillable = [
         'inventory_code',
         'identification_code',
@@ -24,17 +25,16 @@ class Device extends Model
 
     public static $searchable = [
         'inventory_code',
-        'identification_code',
-        'model',
-        'comment',
+        // 'identification_code',
+        // 'model',
+        // 'comment',
     ];
 
     public static $searchableRelationships = [
-        'type',
-        'status',
+        // 'type',
         'last_movement',
-        'last_hardware',
-        'last_software',
+        // 'last_hardware',
+        // 'last_software',
     ];
 
     /**
@@ -104,9 +104,12 @@ class Device extends Model
     /**
      * Get the device last movement entry.
      */
-    public function last_movement()
+    public function latestMovement()
     {
-        return $this->hasOne(Movement::class);
+        return $this->hasOne(Movement::class)->ofMany([
+            'date' => 'max',
+            'id' => 'max',
+        ]);
     }
 
     /**

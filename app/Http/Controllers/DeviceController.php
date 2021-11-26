@@ -160,13 +160,17 @@ class DeviceController extends Controller
      */
     public function fetch_data(Request $request){
         $urlQueryWithoutPage = http_build_query($request->collect()->except('page')->toArray());
+        
+        $devices = Device::getModel();
 
         if (isset($request->search_string)) {
             $keywords = preg_split('/\s+/', trim($request->search_string));
-            $devices = Device::search($keywords);
-        }
-        else {
-            $devices = Device::getModel();
+            $devices = $devices->search($keywords);
+            
+            // return [
+            //     'status' => 1,
+            //     'view' => $devices->toSql(),
+            // ];
         }
 
         $devices = $devices->paginate()->withPath(route('devices.fetch_data', $urlQueryWithoutPage));

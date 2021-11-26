@@ -11,13 +11,6 @@ class Movement extends Model
 {
     use HasFactory;
 
-    protected $attributes = [
-        'location' => 'ЗУ. АСУ. 210',
-        'comment' => 'Новий',
-        // "in storage" status id
-        'status_id' => 2
-    ];
-
     public $fillable = [
         'date',
         'location',
@@ -32,19 +25,11 @@ class Movement extends Model
         'comment',
     ];
 
-    public $timestamps = false;
+    public static $searchableRelationships = [
+        'status'
+    ];
 
-    /**
-     * The "booted" method of the model.
-     *
-     * @return void
-     */
-    protected static function booted()
-    {
-        static::addGlobalScope('orderMovement', function (Builder $builder) {
-            $builder->latest('date')->orderByDesc('id');
-        });
-    }
+    public $timestamps = false;
 
     public function __construct(array $attributes = [])
     {
@@ -91,6 +76,12 @@ class Movement extends Model
 
                 foreach(static::$searchable as $column){
                     $query->orWhereRaw($column . '::text ilike ' . "'%$keyword%'");
+                }
+
+                foreach(static::$searchableRelationships as $relationship){
+                    $query->orWhereHas($relationship, function ($query) use ($keyword){
+                        $query->search([$keyword]);
+                    });
                 }
             });
         }
