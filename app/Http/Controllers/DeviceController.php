@@ -121,7 +121,7 @@ class DeviceController extends Controller
             $types = Type::all();
             return [
                 'status' => 1,
-                'view' => view('components.device-accounting.devices.edit', compact('device', 'types'))->render(),
+                'view' => view('components.device-accounting.devices.edit.form', compact('device', 'types'))->render(),
             ];
         }
 
