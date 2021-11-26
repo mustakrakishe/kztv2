@@ -108,12 +108,7 @@ class DeviceMovementController extends Controller
         }
 
         if ($movement->update($request->input())) {
-            $statuses = Status::all();
-
-            return [
-                'status' => 1,
-                'view' => view('components.device-accounting.movements.edit.form', compact('movement', 'statuses'))->render(),
-            ];
+            return ['status' => 1];
         }
 
         return ['status' => 0];

@@ -97,43 +97,19 @@ class DeviceSoftwareController extends Controller
      * @param  \App\Models\Software  $software
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Software $software)
+    public function update(Request $request, string $deviceId, Software $software = null)
     {
-        $validationResponse = $this->validateDeviceSoftware($request);
+        $validationResponse = $this->validateDeviceHardware($request);
 
         if($validationResponse['status'] !== 1){
             return $validationResponse;
         }
 
-        $input = $request->input();
-
-        if (!$software) {
-            $software = Software::create($input);
-        } else {
-            $generalSoftwareFields = array_filter((new Software())->fillable, function($value) {
-                return !in_array($value, ['device_id', 'date']);
-            });
-
-            $issetGeneralInput = !!array_filter($input, function($value, $key) use ($generalSoftwareFields) {
-                return $value && in_array($key, $generalSoftwareFields);
-            }, ARRAY_FILTER_USE_BOTH);
-
-            if (!$issetGeneralInput) {
-                $deviceId = $software->device_id;
-                $deleteResponse = $this->destroy($software);
-
-                if ($deleteResponse['status'] === 1) {
-                    $software = new Software(['device_id' => $request->device_id]);
-                }
-            } else {
-                $software->update($input);
-            }
+        if ($software->update($request->input())) {
+            return ['status' => 1];
         }
 
-        return [
-            'status' => 1,
-            'view' => view('components.device-accounting.software.edit.form', compact('software'))->render(),
-        ];
+        return ['status' => 0];
     }
 
     /**

@@ -106,10 +106,7 @@ class DeviceHardwareController extends Controller
         }
 
         if ($hardware->update($request->input())) {
-            return [
-                'status' => 1,
-                'view' => view('components.device-accounting.hardware.edit.form', compact('hardware'))->render(),
-            ];
+            return ['status' => 1];
         }
 
         return ['status' => 0];

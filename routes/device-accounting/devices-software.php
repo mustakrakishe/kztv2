@@ -7,6 +7,4 @@ Route::get('/devices/software/validate', [DeviceSoftwareController::class, 'vali
     ->middleware('auth')
     ->name('devices.software.validate');
 
-Route::put('devices/software/{software?}', [DeviceSoftwareController::class, 'update'])->middleware('auth')->name('devices.software.update');
-
-Route::resource('devices.software', DeviceSoftwareController::class)->except('update')->middleware('auth');
+Route::resource('devices.software', DeviceSoftwareController::class)->middleware('auth');

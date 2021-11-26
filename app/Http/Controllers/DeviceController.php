@@ -118,11 +118,7 @@ class DeviceController extends Controller
         }
 
         if ($device->update($request->input())) {
-            $types = Type::all();
-            return [
-                'status' => 1,
-                'view' => view('components.device-accounting.devices.edit.form', compact('device', 'types'))->render(),
-            ];
+            return ['status' => 1];
         }
 
         return ['status' => 0];

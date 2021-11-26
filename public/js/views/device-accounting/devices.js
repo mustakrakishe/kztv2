@@ -191,12 +191,13 @@ async function updateFormSubmitHandler(event) {
 
     let hasValidation = true;
     let response = await Form.xhrAction(this, hasValidation);
+
+    console.log(response);
     
     if (response.status === 1) {
-        let currentTabPanel = $(this).closest(TAB_PANEL);
-        $(currentTabPanel).html(response.view);
+        let currentTabPanelId = $(this).closest(TAB_PANEL).attr('id');
 
-        if ($(currentTabPanel).attr('id') === 'nav-general') {
+        if (currentTabPanelId === 'nav-general') {
             switchDeviceTablePage(1);
         } else {
             refreshDeviceTablePage();

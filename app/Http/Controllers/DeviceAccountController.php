@@ -95,8 +95,6 @@ class DeviceAccountController extends Controller
                 'last_software',
             ]);
         
-        $device->last_software = $device->last_software ?? new Software(['device_id' => $deviceId]);
-        
         return [
             'status' => 1,
             'view' => view('components.device-accounting.device-accounts.edit', compact('device', 'types', 'statuses'))->render(),
