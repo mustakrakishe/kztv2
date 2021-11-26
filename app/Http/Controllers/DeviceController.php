@@ -40,7 +40,6 @@ class DeviceController extends Controller
             
         return view('device-accounting.devices', compact('devices', 'types', 'statuses'))->with([
             'contextMenuView' => view('components.device-accounting.devices.index.context-menu')->render(),
-            'deleteDeviceConfirmationView' => view('components.device-accounting.devices.delete.confirm')->render(),
             'createDeviceAccountView' => view('components.device-accounting.device-accounts.create', compact('default', 'types', 'statuses'))->render(),
         ]);
     }
@@ -127,6 +126,20 @@ class DeviceController extends Controller
         }
 
         return ['status' => 0];
+    }
+
+    /**
+     * Show the form for deleting the specified resource.
+     *
+     * @param  \App\Models\Device  $device
+     * @return array
+     */
+    public function deleteConfirmation(Device $device)
+    {
+        return [
+            'status' => 1,
+            'view' => view('components.device-accounting.devices.delete.confirmation', compact('device'))->render(),
+        ];
     }
 
     /**

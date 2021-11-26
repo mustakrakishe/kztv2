@@ -3,7 +3,7 @@
 
     <form class="device-special-actions" id="hardware-create-form" action="{{ route('devices.hardware.store', ['device' => $hardware->device_id]) }}" method="post">
         @csrf
-        <x-device-accounting.hardwares.create.form.fields :hardware="$hardware"/>
+        <x-device-accounting.hardware.create.form.fields :hardware="$hardware"/>
     </form>
 
     <x-slot name="footer">

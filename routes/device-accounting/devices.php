@@ -14,5 +14,9 @@ Route::get('/devices/fetch_data', [DeviceController::class, 'fetch_data'])
 Route::get('/devices/validate', [DeviceController::class, 'validateDevice'])
     ->middleware('auth')
     ->name('devices.validate');
+
+Route::get('/devices/{device}/delete-confirmation', [DeviceController::class, 'deleteConfirmation'])
+    ->middleware('auth')
+    ->name('devices.delete-confirmation');
     
 Route::resource('devices', DeviceController::class)->middleware('auth');

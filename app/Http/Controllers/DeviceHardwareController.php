@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Device;
 use App\Models\Hardware;
 use Illuminate\Http\Request;
@@ -28,7 +29,14 @@ class DeviceHardwareController extends Controller
      */
     public function create(Device $device)
     {
-        //
+        $hardware = $device->last_hardware;
+        $hardware->date = Carbon::now()->format('Y-m-d\TH:i:s');
+
+
+        return [
+            'status' => 1,
+            'view' => view('components.device-accounting.hardware.create.modal', compact('hardware'))->render(),
+        ];
     }
 
     /**

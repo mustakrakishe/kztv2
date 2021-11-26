@@ -30,7 +30,6 @@
 
 <script>
     let contextMenuHtml = <?php echo json_encode($contextMenuView); ?>;
-    let deleteConfirmationModalHtml = <?php echo json_encode($deleteDeviceConfirmationView); ?>;
     let createDeviceAccountModalHtml = <?php echo json_encode($createDeviceAccountView); ?>;
 </script>
 

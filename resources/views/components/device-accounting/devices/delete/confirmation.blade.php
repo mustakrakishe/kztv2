@@ -6,7 +6,7 @@
     </p>
 
     <x-slot name="footer">
-        <form id="delete" action="{{ route('devices.destroy', ['device' => '#']) }}" method="post">
+        <form id="delete" action="{{ route('devices.destroy', ['device' => $device->id]) }}" method="post">
             @csrf
             @method('delete')
             <x-button class="btn-danger" data-bs-dismiss="modal">{{ __('Yes') }}</x-button>

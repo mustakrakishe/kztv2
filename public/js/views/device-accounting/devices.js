@@ -1,9 +1,8 @@
 import Form from "../../components/form.js";
 import * as Tabswitcher from "../../components/tabswitcher.js";
 
-const CONTEXT_MENU_DELETE = '#contextmenu [name=delete]';
-const CONTEXT_MENU_EDIT = '#contextmenu [name=edit]';
-const CONTEXT_MENU_MOVEMENTMENT = '#contextmenu [name=movement]';
+const DEVICE_CONTEXT_MENU = '#device-contextmenu'
+const CALL_DIALOG = '.call-dialog';
 const CREATE_DEVICE_ACCOUNT_MODAL = '#create-device-account-modal';
 const CREATE_DEVICE_ACCOUNT_LINK = 'a#create-device-account'
 const DEVICE_ROW = 'tr[name=device]';
@@ -26,9 +25,7 @@ const UPDATE_FORM = '#edit-device-account-modal form';
 // listeners
 
 $(document).on('click', hideContextMenu);
-$(document).on('click', CONTEXT_MENU_DELETE, contextMenuDeleteHandler);
-$(document).on('click', CONTEXT_MENU_EDIT, contextMenuEditHandler);
-$(document).on('click', CONTEXT_MENU_MOVEMENTMENT, contextMenuMoveHandler);
+$(document).on('click', CALL_DIALOG, callDialogClickHandler);
 $(document).on('show.bs.modal', CREATE_DEVICE_ACCOUNT_MODAL, createDeviceAccountModalShowHandler);
 $(document).on('click', CREATE_DEVICE_ACCOUNT_LINK, createLinkClickHandler);
 $(document).on('contextmenu', DEVICE_ROW, deviceRowContextMenuHandler);
@@ -43,41 +40,17 @@ $(document).on('submit', UPDATE_FORM, updateFormSubmitHandler);
 
 // handlers
 
-async function contextMenuDeleteHandler(event) {
+async function callDialogClickHandler(event) {
     event.preventDefault();
 
     let link = event.target;
     let url = $(link).attr('href');
 
-    let dialog = $.parseHTML(deleteConfirmationModalHtml);
-    $(dialog).find('form').attr('action', url);
-
-    showDialog(dialog);
-}
-
-async function contextMenuEditHandler(event) {
-    event.preventDefault();
-
-    let link = event.target;
-
-    let response = await $.get($(link).attr('href'));
-    
-    if (response.status === 1) {
-        let editDialog = $.parseHTML(response.view);
-        showDialog(editDialog);
-    }
-}
-
-async function contextMenuMoveHandler(event) {
-    event.preventDefault();
-
-    let link = event.target;
-
-    let response = await $.get($(link).attr('href'));
+    let response = await $.get(url);
 
     if (response.status === 1) {
-        let moveDialog = $.parseHTML(response.view);
-        showDialog(moveDialog);
+        let dialog = $.parseHTML(response.view);
+        showDialog(dialog);
     }
 }
 
@@ -303,7 +276,7 @@ async function showContextMenu(event) {
 }
 
 function hideContextMenu() {
-    $('#contextmenu').remove();
+    $(DEVICE_CONTEXT_MENU).remove();
 }
 
 function showDialog(dialog) {
