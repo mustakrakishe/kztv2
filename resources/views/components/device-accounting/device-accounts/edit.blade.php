@@ -2,7 +2,7 @@
 
     <x-slot name="title">{{ __('dialog.edit.header', ['entity' => trans('dialog.entities.device')]) }}</x-slot>
 
-    <div style="height: 448px;">
+    <div style="min-height: 448px;">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
                 <button class="nav-link active" id="nav-general-tab" data-bs-toggle="tab" data-bs-target="#nav-general" type="button" role="tab" aria-controls="nav-general" aria-selected="true">{{ __('General info') }}</button>
@@ -11,7 +11,7 @@
                 <button class="nav-link" id="nav-software-tab" data-bs-toggle="tab" data-bs-target="#nav-software" type="button" role="tab" aria-controls="nav-software" aria-selected="false">{{ __('Software') }}</button>
             </div>
         </nav>
-        <div class="tab-content" id="nav-tabContent" style="height: 390px;">
+        <div class="tab-content" id="nav-tabContent">
             <x-tabpanel class="show active" id="nav-general" aria-labelledby="nav-general-tab">
                 <x-device-accounting.devices.edit.form :device="$device" :types="$types"/>
             </x-tabpanel>
