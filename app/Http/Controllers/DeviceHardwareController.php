@@ -29,7 +29,7 @@ class DeviceHardwareController extends Controller
      */
     public function create(Device $device)
     {
-        $hardware = $device->last_hardware;
+        $hardware = $device->latestHardware;
         $hardware->date = Carbon::now()->format('Y-m-d\TH:i:s');
 
 

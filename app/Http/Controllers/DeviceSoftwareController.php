@@ -29,7 +29,7 @@ class DeviceSoftwareController extends Controller
      */
     public function create(Device $device)
     {
-        $software = $device->last_software ?? new Software(['device_id' => $device->id]);
+        $software = $device->latestSoftware ?? new Software(['device_id' => $device->id]);
         $software->date = Carbon::now()->format('Y-m-d\TH:i:s');
 
 

@@ -47,7 +47,7 @@ async function callDialogClickHandler(event) {
     let url = $(link).attr('href');
 
     let response = await $.get(url);
-
+    
     if (response.status === 1) {
         let dialog = $.parseHTML(response.view);
         showDialog(dialog);
@@ -132,8 +132,7 @@ async function storeDeviceAccountFormSubmitHandler(event) {
     
     let modalLastForm = getModalCurrentForm(CREATE_DEVICE_ACCOUNT_MODAL);
 
-    const HAS_VALIDATION = true;
-    let response = await Form.xhrAction(modalLastForm, HAS_VALIDATION);
+    let response = await validateTabPanelForm(modalLastForm);
 
     if (response.status === 1) {
         let storeDeviceAccountForm = event.target;
@@ -164,7 +163,6 @@ async function storeDeviceAccountFormSubmitHandler(event) {
 }
 
 async function tabswitcherBackClickHandler() {
-    $(STORE_DEVICE_ACCOUNT_BUTTON).attr('disabled', true);
     Tabswitcher.tabswitcherBackClickHandler(this);
 }
 
@@ -172,16 +170,15 @@ async function tabswitcherNextClickHandler() {
     let tabswitcherNext = this;
     let form = getModalCurrentForm(CREATE_DEVICE_ACCOUNT_MODAL);
     
+
     Form.showProgresInSubmitter(tabswitcherNext);
-
-    const HAS_VALIDATION = true;
-    let response = await Form.xhrAction(form, HAS_VALIDATION);
+    let response = await validateTabPanelForm(form, tabswitcherNext);
     
-    let isResulSuccessfull = response.status;
+    let isValid = response.status;
     let duration = 0;
-    Form.playResultInSubmitter(tabswitcherNext, isResulSuccessfull, duration);
+    await Form.playResultInSubmitter(tabswitcherNext, isValid, duration);
 
-    if (response.status === 1) {
+    if (isValid) {
         Tabswitcher.tabswitcherNextClickHandler(this);
     }
 }
@@ -230,6 +227,23 @@ async function switchDeviceTablePage(page) {
         let deviceTablePage = response.view;
         $(DEVICE_TABLE_CONTAINER).html(deviceTablePage);
     }
+}
+
+async function validateTabPanelForm(form) {
+    let formName = $(form).attr('name');
+
+    if (formName === 'software') {
+        let hasDescription = $(form).find('[description]').val();
+
+        if (!hasDescription) {
+            return {status: 1};
+        }
+    }
+
+    const HAS_VALIDATION = true;
+    let response = await Form.xhrAction(form, HAS_VALIDATION);
+
+    return response;
 }
 
 // helpers

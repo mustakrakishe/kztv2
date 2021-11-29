@@ -30,7 +30,7 @@ class DeviceMovementController extends Controller
      */
     public function create(Device $device)
     {
-        $movement = $device->last_movement;
+        $movement = $device->latestMovement;
         $movement->date = Carbon::now()->format('Y-m-d\TH:i:s');
 
         $statuses = Status::all();
@@ -144,7 +144,7 @@ class DeviceMovementController extends Controller
         
         $validator->after(function ($validator) use ($request, $device){
             if ($device) {
-                $movement = $device->last_movement;
+                $movement = $device->latestMovement;
                 $movement->location = $request->location;
     
                 if ($movement->isClean()) {
