@@ -16,15 +16,8 @@
             <input type="search" id="search-input" name="search_string" class="form-control" placeholder="{{ __('Search by keywords') }}..." title="{{ __('Enter for search. Esc for reset.') }}">
         </form>
     </div>
-
-    <div class="col-auto text-right">
-        <a id="create" class="btn btn-primary" href="{{ route('movements.create') }}">
-            <i class="fas fa-plus me-1"></i>
-            {{ __('New movement') }}
-        </a>
-    </div>
 </div>
 
-<x-devices.movements.table :movements="$movements"/>
+<x-device-accounting.movements.table :movements="$movements"/>
 
 @endsection

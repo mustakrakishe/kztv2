@@ -2,6 +2,7 @@
 
     <thead class="table-dark text-center">
         <tr>
+            <th></th>
             <th scope="col">{{ __('Date') }}</th>
             <th scope="col">{{ __('Inv. №') }}</th>
             <th scope="col">{{ __('Device') }}</th>
@@ -12,7 +13,7 @@
 
     <tbody>
         @foreach($movements as $movement)
-        <x-devices.movements.table.row :movement="$movement" />
+        <x-device-accounting.movements.table.row :movement="$movement" />
         @endforeach
     </tbody>
 
