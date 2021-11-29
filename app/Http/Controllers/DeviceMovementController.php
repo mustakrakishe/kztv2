@@ -141,19 +141,6 @@ class DeviceMovementController extends Controller
             'date' => ['required', 'date'],
             'location' => ['required', 'string']
         ]);
-        
-        $validator->after(function ($validator) use ($request, $device){
-            if ($device) {
-                $movement = $device->latestMovement;
-                $movement->location = $request->location;
-    
-                if ($movement->isClean()) {
-                    $validator->errors()->add(
-                        'location', trans('The device is alrady has the specified location.'),
-                    );
-                }
-            }
-        });
 
         if ($validator->fails()) {
             return [
