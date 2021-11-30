@@ -13,7 +13,7 @@
 
     <tbody>
         @foreach($movements as $movement)
-        <x-device-accounting.movements.table.row :movement="$movement" />
+        <x-device-accounting.movements.index.table.row :movement="$movement" />
         @endforeach
     </tbody>
 

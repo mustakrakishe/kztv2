@@ -18,6 +18,8 @@
     </div>
 </div>
 
-<x-device-accounting.movements.table :movements="$movements"/>
+<div id="movement-table-container">
+    <x-device-accounting.movements.index.table :movements="$movements"/>
+</div>
 
 @endsection

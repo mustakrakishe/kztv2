@@ -7,6 +7,7 @@ use App\Models\Status;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Device extends Model
 {
@@ -32,6 +33,7 @@ class Device extends Model
 
     public static $searchableRelationships = [
         'type',
+        'status',
         'latestMovement',
         'latestHardware',
         'latestSoftware',
@@ -50,6 +52,63 @@ class Device extends Model
                 ->orderBy('identification_code')
                 ->orderBy('id');
         });
+    }
+
+    /**
+     * Get the device hardware history.
+     */
+    public function hardware()
+    {
+        return $this->hasMany(Hardware::class);
+    }
+
+    /**
+     * Get the device latest hardware.
+     */
+    public function latestHardware()
+    {
+        return $this->hasOne(Hardware::class)->ofMany([
+            'date' => 'max',
+            'id' => 'max',
+        ]);
+    }
+
+    /**
+     * Get the device latest movement.
+     */
+    public function latestMovement()
+    {
+        return $this->hasOne(Movement::class)->ofMany([
+            'date' => 'max',
+            'id' => 'max',
+        ]);
+    }
+
+    /**
+     * Get the device latest software.
+     */
+    public function latestSoftware()
+    {
+        return $this->hasOne(Software::class)->ofMany([
+            'date' => 'max',
+            'id' => 'max',
+        ]);
+    }
+
+    /**
+     * Get the device movements.
+     */
+    public function movements()
+    {
+        return $this->hasMany(Movement::class);
+    }
+
+    /**
+     * Get the device repairs.
+     */
+    public function repairs()
+    {
+        return $this->hasMany(Repair::class);
     }
 
     /**
@@ -77,12 +136,20 @@ class Device extends Model
     }
 
     /**
+     * Get the device software history.
+     */
+    public function software()
+    {
+        return $this->hasMany(Software::class);
+    }
+
+    /**
      * Get the device status.
      */
     public function status()
     {
         // A trick to make an one-to-one relationship with an intermediate table
-        return $this->hasOneThrough(Status::class, Movement::class, 'device_id', 'id', 'id', 'status_id')->latest('date');
+        return $this->hasOneThrough(Status::class, Movement::class, 'device_id', 'id', 'id', 'status_id');
     }
 
     /**
@@ -92,102 +159,42 @@ class Device extends Model
     {
         return $this->belongsTo(Type::class);
     }
-
-    /**
-     * Get the device movements.
-     */
-    public function movements()
-    {
-        return $this->hasMany(Movement::class);
-    }
-
-    /**
-     * Get the device latest movement.
-     */
-    public function latestMovement()
-    {
-        return $this->hasOne(Movement::class)->ofMany([
-            'date' => 'max',
-            'id' => 'max',
-        ]);
-    }
-
-    /**
-     * Get the device repairs.
-     */
-    public function repairs()
-    {
-        return $this->hasMany(Repair::class);
-    }
-
-    /**
-     * Get the device latest hardware.
-     */
-    public function latestHardware()
-    {
-        return $this->hasOne(Hardware::class)->ofMany([
-            'date' => 'max',
-            'id' => 'max',
-        ]);
-    }
-
-    /**
-     * Get the device hardware history.
-     */
-    public function hardware()
-    {
-        return $this->hasMany(Hardware::class);
-    }
-
-    /**
-     * Get the device software history.
-     */
-    public function software()
-    {
-        return $this->hasMany(Software::class);
-    }
-
-    /**
-     * Get the device latest software.
-     */
-    public function latestSoftware()
-    {
-        return $this->hasOne(Software::class)->ofMany([
-            'date' => 'max',
-            'id' => 'max',
-        ]);
-    }
     
     /**
-     * Scope a query to only include devices that matched keywords.
+     * Scope a query to only include resources that matched keywords.
      * 
      * Each keyword must be matched at least once
      * with any model field specified in class $serachable property.
      * 
-     * Additional it is able to specified relationsip names array as
-     * model $searchableRelationships property.
-     * Then Each keyword must be matched with any model searchable field
+     * If it is defined a $searchableRelationships property 
+     * then each keyword must be matched with any model searchable field
      * or with any relationship searchable field. The relationship
      * searchable field list must be specified as its own $searchable property.
+     * 
+     * $deepSearch parameter enables search by $searchableRelationships list.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @param  array  $keywords
+     * @param  bool $deepSearch
+     * 
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function scopeSearch($query, Array $keywords){
+    public static function scopeSearch($query, Array $keywords, bool $deepSearch = true){
 
         foreach($keywords as $keyword){
 
-            $query->where(function ($query) use ($keyword) {
+            $query->where(function ($query) use ($keyword, $deepSearch) {
 
                 foreach(static::$searchable as $column){
                     $query->orWhereRaw($column . '::text ilike ' . "'%$keyword%'");
                 }
 
-                foreach(static::$searchableRelationships as $relationship){
-                    $query->orWhereHas($relationship, function ($query) use ($keyword){
-                        $query->search([$keyword]);
-                    });
+                if ($deepSearch) {
+                    foreach(static::$searchableRelationships as $relationship){
+                        $query->orWhereHas($relationship, function ($query) use ($keyword){
+                            $query->search([$keyword], false);
+                        });
+                    }
                 }
                 
             });

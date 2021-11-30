@@ -1,31 +1,18 @@
-import * as Textarea from "../../components/textarea.js";
 import Form from "../../components/form.js";
 
-const CREATE_LINK = 'a#create';
+const SEARCH_FORM = 'form#search-form';
+const SEARCH_INPUT = 'input#search-input';
+const TABLE_CONTAINER = '#movement-table-container'
 
-$(document).on('click', CREATE_LINK, createLinkClickHandler);
+$(document).on('input', SEARCH_INPUT, searchInputInputHandler);
 
-async function createLinkClickHandler(event) {
+async function searchInputInputHandler(event) {
     event.preventDefault();
 
-    let link = event.target;
-    let url = $(link).attr('href');
-
-    let response = await $.get(url);
+    let response = await Form.xhrAction(SEARCH_FORM);
 
     if (response.status === 1) {
-        let dialog = response.view;
-        showDialog(dialog);
+        let resultTable = response.view;
+        $(TABLE_CONTAINER).html(resultTable);
     }
-}
-
-// helpers
-
-function showDialog(dialog) {
-    $('body').append(dialog);
-    $(dialog).modal('show');
-
-    $(dialog).on('hidden.bs.modal', function () {
-        $(this).remove();
-    });
 }

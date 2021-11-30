@@ -20,7 +20,7 @@ class MovementController extends Controller
             ->withPath(route('movements.fetch_data'));
 
         $movements->load([
-            'device',
+            'device.type',
             'status',
         ]);
             
@@ -91,5 +91,36 @@ class MovementController extends Controller
     public function destroy(Movement $movement)
     {
         //
+    }
+
+    // Additional methods
+
+    /**
+     * Get resource pagination page
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function fetch_data(Request $request){
+        $urlQueryWithoutPage = http_build_query($request->collect()->except('page')->toArray());
+        
+        $movements = Movement::getModel();
+
+        if (isset($request->search_string)) {
+            $keywords = preg_split('/\s+/', trim($request->search_string));
+            $movements = $movements->search($keywords);
+        }
+
+        $movements = $movements->paginate()->withPath(route('movements.fetch_data', $urlQueryWithoutPage));
+
+        $movements->load([
+            'device.type',
+            'status',
+        ]);
+
+        return [
+            'status' => 1,
+            'view' => view('components.device-accounting.movements.index.table', compact('movements'))->render(),
+        ];
     }
 }

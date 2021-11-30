@@ -1,10 +1,10 @@
 import Form from "../../components/form.js";
 import * as Tabswitcher from "../../components/tabswitcher.js";
 
-const DEVICE_CONTEXT_MENU = '#device-contextmenu'
 const CALL_DIALOG = '.call-dialog';
 const CREATE_DEVICE_ACCOUNT_MODAL = '#create-device-account-modal';
-const CREATE_DEVICE_ACCOUNT_LINK = 'a#create-device-account'
+const CREATE_DEVICE_ACCOUNT_LINK = 'a#create-device-account';
+const DEVICE_CONTEXT_MENU = '#device-contextmenu';
 const DEVICE_ROW = 'tr[name=device]';
 const DEVICE_TABLE_CONTAINER = '#device-table-container';
 const DEVICE_TABLE_PAGINATOR = '#device-table-paginator';
